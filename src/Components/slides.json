@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "image": "https://n4.sdlcdn.com/imgs/k/k/0/ZURU-BUNCH-Red-Men-s-SDL560151332-1-de813.jpg",
+        "title" : "ZURU BUNCH Red Men's Slide flip flop",
+        "price" : "Rs. 459",
+        "reviews" : {
+          "rating" : "4.1",
+          "count" : "156"
+        },
+        "discount" : "27%  OFF",
+        "category" : " Men's footwear"
+      },
+      {
+        "id": 2,
+        "image": "https://n4.sdlcdn.com/imgs/k/l/i/GRASS-WALK-Brown-Men-s-SDL940344790-1-f16ae.JPG",
+        "title" : "GRASS WALK - Brown Men's Daily Slipper",
+        "price" : "Rs. 247",
+        "reviews" : {
+          "rating" : "4.6",
+          "count" : "206"
+        },
+        "discount" : "59%  OFF",
+        "category" : " Men's footwear"
+      },
+      {
+        "id": 3,
+        "image": "https://n3.sdlcdn.com/imgs/k/k/j/FITMonkey-Gray-Men-s-Sneakers-SDL736029523-1-e364e.jpg",
+        "title" : "FITMonkey Men Casual Light Weight Breathable Knitted Shoes- Gray",
+        "price" : "Rs. 899 ",
+        "reviews" : {
+          "rating" : "3.6",
+          "count" : "199"
+        },
+        "discount" : "50%  OFF",
+        "category" : " Men's footwear"
+      },
+      {
+        "id": 4,
+        "image": "https://n3.sdlcdn.com/imgs/k/i/a/HiDa-White-Men-s-Sneakers-SDL877871017-1-4d188.jpg",
+        "title" : "HiDa - White Men's Sneakers",
+        "price" : "Rs. 510",
+        "reviews" : {
+          "rating" : "4.3",
+          "count" : "206"
+        },
+        "discount" : "49%  OFF",
+        "category" : " Men's footwear"
+      }
+]
