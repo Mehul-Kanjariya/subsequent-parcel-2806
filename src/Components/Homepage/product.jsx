@@ -58,7 +58,7 @@ function Product_card({id, title, image,description,price}) {
       <Box
         bg={useColorModeValue('white', 'gray.800')}
         // maxW="sm"
-        width="300px"
+        width="200px"
         borderWidth="1px"
         rounded="lg"
         shadow="lg"
