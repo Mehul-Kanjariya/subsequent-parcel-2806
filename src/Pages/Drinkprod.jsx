@@ -1,19 +1,19 @@
-
 import { Box, Button, Flex } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getFaceData } from '../Redux/Health&Beauty/actions';
+//import { getFaceData } from '../Redux/Health&Beauty/actions';
 import { Grid, GridItem } from '@chakra-ui/react'
 import { Image } from '@chakra-ui/react'
-import Facecard from "./Facecard";
+import { getDrinkData } from "../Redux/Health&Beauty/actions";
+import Foodcard from "./Foodcard";
 //import { getPosts } from "../Redux/action";
-const Faceprod = () => {
+const Drinkprod = () => {
   const products=useSelector((store)=>store.health.products)
   const dispatch=useDispatch()
   console.log(products)
 
   useEffect(()=>{
-    dispatch(getFaceData())
+    dispatch(getDrinkData())
   },[])
   return (
     <Flex style={{ margin:"auto",justifyContent:"center",alignItems:"center"}}>
@@ -23,7 +23,7 @@ const Faceprod = () => {
     <Box>
 <Grid width="70%" templateColumns='repeat(4, 1fr)' m="auto"  justifyContent="center" gap='2' >
 {products.map((item)=>(
-<Facecard key={item.id} {...item}  />
+<Foodcard key={item.id} {...item}  />
   
 ))}
 </Grid>
@@ -32,4 +32,4 @@ const Faceprod = () => {
   )
 }
 
-export default Faceprod
+export default Drinkprod
