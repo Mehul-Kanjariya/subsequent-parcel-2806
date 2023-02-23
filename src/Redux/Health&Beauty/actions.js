@@ -1,29 +1,16 @@
-import axios from "axios";
-import * as types from "./actionType";
+import * as types from "./actionType"
+import axios from "axios"
+export const getFaceData=()=>async(dispatch)=>{
 
-const reqProduct = () => {
-    return {
-        type:types.GET_PRODUCT_REQUEST
+    dispatch({type:types.GET_FACE_REQUEST})
+
+
+    try {
+       let r= await axios.get(`https://alok-verma-rct.onrender.com/beautyface`)
+       
+       dispatch({type:types.GET_FACE_SUCCESS,payload:r.data})
+    } catch (e) {
+        dispatch({type:types.GET_FACE_ERROR,payload:e})
     }
-}
 
-const sucProduct = (payload) => {
-    return {
-        type:types.GET_PRODUCT_SUCCESS,
-        payload
-    }
-}
-
-const errProduct = () => {
-    return {
-        type:types.GET_PRODUCT_ERROR
-    }
-}
-
-export const fetchProducts = () => async (dispatch) => {
-    dispatch(reqProduct())
-    axios
-        .get(`https://alok-verma-rct.onrender.com/MensFootwear`)
-        .then((res)=>dispatch(sucProduct(res.data)))
-        .catch((err)=>dispatch(errProduct()));
 }
