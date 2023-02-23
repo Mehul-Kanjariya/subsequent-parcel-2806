@@ -2,7 +2,7 @@ import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Faceprod from '../Pages/Faceprod'
 import Signup from '../Components/Login/Signup'
-import AddProductPage from "../Components/Admin/AddProductPage";
+import AddProductPage from "../Components/Admin/AddProduct/AddProductPage";
 import Homepage from '../Components/Homepage/homepage';
 
 const AllRoutes = () => {
@@ -16,4 +16,4 @@ const AllRoutes = () => {
   )
 }
 
-export default AllRoutes
+export default AllRoutes;
