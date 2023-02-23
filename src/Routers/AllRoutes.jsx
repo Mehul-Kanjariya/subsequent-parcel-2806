@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Faceprod from "../Pages/Faceprod";
@@ -7,6 +8,7 @@ import Homepage from "../Components/Homepage/homepage";
 import WomensEthnicDresses from "../Components/Womens/WomensEthnicDresses";
 import WomensFootwear from "../Components/Womens/WomensFootwear";
 import WomensDresses from "../Components/Womens/WomensDresses";
+
 
 const AllRoutes = () => {
   return (
@@ -24,5 +26,6 @@ const AllRoutes = () => {
     </Routes>
   );
 };
+
 
 export default AllRoutes;
