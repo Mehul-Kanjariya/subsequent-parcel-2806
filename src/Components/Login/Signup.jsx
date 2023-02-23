@@ -1,4 +1,6 @@
 import React from 'react'
+import { Radio, RadioGroup } from '@chakra-ui/react'
+
 import {
     Flex,
     Box,
@@ -19,6 +21,7 @@ import {
   import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 const Signup = () => {
     const [showPassword, setShowPassword] = useState(false);
+    const [value, setValue] = useState('1')
   return (
     
     <Flex
@@ -32,7 +35,7 @@ const Signup = () => {
             Sign up
           </Heading>
           <Text fontSize={'lg'} color={'gray.600'}>
-            to enjoy all of our cool features ✌️
+          to crack our  exciting deals✌️
           </Text>
         </Stack>
         <Box
@@ -74,6 +77,16 @@ const Signup = () => {
                 </InputRightElement>
               </InputGroup>
             </FormControl>
+
+            <RadioGroup onChange={setValue} value={value}>
+      <Stack direction='row'>
+        <Radio value='1'>Admin</Radio>
+        <Radio value='2'>User</Radio>
+        
+      </Stack>
+    </RadioGroup>
+
+
             <Stack spacing={10} pt={2}>
               <Button
                 loadingText="Submitting"
