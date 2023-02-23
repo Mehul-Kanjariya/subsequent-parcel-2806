@@ -5,6 +5,8 @@ import Signup from "../Components/Login/Signup";
 import AddProductPage from "../Components/Admin/AddProductPage";
 import Homepage from "../Components/Homepage/homepage";
 import WomensEthnicDresses from "../Components/Womens/WomensEthnicDresses";
+import WomensFootwear from "../Components/Womens/WomensFootwear";
+import WomensDresses from "../Components/Womens/WomensDresses";
 
 const AllRoutes = () => {
   return (
@@ -17,6 +19,8 @@ const AllRoutes = () => {
         path="/Womens/WomensEthnicDresses"
         element={<WomensEthnicDresses />}
       />
+      <Route path="/Womens/WomensFootwear" element={<WomensFootwear />} />
+      <Route path="/Womens/WomensDresses" element={<WomensDresses />} />
     </Routes>
   );
 };

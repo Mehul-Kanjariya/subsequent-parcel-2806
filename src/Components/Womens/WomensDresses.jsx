@@ -8,7 +8,7 @@ import { errProduct, reqProduct, sucProduct } from "../../Redux/Women/actions";
 import { SimpleGrid } from "@chakra-ui/layout";
 import "../Css/hover-glow-shadow.css";
 
-const WomensEthnicDresses = () => {
+const WomensDresses = () => {
   const { products, loading, error } = useSelector((state) => state.women);
   const dispatch = useDispatch();
 
@@ -18,7 +18,7 @@ const WomensEthnicDresses = () => {
     dispatch(reqProduct());
     try {
       let res = await axios.get(
-        "https://alok-verma-rct.onrender.com/WomensEthnicWear"
+        "https://alok-verma-rct.onrender.com/WomensDresses"
       );
       let data = res.data;
       dispatch(sucProduct(data));
@@ -33,7 +33,7 @@ const WomensEthnicDresses = () => {
   }, []);
 
   return (
-    <SimpleGrid columns={[1, 2, 4]} m="20px" p="10px">
+    <SimpleGrid columns={[1, 2, 4]} m="20px" p="10px" textAlign="center">
       {loading ? (
         <Spinner />
       ) : error ? (
@@ -42,7 +42,7 @@ const WomensEthnicDresses = () => {
         products?.map((item) => {
           return (
             <Flex
-              p={4}
+              p={5}
               w="fit-content"
               alignItems="center"
               justifyContent="center"
@@ -59,7 +59,6 @@ const WomensEthnicDresses = () => {
                   src={item.image}
                   alt={`Picture of ${item.title}`}
                   roundedTop="lg"
-                  w="content-fit"
                 />
                 <Flex
                   mt="1"
@@ -123,4 +122,4 @@ const WomensEthnicDresses = () => {
   );
 };
 
-export default WomensEthnicDresses;
+export default WomensDresses;
