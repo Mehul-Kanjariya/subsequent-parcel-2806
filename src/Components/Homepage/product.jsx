@@ -11,7 +11,7 @@ import {
 } from '@chakra-ui/react';
 import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs';
 import { FiShoppingCart } from 'react-icons/fi';
-
+import "./homepage.css";
 const data = {
   isNew: true,
   imageURL:
@@ -24,40 +24,41 @@ const data = {
 
 
 
-function Rating({ rating, numReviews }) {
-  return (
-    <Box d="flex" alignItems="center">
-      {Array(5)
-        .fill('')
-        .map((_, i) => {
-          const roundedRating = Math.round(rating * 2) / 2;
-          if (roundedRating - i >= 1) {
-            return (
-              <BsStarFill
-                key={i}
-                style={{ marginLeft: '1' }}
-                color={i < rating ? 'teal.500' : 'gray.300'}
-              />
-            );
-          }
-          if (roundedRating - i === 0.5) {
-            return <BsStarHalf key={i} style={{ marginLeft: '1' }} />;
-          }
-          return <BsStar key={i} style={{ marginLeft: '1' }} />;
-        })}
-      <Box as="span" ml="2" color="gray.600" fontSize="sm">
-        {numReviews} review{numReviews > 1 && 's'}
-      </Box>
-    </Box>
-  );
-}
+// function Rating({ rating, numReviews }) {
+//   return (
+//     <Box d="flex" alignItems="center">
+//       {Array(5)
+//         .fill('')
+//         .map((_, i) => {
+//           const roundedRating = Math.round(rating * 2) / 2;
+//           if (roundedRating - i >= 1) {
+//             return (
+//               <BsStarFill
+//                 key={i}
+//                 style={{ marginLeft: '1' }}
+//                 color={i < rating ? 'teal.500' : 'gray.300'}
+//               />
+//             );
+//           }
+//           if (roundedRating - i === 0.5) {
+//             return <BsStarHalf key={i} style={{ marginLeft: '1' }} />;
+//           }
+//           return <BsStar key={i} style={{ marginLeft: '1' }} />;
+//         })}
+//       <Box as="span" ml="2" color="gray.600" fontSize="sm">
+//         {numReviews} review{numReviews > 1 && 's'}
+//       </Box>
+//     </Box>
+//   );
+// }
 
-function Product_card() {
+function Product_card({id, title, image,description,price}) {
   return (
-    <Flex p={50} w="full" alignItems="center" justifyContent="center">
+    <Flex className="hvr-icon-buzz-out hvr-icon" p={1} w="fit-content" alignItems="center" justifyContent="center">
       <Box
         bg={useColorModeValue('white', 'gray.800')}
-        maxW="sm"
+        // maxW="sm"
+        width="300px"
         borderWidth="1px"
         rounded="lg"
         shadow="lg"
@@ -73,27 +74,28 @@ function Product_card() {
         )}
 
         <Image
-          src={data.imageURL}
-          alt={`Picture of ${data.name}`}
+          src={image}
+          alt={`Picture of ${title}`}
           roundedTop="lg"
+          // height="50%"
         />
 
         <Box p="6">
-          <Box d="flex" alignItems="baseline">
+          {/* <Box d="flex" alignItems="baseline"> */}
             {data.isNew && (
               <Badge rounded="full" px="2" fontSize="0.8em" colorScheme="red">
                 New
               </Badge>
             )}
-          </Box>
+          {/* </Box> */}
           <Flex mt="1" justifyContent="space-between" alignContent="center">
             <Box
-              fontSize="2xl"
+              fontSize="sm"
               fontWeight="semibold"
               as="h4"
               lineHeight="tight"
               isTruncated>
-              {data.name}
+              {title}
             </Box>
             <Tooltip
               label="Add to cart"
@@ -107,13 +109,13 @@ function Product_card() {
             </Tooltip>
           </Flex>
 
-          <Flex justifyContent="space-between" alignContent="center">
-            <Rating rating={data.rating} numReviews={data.numReviews} />
+          <Flex justifyContent="space-between" alignContent="center" >
+            {/* <Rating rating={data.rating} numReviews={data.numReviews} display={"flex"} /> */}
             <Box fontSize="2xl" color={useColorModeValue('gray.800', 'white')}>
-              <Box as="span" color={'gray.600'} fontSize="lg">
-                £
+              <Box as="span" color={'gray.600'} fontSize="sm">
+                
               </Box>
-              {data.price.toFixed(2)}
+              {price}
             </Box>
           </Flex>
         </Box>

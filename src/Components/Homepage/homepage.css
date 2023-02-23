@@ -6,20 +6,24 @@
     width: 90%;
     justify-content: center;
     gap: 10px;
+    
 }
+
 
 .side-nav{
    text-align: center;
    height: auto;
    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  
 }
 .side-nav h2{
-    font-size: 16px;
+    font-size: 21px;
     color: #333333;
     margin-left: 17px;
     text-transform: uppercase;
     margin-bottom: 20px;
     margin-top: 10px;
+    font-weight: 600;
 }
 .side-nav > div{
     display: flex;
@@ -33,7 +37,7 @@
 }
 .side-nav > div:hover{
    border: 1px solid rgb(214, 206, 206);
-   border-left: 4px solid red;
+  border-left: 4px solid red;
 }
 
 
@@ -51,25 +55,147 @@
 }
 .slider-div > div {
     display: flex;
-    /* height: 250px; */
     margin-top: 10px;
-    /* overflow: hidden; */
 }
 .slider{
     width: 80%;
     height: 250px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+   
 }
-.slider img{
-    height: 250px;
-}
+
 .product_card{
     text-align: left;
     display: flex;
-    /* grid-template-rows: repeat(2,1fr); */
     flex-direction: column;
+    width: 80%;
 }
-.product_card > div:nth-child(2){
+.product_card h2{
+    font-size: 21px;
+    color: #333333;
+    margin-left: 17px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    font-weight: 600;
+}
+.products{
     display: flex;
-   justify-content: space-between;
+    width: 60%;
+}
+.product_slider{
+   text-align: left;
+   width: 90%;
+   margin: auto;
+}
+.product_slider h2{
+    font-size: 21px;
+    color: #333333;
+    margin-left: 17px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    font-weight: 600;
+}
+.banner{
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    background-color: bisque;
+    
+}
+.mobile-banner{
+    padding-top: 50px;
+}
+.heading{
+    text-align: left;
+}
+.heading h1{
+    font-size: 50.4px;
+    font-weight: bold;
+    line-height: 1.33;
+    color: #222222;
+    font-family: "Times New Roman", Times, serif;
+}
+.heading p{
+    font-size: 23px;
+    line-height: 1.33;
+    color: #a39f9f;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.BtnDiv{
+  margin-top: 50px;
+}
+@keyframes hvr-icon-buzz-out {
+  10% {
+    -webkit-transform: translateX(3px) rotate(2deg);
+    transform: translateX(3px) rotate(2deg);
+  }
+  20% {
+    -webkit-transform: translateX(-3px) rotate(-2deg);
+    transform: translateX(-3px) rotate(-2deg);
+  }
+  30% {
+    -webkit-transform: translateX(3px) rotate(2deg);
+    transform: translateX(3px) rotate(2deg);
+  }
+  40% {
+    -webkit-transform: translateX(-3px) rotate(-2deg);
+    transform: translateX(-3px) rotate(-2deg);
+  }
+  50% {
+    -webkit-transform: translateX(2px) rotate(1deg);
+    transform: translateX(2px) rotate(1deg);
+  }
+  60% {
+    -webkit-transform: translateX(-2px) rotate(-1deg);
+    transform: translateX(-2px) rotate(-1deg);
+  }
+  70% {
+    -webkit-transform: translateX(2px) rotate(1deg);
+    transform: translateX(2px) rotate(1deg);
+  }
+  80% {
+    -webkit-transform: translateX(-2px) rotate(-1deg);
+    transform: translateX(-2px) rotate(-1deg);
+  }
+  90% {
+    -webkit-transform: translateX(1px) rotate(0);
+    transform: translateX(1px) rotate(0);
+  }
+  100% {
+    -webkit-transform: translateX(-1px) rotate(0);
+    transform: translateX(-1px) rotate(0);
+  }
+}
+.hvr-icon-buzz-out {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+.hvr-icon-buzz-out .hvr-icon {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+.hvr-icon-buzz-out:hover .hvr-icon, .hvr-icon-buzz-out:focus .hvr-icon, .hvr-icon-buzz-out:active .hvr-icon {
+  -webkit-animation-name: hvr-icon-buzz-out;
+  animation-name: hvr-icon-buzz-out;
+  -webkit-animation-duration: 0.75s;
+  animation-duration: 0.75s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+}
+ 
+@media screen and (max-width: 663px) and (min-width: 360px) {
+    .product_slider{
+        width: 100%;
+        margin:auto;
+    }
 }
