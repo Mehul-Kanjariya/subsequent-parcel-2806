@@ -55,8 +55,28 @@ const Homepage = () => {
             <p>Men's Fashion</p>
           </div>
         </div>
+        <h2>MORE CATEGORIES</h2>
+        <div className="more_categories">
+          <p>Automotives</p>
+        </div>
+        <div  className="more_categories">
+          <p>Automotives</p>
+        </div>
+        <div  className="more_categories">
+          <p>Automotives</p>
+        </div>
+        <div  className="more_categories">
+          <p>Automotives</p>
+        </div>
+        <div  className="more_categories">
+          <p>Automotives</p>
+        </div>
+        <div  className="more_categories">
+          <p>Automotives</p>
+        </div>
       </div>
       <div className="slider-div">
+        <div>
         <div className="slider">
         <Slider SliderImages={SliderImages} />
         </div>
@@ -66,8 +86,20 @@ const Homepage = () => {
         </div>
       </div>
       <div className="product_card">
-     <Product_card/>
+        <div>
+        <h1>RECENTLY VIEWED PRODUCTS</h1>
+        </div>
+       
+        <div>
+        <Product_card/>
+        <Product_card/>
+        <Product_card/>
+        <Product_card/>
+        </div>
+    
       </div>
+      </div>
+      
     </div>
   );
 };
