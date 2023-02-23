@@ -1,0 +1,99 @@
+[
+    {
+        "id": 1,
+        "image": "https://n3.sdlcdn.com/imgs/i/u/v/large/HeelSocks1-aeb5a.jpg",
+        "title" : "Stay Healthy - Foot Protector (Free Size)",
+        "price" : "Rs. 147",
+        "reviews" : {
+          "rating" : "4.1",
+          "count" : "156"
+        },
+        "discount" : "75%  OFF",
+        "category" : " Men's footwear"
+      },
+      {
+        "id": 2,
+        "image": "https://n1.sdlcdn.com/imgs/k/k/i/Aarika-Green-Cotton-Shirt-Single-SDL419320104-1-91ff0.jpg",
+        "title" : "Aarika Green Cotton Shirt - Single",
+        "price" : "Rs. 309",
+        "reviews" : {
+          "rating" : "3.0",
+          "count" : "206"
+        },
+        "discount" : "75%  OFF",
+        "category" : " Men's footwear"
+      },
+      {
+        "id": 3,
+        "image": "https://n1.sdlcdn.com/imgs/k/l/7/Swiggy-E-Gift-Card-SDL492233984-1-6ef1d.jpg",
+        "title" : "Swiggy E-Gift Card",
+        "price" : "Rs. 950 ",
+        "reviews" : {
+          "rating" : "4.6",
+          "count" : "199"
+        },
+        "discount" : "5%  OFF",
+        "category" : " Men's footwear"
+      },
+      {
+        "id": 4,
+        "image": "https://n4.sdlcdn.com/imgs/k/m/p/Rapidex-English-Speaking-Course-Bangla-SDL867228474-1-04ec6.jpg",
+        "title" : "Rapidex English Speaking Course (Bangla) (With Youtube AV)",
+        "price" : "Rs. 369",
+        "reviews" : {
+          "rating" : "4.3",
+          "count" : "206"
+        },
+        "discount" : "8%  OFF",
+        "category" : " Men's footwear"
+      },  {
+        "id": 5,
+        "image": "https://n3.sdlcdn.com/imgs/i/u/v/large/HeelSocks1-aeb5a.jpg",
+        "title" : "Stay Healthy - Foot Protector (Free Size)",
+        "price" : "Rs. 147",
+        "reviews" : {
+          "rating" : "4.1",
+          "count" : "156"
+        },
+        "discount" : "75%  OFF",
+        "category" : " Men's footwear"
+      },
+      {
+        "id": 6,
+        "image": "https://n1.sdlcdn.com/imgs/k/k/i/Aarika-Green-Cotton-Shirt-Single-SDL419320104-1-91ff0.jpg",
+        "title" : "Aarika Green Cotton Shirt - Single",
+        "price" : "Rs. 309",
+        "reviews" : {
+          "rating" : "3.0",
+          "count" : "206"
+        },
+        "discount" : "75%  OFF",
+        "category" : " Men's footwear"
+      },
+      {
+        "id": 7,
+        "image": "https://n1.sdlcdn.com/imgs/k/l/7/Swiggy-E-Gift-Card-SDL492233984-1-6ef1d.jpg",
+        "title" : "Swiggy E-Gift Card",
+        "price" : "Rs. 950 ",
+        "reviews" : {
+          "rating" : "4.6",
+          "count" : "199"
+        },
+        "discount" : "5%  OFF",
+        "category" : " Men's footwear"
+      },
+      {
+        "id": 8,
+        "image": "https://n4.sdlcdn.com/imgs/k/m/p/Rapidex-English-Speaking-Course-Bangla-SDL867228474-1-04ec6.jpg",
+        "title" : "Rapidex English Speaking Course (Bangla) (With Youtube AV)",
+        "price" : "Rs. 369",
+        "reviews" : {
+          "rating" : "4.3",
+          "count" : "206"
+        },
+        "discount" : "8%  OFF",
+        "category" : " Men's footwear"
+      }
+   
+]
+ 
