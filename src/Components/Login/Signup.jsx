@@ -17,7 +17,7 @@ import {
   } from '@chakra-ui/react';
   import { useState } from 'react';
   import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
-const Login = () => {
+const Signup = () => {
     const [showPassword, setShowPassword] = useState(false);
   return (
     
@@ -98,4 +98,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Signup;
