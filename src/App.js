@@ -13,7 +13,7 @@ import AddProductPage from './Components/Admin/AddProductPage';
 function App() {
   return (
     <div className="App">
-      <AddProductPage/
+      <AddProductPage/>
     </div>
   );
 }
