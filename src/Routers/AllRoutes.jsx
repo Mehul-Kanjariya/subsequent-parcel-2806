@@ -3,7 +3,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Faceprod from "../Pages/Faceprod";
 import Signup from "../Components/Login/Signup";
-import AddProductPage from "../Components/Admin/AddProductPage";
+import AddProductPage from "../Components/Admin/AddProduct/AddProductPage";
 import WomensEthnicDresses from "../Components/Womens/WomensEthnicDresses";
 import WomensFootwear from "../Components/Womens/WomensFootwear";
 import WomensDresses from "../Components/Womens/WomensDresses";
