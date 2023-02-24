@@ -1,3 +1,4 @@
+import axios from "axios";
 import * as types from "./actionType";
 
 export const reqlogin = () => {
@@ -26,7 +27,7 @@ export const logoutReq = () => {
   };
 }
 
-export const fetchProducts = (data) => async (dispatch) => {
+export const fetchData = (data) => async (dispatch) => {
   dispatch(reqlogin())
   await axios
       .get(`https://alok-verma-rct.onrender.com/userlogin`)

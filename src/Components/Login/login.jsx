@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 
 
@@ -16,8 +16,30 @@ import {
     Text,
     useColorModeValue,
   } from '@chakra-ui/react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchData } from '../../Redux/Auth/actions';
   
   export default function Login() {
+    const dispatch = useDispatch();
+    const {data} = useSelector((store)=>store.auth)
+
+    const [email,setemail] = useState('')
+    const [password,setpassword] = useState("")
+
+  useEffect(()=>{
+    dispatch(fetchData());
+  },[])
+
+  
+  const login = () => { 
+    let a =  data?.filter((e)=>{
+      if(e.email===email && e.password===password){
+        return e;
+      }
+    })
+    console.log(a)
+  };
+
     return (
       <Flex
         minH={'100vh'}
@@ -39,11 +61,11 @@ import {
             <Stack spacing={4}>
               <FormControl id="email">
                 <FormLabel>Email address</FormLabel>
-                <Input type="email" />
+                <Input type="email" onChange={(e)=>setemail(e.target.value)} value={email} />
               </FormControl>
               <FormControl id="password">
                 <FormLabel>Password</FormLabel>
-                <Input type="password" />
+                <Input type={'password'}  onChange={(e)=>setpassword(e.target.value)} value={password} />
               </FormControl>
               <Stack spacing={10}>
                 <Stack
@@ -56,6 +78,7 @@ import {
                 <Button
                   bg={'blue.400'}
                   color={'white'}
+                  onClick={login}
                   _hover={{
                     bg: 'blue.500',
                   }}>
