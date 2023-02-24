@@ -1,20 +1,30 @@
 import { Spinner } from "@chakra-ui/spinner";
 import { useDispatch, useSelector } from "react-redux";
-import { Flex, Box, Image, Icon, chakra, Tooltip } from "@chakra-ui/react";
+import {
+  Flex,
+  Box,
+  Image,
+  Icon,
+  chakra,
+  Tooltip,
+  useToast,
+} from "@chakra-ui/react";
 import { FiShoppingCart } from "react-icons/fi";
 import { useEffect } from "react";
 import axios from "axios";
 import { errProduct, reqProduct, sucProduct } from "../../Redux/Women/actions";
 import { SimpleGrid } from "@chakra-ui/layout";
 import "../Css/hover-glow-shadow.css";
+import { useNavigate } from "react-router";
+import "../Css/womens.css";
 
 const WomensEthnicDresses = () => {
   const { products, loading, error } = useSelector((state) => state.women);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const toast = useToast();
 
   const FetchData = async () => {
-    let temp = reqProduct();
-    console.log(temp);
     dispatch(reqProduct());
     try {
       let res = await axios.get(
@@ -27,6 +37,25 @@ const WomensEthnicDresses = () => {
     }
   };
 
+  const AddToCartItem = async (id) => {
+    let data = await axios.get(
+      `https://alok-verma-rct.onrender.com/WomensEthnicWear/${id}`
+    );
+    axios
+      .post("https://alok-verma-rct.onrender.com/crankdealCart", data.data)
+      .then(() =>
+        toast({
+          title: "Item Added",
+          description: "Item added to cart successfully",
+          status: "success",
+          duration: 9000,
+          isClosable: true,
+          position: "top",
+        })
+      )
+      .catch((err) => console.log(err));
+  };
+
   useEffect(() => {
     FetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -35,9 +64,17 @@ const WomensEthnicDresses = () => {
   return (
     <SimpleGrid columns={[1, 2, 4]} m="20px" p="10px">
       {loading ? (
-        <Spinner />
+        <div style={{ textAlign: "center" }}>
+          <Spinner
+            thickness="4px"
+            speed="0.65s"
+            emptyColor="gray.200"
+            color="blue.500"
+            size="xl"
+          />
+        </div>
       ) : error ? (
-        "Something Went Wrong"
+        <div style={{ textAlign: "center" }}>"Something Went Wrong"</div>
       ) : (
         products?.map((item) => {
           return (
@@ -47,6 +84,7 @@ const WomensEthnicDresses = () => {
               alignItems="center"
               justifyContent="center"
               className="hvr-grow-shadow"
+              key={item.id}
             >
               <Box
                 width="300px"
@@ -73,6 +111,11 @@ const WomensEthnicDresses = () => {
                     lineHeight="tight"
                     isTruncated
                     p="10px 20px"
+                    cursor={"pointer"}
+                    className="product-title"
+                    onClick={() => {
+                      navigate(`/Womens/WomensEthnicDresses/${item.id}`);
+                    }}
                   >
                     {item.title}
                   </Box>
@@ -83,13 +126,14 @@ const WomensEthnicDresses = () => {
                     color={"gray.800"}
                     fontSize={"1.2em"}
                   >
-                    <chakra.a href={"#"} display={"flex"}>
+                    <chakra.a display={"flex"}>
                       <Icon
                         as={FiShoppingCart}
                         h={7}
                         w={7}
                         alignSelf={"center"}
                         m="0px 20px"
+                        onClick={() => AddToCartItem(item.id)}
                       />
                     </chakra.a>
                   </Tooltip>
