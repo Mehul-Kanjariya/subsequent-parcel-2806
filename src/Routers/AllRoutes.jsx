@@ -10,7 +10,7 @@ import WomensDresses from "../Components/Womens/WomensDresses";
 import Homepage from '../Components/Homepage/homepage';
 import Drinkprod from '../Pages/Drinkprod';
 import Foodprod from '../Pages/Foodprod';
-
+import Login from "../Components/Login/Login";
 const AllRoutes = () => {
   return (
       <Routes>
@@ -26,6 +26,7 @@ const AllRoutes = () => {
         />
         <Route path="/Womens/WomensFootwear" element={<WomensFootwear />} />
         <Route path="/Womens/WomensDresses" element={<WomensDresses />} />
+        <Route  path="/userlogin" element={<Login></Login>} />
     </Routes>
   );
 };
