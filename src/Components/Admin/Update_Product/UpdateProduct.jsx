@@ -18,9 +18,9 @@ const UpdateProduct = () => {
 
   const [searchParams, setSearchParams] = useSearchParams();
   const initialfilterValue = searchParams.getAll('category')
-
+  // console.log()
   const data = useSelector((store) => store.admin.products);
-  const [filterBy, setFilterBy] = React.useState("WomensEthnicWear");
+  const [filterBy, setFilterBy] = React.useState(initialfilterValue[0] || "WomensEthnicWear");
 
   React.useEffect(() => {
     let params={}

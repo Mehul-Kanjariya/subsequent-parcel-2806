@@ -18,6 +18,7 @@ import {
   } from '@chakra-ui/react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchData } from '../../Redux/Auth/actions';
+import { async } from 'q';
   
   export default function Login() {
     const dispatch = useDispatch();
@@ -31,13 +32,37 @@ import { fetchData } from '../../Redux/Auth/actions';
   },[])
 
   
-  const login = () => { 
+  const login = async () => { 
     let a =  data?.filter((e)=>{
-      if(e.email===email && e.password===password){
+      if(e.email===email && e.password==password){
         return e;
       }
     })
-    console.log(a)
+    console.log(email, password)
+    if(a.length){
+      let id=a[0].id
+      let details = {
+        Auth:!a[0].Auth,
+      };
+    
+      try{
+        let res = await fetch(`https://alok-verma-rct.onrender.com/userlogin/${id}`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(details),
+        });
+        let h = await res.json();
+        console.log(h)
+      }catch(err){
+        console.log(err);
+        alert("Facing some issues please try again");
+        return;
+      }
+    }else{
+      alert("Wrong Credentials");
+    }
   };
 
     return (
