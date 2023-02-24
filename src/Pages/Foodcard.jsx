@@ -25,7 +25,7 @@ import {
 
 function Foodcard({id, title, image1,description,price}) {
     return (
-      <Flex p={2} margin="auto" w="fit-content" alignItems="center" justifyContent="center">
+      <Flex p={4} margin="auto" w="fit-content" alignItems="center" justifyContent="center" className="hvr-grow-shadow">
         <Box
           bg={useColorModeValue('white', 'gray.800')}
           // maxW="sm"
@@ -46,6 +46,7 @@ function Foodcard({id, title, image1,description,price}) {
             src={image1}
             alt={`Picture of ${title}`}
             roundedTop="lg"
+            padding="5px"
             // height="50%"
           />        <Box p="6">
             {/* <Box d="flex" alignItems="baseline"> */}
