@@ -1,6 +1,6 @@
 import React from 'react'
 import { Radio, RadioGroup } from '@chakra-ui/react'
-
+import axios from "axios"
 import {
     Flex,
     Box,
@@ -21,7 +21,50 @@ import {
   import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 const Signup = () => {
     const [showPassword, setShowPassword] = useState(false);
-    const [value, setValue] = useState('1')
+    const [value, setValue] = useState('')
+ 
+    const [email,setemail] = useState('')
+    const [password,setpassword] = useState("")
+    const[firstname,setfirstname] = useState('')
+    const[lastname,setlastname] = useState('')
+
+    
+    const postdetails=async ()=>{
+     
+      
+      const payload={
+        email,
+        password,
+        firstname,
+        lastname,
+        Auth:false,
+        user:value==="user"?true:false,
+        admin:value==="admin"?true:false
+      }
+
+     try {
+      
+     let res = await axios.post(`https://alok-verma-rct.onrender.com/userlogin`,payload)
+     console.log(res.data)
+
+     } catch (error) {
+      console.log(error)
+     }
+
+    }
+  
+    const handleclick=()=>{
+
+    postdetails()
+    setemail('')
+    setfirstname('')
+    setpassword('')
+    setlastname('')
+    setValue('')
+
+    }
+
+
   return (
     
     <Flex
@@ -48,24 +91,24 @@ const Signup = () => {
               <Box>
                 <FormControl id="firstName" isRequired>
                   <FormLabel>First Name</FormLabel>
-                  <Input type="text" />
+                  <Input type="text" onChange={(e)=>setfirstname(e.target.value)} value={firstname} />
                 </FormControl>
               </Box>
               <Box>
                 <FormControl id="lastName">
                   <FormLabel>Last Name</FormLabel>
-                  <Input type="text" />
+                  <Input type="text" onChange={(e)=>setlastname(e.target.value)} value={lastname} />
                 </FormControl>
               </Box>
             </HStack>
             <FormControl id="email" isRequired>
               <FormLabel>Email address</FormLabel>
-              <Input type="email" />
+              <Input type="email" onChange={(e)=>setemail(e.target.value)} value={email} />
             </FormControl>
             <FormControl id="password" isRequired>
               <FormLabel>Password</FormLabel>
               <InputGroup>
-                <Input type={showPassword ? 'text' : 'password'} />
+                <Input type={showPassword ? 'text' : 'password'}  onChange={(e)=>setpassword(e.target.value)} value={password} />
                 <InputRightElement h={'full'}>
                   <Button
                     variant={'ghost'}
@@ -80,8 +123,8 @@ const Signup = () => {
 
             <RadioGroup onChange={setValue} value={value}>
       <Stack direction='row'>
-        <Radio value='1'>Admin</Radio>
-        <Radio value='2'>User</Radio>
+        <Radio value='admin'>Admin</Radio>
+        <Radio value='user'>User</Radio>
         
       </Stack>
     </RadioGroup>
@@ -91,6 +134,9 @@ const Signup = () => {
               <Button
                 loadingText="Submitting"
                 size="lg"
+
+               onClick={()=>handleclick()}
+
                 bg={'blue.400'}
                 color={'white'}
                 _hover={{
@@ -99,10 +145,13 @@ const Signup = () => {
                 Sign up
               </Button>
             </Stack>
+
             <Stack pt={6}>
+              
               <Text align={'center'}>
-                Already a user? <Link color={'blue.400'}>Login</Link>
+                Already a user? <Link color={'blue.400'} href={'/userlogin'}   >Login</Link>
               </Text>
+            
             </Stack>
           </Stack>
         </Box>

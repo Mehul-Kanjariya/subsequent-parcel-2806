@@ -10,9 +10,13 @@ import WomensDresses from "../Components/Womens/WomensDresses";
 import Homepage from '../Components/Homepage/homepage';
 import Drinkprod from '../Pages/Drinkprod';
 import Foodprod from '../Pages/Foodprod';
+<<<<<<< HEAD
 import UpdateProduct from "../Components/Admin/Update_Product/UpdateProduct";
 import SingleUpdateProduct from "../Components/Admin/SingleUpdateProduct/UpdateProduct";
 
+=======
+import Login from "../Components/Login/Login";
+>>>>>>> 155f93a3017b1299d18bc293f7c31a8f3103742f
 const AllRoutes = () => {
   return (
       <Routes>
@@ -30,6 +34,7 @@ const AllRoutes = () => {
         />
         <Route path="/Womens/WomensFootwear" element={<WomensFootwear />} />
         <Route path="/Womens/WomensDresses" element={<WomensDresses />} />
+        <Route  path="/userlogin" element={<Login></Login>} />
     </Routes>
   );
 };
