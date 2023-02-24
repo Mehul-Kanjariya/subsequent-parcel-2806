@@ -10,6 +10,8 @@ import WomensDresses from "../Components/Womens/WomensDresses";
 import Homepage from '../Components/Homepage/homepage';
 import Drinkprod from '../Pages/Drinkprod';
 import Foodprod from '../Pages/Foodprod';
+import UpdateProduct from "../Components/Admin/Update_Product/UpdateProduct";
+import SingleUpdateProduct from "../Components/Admin/SingleUpdateProduct/UpdateProduct";
 
 const AllRoutes = () => {
   return (
@@ -17,9 +19,11 @@ const AllRoutes = () => {
         <Route path="/" element={<Homepage/>}/>
         <Route path="/productCategoryface" element={<Faceprod/>}/>
         <Route path="/signup" element={<Signup/>}/>
-        <Route path="/admin" element={<AddProductPage/>}/>
+        <Route path="/addProduct" element={<AddProductPage/>}/>
         <Route  path="/foodprod" element={<Foodprod />}  />
         <Route path="/drinkprod"  element={<Drinkprod />} />
+        <Route path="/adminProducts/:id/:category" element={<SingleUpdateProduct/>}/>
+        <Route path="/admin" element={<UpdateProduct/>}/>
         <Route
           path="/Womens/WomensEthnicDresses"
           element={<WomensEthnicDresses />}

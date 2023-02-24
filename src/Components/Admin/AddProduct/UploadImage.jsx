@@ -14,7 +14,6 @@ const handleImage = async (e) => {
     setError(false)
     setImage(null)
     let actual_img = e.target.files[0];
-    console.log(e.target.files[0]);
 
     let form = new FormData()
 

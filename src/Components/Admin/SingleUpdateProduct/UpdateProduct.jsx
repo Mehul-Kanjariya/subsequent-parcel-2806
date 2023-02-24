@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./update.module.css";
 import {
   Heading,
@@ -11,16 +11,15 @@ import {
   Flex,
   Box,
 } from "@chakra-ui/react";
-import Link from "next/link";
-import UploadImage from "../../components/Admin/UploadImage";
-import { useRouter } from "next/router";
-import { api } from "@/api";
+import UploadImage from "../UploadImage";
+import { Link, Navigate, useParams } from "react-router-dom";
+import axios from "axios";
 
-const Update = ({ product }) => {
-  const router = useRouter();
-
-  const [productdata, setData] = React.useState(product);
-
+const Update = () => {
+  const {id,category} = useParams();
+  const [cat, setCat] = useState(category);
+  const [productdata, setData] = React.useState(null);
+console.log(cat)
   const onInputChange = (e) => {
     let a = e.target.value;
     let b = e.target.name;
@@ -28,27 +27,18 @@ const Update = ({ product }) => {
       a = +a;
     }
 
-    // if (b == "reviews") {
-    //   let r = {
-    //     rate: a,
-    //     count: 0,
-    //   };
-    //   setData({ ...productdata, [b]: { ...r } });
-    //   return;
-    // }
     setData({ ...productdata, [b]: a });
   };
 
-  const handleUpdate = async (id) => {
+  const handleUpdate = async (id,category) => {
     if (
       productdata.title &&
       productdata.image &&
-      productdata.category &&
-      // productdata.reviews.rate &&
+      category &&
       productdata.price
     ) {
       try {
-        let res = await fetch(`${api}/${id}`, {
+        let res = await fetch(`https://alok-verma-rct.onrender.com/${category}/${id}`, {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
@@ -67,14 +57,9 @@ const Update = ({ product }) => {
     }
   };
 
-  const deleteProduct = async (id) => {
+  const deleteProduct = async (id,category) => {
     try {
-      // axios({
-      //   method: 'DELETE',
-      //   url: `https://lazy-erin-caridea-veil.cyclic.app/products/${id}`
-      // });
-
-      let res = await fetch(`${api}/${id}`, {
+      let res = await fetch(`https://alok-verma-rct.onrender.com/${category}/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -82,11 +67,22 @@ const Update = ({ product }) => {
       });
 
       alert("Product deleted successfully");
-      router.push("/updateProduct");
+      <Navigate to="/adminProducts" replace={true} />
     } catch (err) {
       alert("Facing some issues please try again");
     }
   };
+
+const fetchSingleProduct = async (id,category) => {
+    await axios
+        .get(`https://alok-verma-rct.onrender.com/${category}/${id}`)
+        .then((res)=>setData(res.data))
+        .catch((err)=>console.log(err));
+}
+
+React.useEffect(()=>{
+  fetchSingleProduct(id,category)
+},[]);
 
   return (
     <div className={styles.container}>
@@ -107,7 +103,7 @@ const Update = ({ product }) => {
           </Heading>
         </Center>
         <div className={styles.updateButton}>
-          <Link href="/updateProduct">
+          <Link to="/admin">
             <Button>Update Products</Button>
           </Link>
         </div>
@@ -137,7 +133,7 @@ const Update = ({ product }) => {
                   </label>
 
                   <Input
-                    value={productdata.title}
+                    value={productdata?.title}
                     placeholder="Title"
                     name="title"
                     onChange={onInputChange}
@@ -158,7 +154,7 @@ const Update = ({ product }) => {
                   </label>
 
                   <Input
-                    value={productdata.price}
+                    value={productdata?.price}
                     type="number"
                     placeholder="Price"
                     name="price"
@@ -180,7 +176,7 @@ const Update = ({ product }) => {
                   </label>
 
                   <Input
-                    value={productdata.discount}
+                    value={productdata?.discount}
                     type="number"
                     placeholder="Discount"
                     name="discount"
@@ -225,7 +221,7 @@ const Update = ({ product }) => {
                   </label>
 
                   <Textarea
-                    value={productdata.description}
+                    value={productdata?.description}
                     placeholder="Product Description"
                     name="description"
                     onChange={onInputChange}
@@ -246,25 +242,33 @@ const Update = ({ product }) => {
                   </label>
 
                   <Select
-                    value={productdata.category}
+                    value={cat}
                     placeholder="Select Category"
                     className={styles.option}
                     name="category"
-                    onChange={onInputChange}
+                    onChange={(e)=>{setCat(e.target.value)}}
                   >
-                    <option value="women-ethnic">Women Ethnic</option>
-                    <option value="women-western">Women Western</option>
-                    <option value="men">Men</option>
-                    <option value="kids">Kids</option>
-                    <option value="home-kitchen">Home & Kitchen</option>
-                    <option value="beauty-health">Beauty & Health</option>
+              <option value="beautyface">Beauty Face</option>
+              <option value="fooditem">Food Item</option>
+              <option value="healthdrinks">Healthy Drinks</option>
+              <option value="kitchenAppliances">Kitchen Appliances </option>
+              <option value="homeFurnishing">Home Furnishing</option>
+              <option value="tools">Tools</option>
+              <option value="toys">Toys</option>
+              <option value="babycare">Babycare</option>
+              <option value="stationary">Stationary</option>
+              <option value="WomensEthnicWear">Womens Ethnic</option>
+              <option value="WomensFootwear ">Womens Footwear</option>
+              <option value="WomensDresses ">Womens Dresses</option>
+              <option value="MensFootwear ">Mens Footwear</option>
+              <option value="MenseyeWear ">Mens EyeWear</option>
                   </Select>
                   <div className={styles.button}>
                     <Button
                       mt={4}
                       colorScheme="green"
                       type="submit"
-                      onClick={() => handleUpdate(productdata.id)}
+                      onClick={() => handleUpdate(productdata.id,category)}
                     >
                       Update
                     </Button>
@@ -272,7 +276,7 @@ const Update = ({ product }) => {
                       mt={4}
                       colorScheme="red"
                       type="submit"
-                      onClick={() => deleteProduct(productdata.id)}
+                      onClick={() => deleteProduct(productdata.id,category)}
                     >
                       Delete
                     </Button>
@@ -282,33 +286,12 @@ const Update = ({ product }) => {
             </div>
           </Box>
           <Box width={"fit-content"} margin={"auto"}>
-            <UploadImage product={productdata} img={productdata.image} />
+            <UploadImage product={productdata} img={productdata?.image} />
           </Box>
         </Flex>
       </div>
     </div>
   );
 };
-
-export async function getStaticPaths() {
-  let r = await fetch(`${api}/products`);
-  let d = await r.json();
-  return {
-    paths: d.map((product) => ({ params: { id: String(product.id) } })),
-    fallback: false,
-  };
-}
-
-export async function getStaticProps(context) {
-  let id = context.params.id;
-  // console.log(`Building id: ${id}`);
-  let r = await fetch(`${api}/${id}`);
-  let d = await r.json();
-  return {
-    props: {
-      product: d,
-    },
-  };
-}
 
 export default Update;
