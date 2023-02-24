@@ -36,8 +36,8 @@ const Navbar = () => {
     <Flex backgroundColor="#e40046" alignItems={"center"} w={"100%"}>
 
     <Flex flex={1} alignItems={"center"} gap={5}>
-        <Image src={logo} onClick={() => mynav("/")} alt="err" width={{base:"150px", md:"250px"}} />
-        <Menu>
+        <Image src={logo} onClick={() => mynav("/")} alt="err" cursor={'pointer'} width={{base:"150px", md:"250px"}} />
+        <Menu   >
           <MenuButton
             as={IconButton}
             aria-label="Options"
@@ -74,8 +74,8 @@ const Navbar = () => {
             type="text"
             w="100%"
             borderRadius="0"
-            color="white"
-            textColor={"white"}
+            bgColor="white"
+            
           />
 
           <Button
