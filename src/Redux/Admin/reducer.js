@@ -4,6 +4,7 @@ const initialState = {
   products: [],
   loading: false,
   error: false,
+  singleproduct:{}
 };
 
 export const reducer = (state = initialState, { type, payload }) => {

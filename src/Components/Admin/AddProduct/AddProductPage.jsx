@@ -10,14 +10,13 @@ import {
   Flex,
   Box,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 import styles from "./addproduct.module.css";
 import UploadImage from "./UploadImage";
 import axios from "axios";
-// import Link from "next/link";
+import { Link } from "react-router-dom";
 
 const productObject = {
-  category: "",
   image: "",
   title: "",
   reviews: {
@@ -31,6 +30,7 @@ const productObject = {
 
 const AddProductPage = () => {
   const [productdata, setData] = React.useState({
+    id:Date.now(),
     image: "",
     title: "",
     price: "",
@@ -42,7 +42,7 @@ const AddProductPage = () => {
     description: "",
   });
 
-  //  console.log(data)
+  const [category, setCategory] = React.useState("");
 
   const onInputChange = (e) => {
     let a = e.target.value;
@@ -62,32 +62,31 @@ const AddProductPage = () => {
     setData({ ...productdata, [b]: a });
   };
 
-  // const handleAdd = () => {
-  //   if (
-  //     productdata.title &&
-  //     productdata.image &&
-  //     productdata.category &&
-  //     productdata.reviews.rate &&
-  //     productdata.price
-  //   ) {
-  //     try {
-  //       axios({
-  //         method: `post`,
-  //         baseURL: `https://lazy-erin-caridea-veil.cyclic.app/products`,
-  //         data: { ...productdata },
-  //       });
-  //     } catch (err) {
-  //       alert("Facing some issues please try again");
-  //       return;
-  //     }
+  const handleAdd = (category) => {
+    if (
+      productdata.title &&
+      productdata.image &&
+      productdata.reviews.rate &&
+      productdata.price && category
+    ) {
+      try {
+        axios({
+          method: `post`,
+          baseURL: `https://alok-verma-rct.onrender.com/${category}`,
+          data: { ...productdata },
+        });
+      } catch (err) {
+        alert("Facing some issues please try again");
+        return;
+      }
 
-  //     alert("Product Added Successfully");
-  //     location.reload();
-  //   } else {
-  //     alert("Fill the data properly");
-  //   }
-  // };
-
+      alert("Product Added Successfully");
+      window.location.reload();
+    } else {
+      alert("Fill the data properly");
+    }
+  };
+  
   return (
     <div className={styles.container}>
       <div className={styles.blurr}>
@@ -107,9 +106,9 @@ const AddProductPage = () => {
           </Heading>
         </Center>
         <div className={styles.updateButton}>
-          {/* <Link href="/updateProduct">
+          <Link to="/admin">
             <Button>Update Product</Button>
-          </Link> */}
+          </Link>
         </div>
         <Flex
           width={"fit-content"}
@@ -169,25 +168,32 @@ const AddProductPage = () => {
                     </FormLabel>
                   </Center>
                   <Select
-                    value={productdata.category}
                     placeholder="Select Category"
                     className={styles.option}
                     name="category"
-                    onChange={onInputChange}
+                    onChange={(e)=>setCategory(e.target.value)}
                   >
-                    <option value="women-ethnic">Women Ethnic</option>
-                    <option value="women-western">Women Western</option>
-                    <option value="men">Men</option>
-                    <option value="kids">Kids</option>
-                    <option value="home-kitchen">Home & Kitchen</option>
-                    <option value="beauty-health">Beauty & Health</option>
+                    <option value="beautyface">Beauty Face</option>
+                    <option value="fooditem">Food Item</option>
+                    <option value="healthdrinks">Healthy Drinks</option>
+                    <option value="kitchenAppliances">Kitchen Appliances </option>
+                    <option value="homeFurnishing">Home Furnishing</option>
+                    <option value="tools">Tools</option>
+                    <option value="toys">Toys</option>
+                    <option value="babycare">Babycare</option>
+                    <option value="stationary">Stationary</option>
+                    <option value="WomensEthnicWear">Womens Ethnic</option>
+                    <option value="WomensFootwear ">Womens Footwear</option>
+                    <option value="WomensDresses ">Womens Dresses</option>
+                    <option value="MensFootwear ">Mens Footwear</option>
+                    <option value="MenseyeWear ">Mens EyeWear</option>
                   </Select>
                   <div className={styles.button}>
                     <Button
                       mt={4}
                       colorScheme="green"
                       type="submit"
-                      // onClick={handleAdd}
+                      onClick={()=>{handleAdd(category)}}
                     >
                       ADD
                     </Button>
