@@ -54,11 +54,12 @@ const data = {
 
 function Product_card({id, title, image,description,price}) {
   return (
-    <Flex className="hvr-icon-buzz-out hvr-icon" p={1} w="fit-content" alignItems="center" justifyContent="center">
+    <Flex className="hvr-icon-buzz-out hvr-icon product_flex" padding={1} w="fit-content" alignItems="center" justifyContent="center">
       <Box
         bg={useColorModeValue('white', 'gray.800')}
         // maxW="sm"
-        width="300px"
+        className="product_box"
+        // width="200px"
         borderWidth="1px"
         rounded="lg"
         shadow="lg"
