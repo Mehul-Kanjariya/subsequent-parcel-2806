@@ -1,4 +1,6 @@
+
 import React, { useEffect, useRef, useState } from "react";
+
 import {
   Menu,
   MenuButton,
@@ -42,12 +44,20 @@ import { SearchIcon } from "@chakra-ui/icons";
 import logo from "./logoo.png";
 import { BsCart2, BsFillPersonFill, BsShieldFillCheck } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
+
 import axios from "axios";
 import { TableBody } from "@mui/material";
 import "../Css/Navbar.css";
 import { MdOutlinePayments } from "react-icons/md";
+
+import { useDispatch, useSelector } from "react-redux";
+import { fetchData } from "../../Redux/Auth/actions";
+
+
 const Navbar = () => {
+  const {isAuth} = useSelector((store)=>store.auth)
   const mynav = useNavigate();
+
   const [CartData, setCartData] = useState([]);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef();
@@ -104,6 +114,33 @@ const Navbar = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const dispatch = useDispatch();
+
+  const logout = () => {
+    let id = JSON.parse(localStorage.getItem("id"))
+    let data = JSON.parse(localStorage.getItem("Auth"))
+    data.Auth=!data.Auth;
+    if(id && data){
+      dispatch(fetchData(id,data));
+    }else{
+      return;
+    }
+    localStorage.removeItem("id");
+    localStorage.removeItem("Auth");
+    window.location.reload();
+  }
+
+  useEffect(()=>{
+    let id = JSON.parse(localStorage.getItem("id"))
+    let data = JSON.parse(localStorage.getItem("Auth"))
+    if(id && data){
+      dispatch(fetchData(id,data));
+    }else{
+      return;
+    }
+  },[])
+
+
   return (
     <Flex backgroundColor="#e40046" alignItems={"center"} w={"100%"}>
       <Flex flex={1} alignItems={"center"} gap={5}>
@@ -122,12 +159,14 @@ const Navbar = () => {
             variant="outline"
           />
           <MenuList>
-            <MenuItem icon={<AddIcon />} command="⌘M">
+          <Link to="/Mens/MensClothing">
+           <MenuItem icon={<AddIcon />} command="⌘M">
               Men's Fashion
             </MenuItem>
-            <MenuItem icon={<ExternalLinkIcon />} command="⌘W">
+            </Link> 
+            <Link to="/Womens/WomensEthnicDresses"><MenuItem icon={<ExternalLinkIcon />} command="⌘W">
               Women's Fashion
-            </MenuItem>
+            </MenuItem></Link>
             <MenuItem icon={<RepeatIcon />} command="⌘⇧H">
               Home & Kitchen
             </MenuItem>
@@ -201,6 +240,7 @@ const Navbar = () => {
           <DrawerContent>
             <DrawerCloseButton />
             <DrawerHeader>Shopping Cart ({CartData.length} Items)</DrawerHeader>
+
 
             <DrawerBody>
               <TableContainer p="20px">
@@ -336,24 +376,30 @@ const Navbar = () => {
         </Drawer>
         <Link to="/signup">
           <Flex gap={5}>
+
+        {isAuth && <Button onClick={logout}>Log Out</Button>}
+        {!isAuth && <Flex gap={5}>
+
             <Menu>
               <MenuButton as={Button}>Sign Up</MenuButton>
               <MenuList>
                 <MenuGroup title="Profile">
+                  <MenuDivider />
                   <Link to="/userlogin">
-                    <MenuItem>Login</MenuItem>
+                    <MenuItem>Log In</MenuItem>
                   </Link>
-                  <MenuItem>Your Account</MenuItem>
+                  <Link to="/signup">
+                    <MenuItem>Sign Up</MenuItem>
+                  </Link>
                 </MenuGroup>
                 <MenuDivider />
               </MenuList>
             </Menu>
-
             <BsFillPersonFill style={{ fontSize: "35px", color: "white" }}>
               {" "}
             </BsFillPersonFill>
           </Flex>
-        </Link>
+      }
       </Flex>
     </Flex>
   );

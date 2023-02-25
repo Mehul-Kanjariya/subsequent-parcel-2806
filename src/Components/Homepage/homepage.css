@@ -73,7 +73,12 @@
     height: 250px;
    
 }
-
+.search_div{
+  width: 100%;
+}
+.search_div img{
+  width: 100%;
+}
 .product_card{
     text-align: left;
     display: flex;
