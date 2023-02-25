@@ -19,6 +19,7 @@ import Login from "../Components/Login/login";
 import WomensEthnicDressesSinglePage from "../Components/SinglePage/WomensSinglePage/WomensEthnicDressesSinglePage";
 import WomenFootwearSinglePage from "../Components/SinglePage/WomensSinglePage/WomensFootwearSinglePage";
 import WomenDressesSinglePage from "../Components/SinglePage/WomensSinglePage/WomenDressesSinglePage";
+import Checkout from "../Pages/Checkout";
 
 import MensClothing from "../Components/Mens/MensClothing";
 import MensEyewear from "../Components/Mens/MensEyewear";
@@ -30,9 +31,6 @@ import FaceSinglePage from "../Pages/FaceSinglePage";
 import DrinkSinglePage from "../Pages/DrinkSinglePage";
 //import FaceSinglePage from "../Pages/SinglePage";
 
-//import MensClothing from "../Pages/MensClothing";
-//import MensEyewear from "../Pages/MensEyewear";
-//import MensFootware from "../Pages/MensFootware";
 
 const AllRoutes = () => {
   return (
@@ -74,11 +72,15 @@ const AllRoutes = () => {
         path="beautyface/FaceSinglePage/:id"
         element={<FaceSinglePage />}
       />
-
       <Route
         path="healthdrinks/DrinkSinglePage/:id"
         element={<DrinkSinglePage />}
       />
+        <Route
+          path="/Mens/MensClothing/:id"
+          element={<MensClothingSinglePage/>}
+        />
+        <Route  path="/checkout" element={<Checkout/>} />
 
       <Route path="/Mens/MensClothing" element={<MensClothing />} />
       <Route path="/Mens/MensEyewear" element={<MensEyewear />} />
@@ -88,8 +90,6 @@ const AllRoutes = () => {
         path="/Mens/MensClothing/:id"
         element={<MensClothingSinglePage />}
       />
-      <Route path="/userlogin" element={<Login></Login>} />
-
       <Route path="/userlogin" element={<Login></Login>} />
     </Routes>
   );
