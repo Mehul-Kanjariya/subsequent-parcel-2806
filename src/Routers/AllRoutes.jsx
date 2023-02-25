@@ -19,6 +19,7 @@ import Login from "../Components/Login/Login";
 import WomensEthnicDressesSinglePage from "../Components/SinglePage/WomensSinglePage/WomensEthnicDressesSinglePage";
 import WomenFootwearSinglePage from "../Components/SinglePage/WomensSinglePage/WomensFootwearSinglePage";
 import WomenDressesSinglePage from "../Components/SinglePage/WomensSinglePage/WomenDressesSinglePage";
+import Checkout from "../Pages/Checkout";
 
 const AllRoutes = () => {
   return (
@@ -52,6 +53,7 @@ const AllRoutes = () => {
         />
 
         <Route  path="/userlogin" element={<Login></Login>} />
+        <Route  path="/checkout" element={<Checkout/>} />
 
     </Routes>
   );

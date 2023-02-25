@@ -33,7 +33,7 @@ const Navbar = () => {
   const mynav = useNavigate();
 
   return (
-    <Flex backgroundColor="#e40046" alignItems={"center"} w={"100%"}>
+    <Flex backgroundColor="#e40046" alignItems={"center"} w={"100%"} >
 
     <Flex flex={1} alignItems={"center"} gap={5}>
         <Image src={logo} onClick={() => mynav("/")} alt="err" cursor={'pointer'} width={{base:"150px", md:"250px"}} />
@@ -48,9 +48,11 @@ const Navbar = () => {
             <MenuItem icon={<AddIcon />} command="⌘M">
               Men's Fashion
             </MenuItem>
+            <Link to='/Womens/WomensEthnicDresses'>
             <MenuItem icon={<ExternalLinkIcon />} command="⌘W">
               Women's Fashion
             </MenuItem>
+            </Link>
             <MenuItem icon={<RepeatIcon />} command="⌘⇧H">
               Home & Kitchen
             </MenuItem>
