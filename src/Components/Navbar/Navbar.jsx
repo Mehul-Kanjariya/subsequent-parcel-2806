@@ -31,6 +31,7 @@ import {
   Box,
   DrawerFooter,
   SimpleGrid,
+  Tbody
 } from "@chakra-ui/react";
 import {
   HamburgerIcon,
@@ -46,7 +47,7 @@ import { BsCart2, BsFillPersonFill, BsShieldFillCheck } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 
 import axios from "axios";
-import { TableBody } from "@mui/material";
+// import { TableBody } from "@mui/material";
 import "../Css/Navbar.css";
 import { MdOutlinePayments } from "react-icons/md";
 
@@ -252,7 +253,7 @@ const Navbar = () => {
                       <Th>Subtotal</Th>
                     </Tr>
                   </Thead>
-                  <TableBody>
+                  <Tbody>
                     {CartData?.map((item) => {
                       return (
                         <>
@@ -310,7 +311,7 @@ const Navbar = () => {
                         </>
                       );
                     })}
-                  </TableBody>
+                  </Tbody>
                 </Table>
               </TableContainer>
             </DrawerBody>
