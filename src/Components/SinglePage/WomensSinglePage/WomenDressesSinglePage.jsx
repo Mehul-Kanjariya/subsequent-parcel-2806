@@ -33,8 +33,10 @@ const WomenDressesSinglePage = () => {
   };
 
   const AddToCartItem = () => {
+    const NewProduct = { ...product, quantity: 1 };
+
     axios
-      .post("https://alok-verma-rct.onrender.com/crankdealCart", product)
+      .post("https://alok-verma-rct.onrender.com/crankdealCart", NewProduct)
       .then(() =>
         toast({
           title: "Item Added",
@@ -64,10 +66,9 @@ const WomenDressesSinglePage = () => {
             rounded={"md"}
             alt={product.title}
             src={product.image}
-            fit={"cover"}
             align={"center"}
             w={"100%"}
-            h={{ base: "100%", sm: "400px", lg: "500px" }}
+            h={{ base: "100%", sm: "600px", lg: "700px" }}
           />
         </Flex>
         <Stack spacing={{ base: 6, md: 10 }}>
@@ -129,7 +130,8 @@ const WomenDressesSinglePage = () => {
                   <Text as={"span"} fontWeight={"bold"}>
                     Rating:
                   </Text>{" "}
-                  {product.rating}
+                  {product?.reveiws?.rate}{" "}
+                  <sub>({product?.reveiws?.count} Rewiers)</sub>
                 </ListItem>
               </List>
             </Box>
