@@ -19,6 +19,7 @@ import Login from "../Components/Login/login";
 import WomensEthnicDressesSinglePage from "../Components/SinglePage/WomensSinglePage/WomensEthnicDressesSinglePage";
 import WomenFootwearSinglePage from "../Components/SinglePage/WomensSinglePage/WomensFootwearSinglePage";
 import WomenDressesSinglePage from "../Components/SinglePage/WomensSinglePage/WomenDressesSinglePage";
+import Checkout from "../Pages/Checkout";
 
 import MensClothing from "../Components/Mens/MensClothing";
 import MensEyewear from "../Components/Mens/MensEyewear";
@@ -93,6 +94,7 @@ const AllRoutes = () => {
           element={<MensClothingSinglePage/>}
         />
         <Route  path="/userlogin" element={<Login></Login>} />
+        <Route  path="/checkout" element={<Checkout/>} />
 
 
         <Route  path="/userlogin" element={<Login></Login>} />

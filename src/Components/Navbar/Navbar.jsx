@@ -142,6 +142,12 @@ const Navbar = () => {
 
 
   return (
+    <Flex backgroundColor="#e40046" alignItems={"center"} w={"100%"} >
+
+    <Flex flex={1} alignItems={"center"} gap={5}>
+        <Image src={logo} onClick={() => mynav("/")} alt="err" cursor={'pointer'} width={{base:"150px", md:"250px"}} />
+        <Menu   >
+
     <Flex backgroundColor="#e40046" alignItems={"center"} w={"100%"}>
       <Flex flex={1} alignItems={"center"} gap={5}>
         <Image
@@ -152,6 +158,7 @@ const Navbar = () => {
           width={{ base: "150px", md: "250px" }}
         />
         <Menu>
+
           <MenuButton
             as={IconButton}
             aria-label="Options"
@@ -163,6 +170,13 @@ const Navbar = () => {
            <MenuItem icon={<AddIcon />} command="⌘M">
               Men's Fashion
             </MenuItem>
+
+            <Link to='/Womens/WomensEthnicDresses'>
+            <MenuItem icon={<ExternalLinkIcon />} command="⌘W">
+              Women's Fashion
+            </MenuItem>
+            </Link>
+
             </Link> 
             <Link to="/Womens/WomensEthnicDresses"><MenuItem icon={<ExternalLinkIcon />} command="⌘W">
               Women's Fashion
