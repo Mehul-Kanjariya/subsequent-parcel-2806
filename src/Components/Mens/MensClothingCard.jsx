@@ -9,8 +9,10 @@ import {
     chakra,
     Tooltip,
   } from '@chakra-ui/react';
+  import "../Css/womens.css";
   import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs';
   import { FiShoppingCart } from 'react-icons/fi';
+import { useNavigate } from 'react-router';
 
 
   const data = {
@@ -24,6 +26,7 @@ import {
   };
 
 function MensClothingCard({id, title, image,description,price}) {
+  const navigate = useNavigate()
     return (
       <Flex p={2} margin="auto" w="fit-content" alignItems="center" justifyContent="center">
         <Box
@@ -61,7 +64,13 @@ function MensClothingCard({id, title, image,description,price}) {
                 fontWeight="semibold"
                 as="h4"
                 lineHeight="tight"
-                isTruncated>
+                isTruncated
+                cursor={"pointer"}
+                className="product-title"
+                onClick={() => {
+                  navigate(`/Mens/MensClothing/${id}`);
+                }}
+                >
                 {title}
               </Box>
               <Tooltip

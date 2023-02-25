@@ -1,12 +1,12 @@
 import { Box, Button, Flex } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getFaceData } from "../Redux/Health&Beauty/actions";
+import { getFaceData } from "../../Redux/Health&Beauty/actions";
 import { Grid, GridItem } from "@chakra-ui/react";
 import { Image } from "@chakra-ui/react";
 
-import Foodcard from "./Foodcard";
-import { fetchEyeWearProducts} from "../Redux/Mens/actions";
+import Foodcard from "../../Pages/Foodcard";
+import { fetchEyeWearProducts} from "../../Redux/Mens/actions";
 import MensFootwareCard from "./MensFootwareCard";
 import MensEyewearCard from "./MensEyewearCard";
 
