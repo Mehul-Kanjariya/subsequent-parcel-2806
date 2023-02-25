@@ -12,7 +12,8 @@ import {
   import "../Css/womens.css";
   import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs';
   import { FiShoppingCart } from 'react-icons/fi';
-import { useNavigate } from 'react-router';
+  import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 
   const data = {
@@ -25,8 +26,24 @@ import { useNavigate } from 'react-router';
     numReviews: 34,
   };
 
-function MensClothingCard({id, title, image,description,price}) {
+function MensClothingCard({id, title, image,description,price,rate,count}) {
   const navigate = useNavigate()
+  const handleClick=()=>{
+    axios.post(`https://alok-verma-rct.onrender.com/crankdealCart`,
+   {
+     id,
+   image,
+   title,
+   price,
+   reviews: {
+     rate,
+     count
+   },
+   
+   description
+   }
+   )
+ }
     return (
       <Flex p={2} margin="auto" w="fit-content" alignItems="center" justifyContent="center">
         <Box
@@ -80,7 +97,7 @@ function MensClothingCard({id, title, image,description,price}) {
                 color={'gray.800'}
                 fontSize={'1.2em'}>
                 <chakra.a href={'#'} display={'flex'}>
-                  <Icon as={FiShoppingCart} h={7} w={7} alignSelf={'center'} />
+                  <Icon onClick={handleClick} as={FiShoppingCart} h={7} w={7} alignSelf={'center'} />
                 </chakra.a>
               </Tooltip>
             </Flex>          <Flex justifyContent="space-between" alignContent="center" >
