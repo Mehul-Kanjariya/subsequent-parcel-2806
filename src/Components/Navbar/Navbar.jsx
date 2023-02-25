@@ -360,8 +360,6 @@ const Navbar = () => {
             </DrawerFooter>
           </DrawerContent>
         </Drawer>
-        <Link to="/signup">
-          <Flex gap={5}>
 
         {isAuth && <Button onClick={logout}>Log Out</Button>}
         {!isAuth && <Flex gap={5}>

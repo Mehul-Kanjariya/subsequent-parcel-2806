@@ -14,7 +14,7 @@ import Foodprod from '../Pages/Foodprod';
 import UpdateProduct from "../Components/Admin/Update_Product/UpdateProduct";
 import SingleUpdateProduct from "../Components/Admin/SingleUpdateProduct/UpdateProduct";
 
-import Login from "../Components/Login/login";
+import Login from "../Components/Login/Login";
 
 import WomensEthnicDressesSinglePage from "../Components/SinglePage/WomensSinglePage/WomensEthnicDressesSinglePage";
 import WomenFootwearSinglePage from "../Components/SinglePage/WomensSinglePage/WomensFootwearSinglePage";
@@ -30,10 +30,6 @@ import SinglePage from "../Pages/SinglePage";
 import FaceSinglePage from "../Pages/FaceSinglePage";
 import DrinkSinglePage from "../Pages/DrinkSinglePage";
 //import FaceSinglePage from "../Pages/SinglePage";
-
-import MensClothing from "../Pages/MensClothing";
-import MensEyewear from "../Pages/MensEyewear";
-import MensFootware from "../Pages/MensFootware";
 
 
 const AllRoutes = () => {
