@@ -19,6 +19,9 @@ import Login from "../Components/Login/Login";
 import WomensEthnicDressesSinglePage from "../Components/SinglePage/WomensSinglePage/WomensEthnicDressesSinglePage";
 import WomenFootwearSinglePage from "../Components/SinglePage/WomensSinglePage/WomensFootwearSinglePage";
 import WomenDressesSinglePage from "../Components/SinglePage/WomensSinglePage/WomenDressesSinglePage";
+import MensClothing from "../Pages/MensClothing";
+import MensEyewear from "../Pages/MensEyewear";
+import MensFootware from "../Pages/MensFootware";
 
 const AllRoutes = () => {
   return (
@@ -50,7 +53,9 @@ const AllRoutes = () => {
           path="/Womens/WomensDresses/:id"
           element={<WomenDressesSinglePage />}
         />
-
+        <Route path="/Mens/MensClothing" element={<MensClothing />} />
+        <Route path="/Mens/MensEyewear" element={<MensEyewear />} />
+        <Route path="/Mens/MensFootwear" element={<MensFootware />} />
         <Route  path="/userlogin" element={<Login></Login>} />
 
     </Routes>

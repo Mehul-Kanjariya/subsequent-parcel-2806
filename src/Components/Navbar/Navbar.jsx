@@ -48,9 +48,9 @@ const Navbar = () => {
             <MenuItem icon={<AddIcon />} command="⌘M">
               Men's Fashion
             </MenuItem>
-            <MenuItem icon={<ExternalLinkIcon />} command="⌘W">
+            <Link to="/Womens/WomensEthnicDresses"><MenuItem icon={<ExternalLinkIcon />} command="⌘W">
               Women's Fashion
-            </MenuItem>
+            </MenuItem></Link>
             <MenuItem icon={<RepeatIcon />} command="⌘⇧H">
               Home & Kitchen
             </MenuItem>
