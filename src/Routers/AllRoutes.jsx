@@ -19,10 +19,16 @@ import Login from "../Components/Login/Login";
 import WomensEthnicDressesSinglePage from "../Components/SinglePage/WomensSinglePage/WomensEthnicDressesSinglePage";
 import WomenFootwearSinglePage from "../Components/SinglePage/WomensSinglePage/WomensFootwearSinglePage";
 import WomenDressesSinglePage from "../Components/SinglePage/WomensSinglePage/WomenDressesSinglePage";
+
 import SinglePage from "../Pages/SinglePage";
 import FaceSinglePage from "../Pages/FaceSinglePage";
 import DrinkSinglePage from "../Pages/DrinkSinglePage";
 //import FaceSinglePage from "../Pages/SinglePage";
+
+import MensClothing from "../Pages/MensClothing";
+import MensEyewear from "../Pages/MensEyewear";
+import MensFootware from "../Pages/MensFootware";
+
 
 const AllRoutes = () => {
   return (
@@ -55,6 +61,7 @@ const AllRoutes = () => {
           element={<WomenDressesSinglePage />}
         />
 
+
         <Route
           path="fooditem/SinglePage/:id"
           element={<SinglePage />}
@@ -69,6 +76,11 @@ const AllRoutes = () => {
           path="healthdrinks/DrinkSinglePage/:id"
           element={<DrinkSinglePage />}
         />
+
+
+        <Route path="/Mens/MensClothing" element={<MensClothing />} />
+        <Route path="/Mens/MensEyewear" element={<MensEyewear />} />
+        <Route path="/Mens/MensFootwear" element={<MensFootware />} />
 
         <Route  path="/userlogin" element={<Login></Login>} />
 
