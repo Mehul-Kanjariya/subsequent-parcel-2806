@@ -29,6 +29,7 @@ import {
   Box,
   DrawerFooter,
   SimpleGrid,
+  Tbody,
 } from "@chakra-ui/react";
 import {
   HamburgerIcon,
@@ -219,7 +220,7 @@ const Navbar = () => {
                       <Th>Subtotal</Th>
                     </Tr>
                   </Thead>
-                  <TableBody>
+                  <Tbody>
                     {CartData?.map((item) => {
                       return (
                         <>
@@ -277,7 +278,7 @@ const Navbar = () => {
                         </>
                       );
                     })}
-                  </TableBody>
+                  </Tbody>
                 </Table>
               </TableContainer>
             </DrawerBody>
