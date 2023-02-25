@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Menu,
   MenuButton,
@@ -28,9 +28,37 @@ import { SearchIcon } from "@chakra-ui/icons";
 import logo from "./logoo.png";
 import { BsCart2, BsFillPersonFill } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchData } from "../../Redux/Auth/actions";
 
 const Navbar = () => {
+  const {isAuth} = useSelector((store)=>store.auth)
   const mynav = useNavigate();
+  const dispatch = useDispatch();
+
+  const logout = () => {
+    let id = JSON.parse(localStorage.getItem("id"))
+    let data = JSON.parse(localStorage.getItem("Auth"))
+    data.Auth=!data.Auth;
+    if(id && data){
+      dispatch(fetchData(id,data));
+    }else{
+      return;
+    }
+    localStorage.removeItem("id");
+    localStorage.removeItem("Auth");
+    window.location.reload();
+  }
+
+  useEffect(()=>{
+    let id = JSON.parse(localStorage.getItem("id"))
+    let data = JSON.parse(localStorage.getItem("Auth"))
+    if(id && data){
+      dispatch(fetchData(id,data));
+    }else{
+      return;
+    }
+  },[])
 
   return (
     <Flex backgroundColor="#e40046" alignItems={"center"} w={"100%"}>
@@ -99,26 +127,28 @@ const Navbar = () => {
           <Text style={{ fontSize: "25px", color: "white" }}>Cart</Text>
         </Flex>
 
-        <Link to="/signup">
-          <Flex gap={5}>
+        {isAuth && <Button onClick={logout}>Log Out</Button>}
+        {!isAuth && <Flex gap={5}>
             <Menu>
               <MenuButton as={Button}>Sign Up</MenuButton>
               <MenuList>
                 <MenuGroup title="Profile">
+                  <MenuDivider />
                   <Link to="/userlogin">
-                    <MenuItem>Login</MenuItem>
+                    <MenuItem>Log In</MenuItem>
                   </Link>
-                  <MenuItem>Your Account</MenuItem>
+                  <Link to="/signup">
+                    <MenuItem>Sign Up</MenuItem>
+                  </Link>
                 </MenuGroup>
                 <MenuDivider />
               </MenuList>
             </Menu>
-
             <BsFillPersonFill style={{ fontSize: "35px", color: "white" }}>
               {" "}
             </BsFillPersonFill>
           </Flex>
-        </Link>
+      }
       </Flex>
     </Flex>
   );
