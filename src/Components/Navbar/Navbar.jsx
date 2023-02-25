@@ -44,7 +44,6 @@ import logo from "./logoo.png";
 import { BsCart2, BsFillPersonFill, BsShieldFillCheck } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { TableBody } from "@mui/material";
 import "../Css/Navbar.css";
 import { MdOutlinePayments } from "react-icons/md";
 const Navbar = () => {
