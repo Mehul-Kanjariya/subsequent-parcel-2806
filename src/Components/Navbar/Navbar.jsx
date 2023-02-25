@@ -384,7 +384,7 @@ const Navbar = () => {
               {" "}
             </BsFillPersonFill>
           </Flex>
-      }
+        }
       </Flex>
     </Flex>
   );
