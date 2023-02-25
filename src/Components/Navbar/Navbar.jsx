@@ -60,7 +60,6 @@ const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef();
   const [show, setShow] = useState(false);
-  const [count, setCount] = useState(1);
   const [TotalSum, setTotalSum] = useState(0);
 
   const GetCartData = () => {
@@ -79,8 +78,6 @@ const Navbar = () => {
   };
 
   const HandleQuantityChange = (id, quan, num) => {
-    console.log(quan);
-    setCount((prev) => prev + num);
     axios({
       method: "patch",
       url: `https://alok-verma-rct.onrender.com/crankdealCart/${id}`,
@@ -101,11 +98,6 @@ const Navbar = () => {
     CartData.forEach((item) => (sum += item.price * item.quantity));
     setTotalSum(sum);
   };
-
-  useEffect(() => {
-    TotalPrice();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [count]);
 
   useEffect(() => {
     GetCartData();
