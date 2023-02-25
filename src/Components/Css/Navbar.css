@@ -1,0 +1,12 @@
+.add-reduce-btn :hover {
+  cursor: pointer;
+  background-color: #8ecae6;
+}
+
+.add-reduce-btn {
+  margin: 5px;
+  background-color: skyblue;
+  border-radius: 5px;
+  padding: 2px 10px;
+  color: white;
+}

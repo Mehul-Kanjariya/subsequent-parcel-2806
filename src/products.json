@@ -46,5 +46,17 @@
         },
         "discount" : "8%  OFF",
         "category" : " Men's footwear"
+      },
+      {
+        "id": 5,
+        "image": "https://n4.sdlcdn.com/imgs/k/m/p/Rapidex-English-Speaking-Course-Bangla-SDL867228474-1-04ec6.jpg",
+        "title" : "Rapidex English Speaking Course (Bangla) (With Youtube AV)",
+        "price" : "Rs. 369",
+        "reviews" : {
+          "rating" : "4.3",
+          "count" : "206"
+        },
+        "discount" : "8%  OFF",
+        "category" : " Men's footwear"
       }
 ]

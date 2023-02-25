@@ -9,10 +9,11 @@ import {
     chakra,
     Tooltip,
   } from '@chakra-ui/react';
+  import "../Css/womens.css";
   import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs';
   import { FiShoppingCart } from 'react-icons/fi';
-  import { useNavigate } from "react-router";
-import axios from 'axios';
+import { useNavigate } from 'react-router';
+
 
   const data = {
     isNew: true,
@@ -24,27 +25,10 @@ import axios from 'axios';
     numReviews: 34,
   };
 
-
-function Foodcard({id, title, image,description,price,rate,count}) {
-  const navigate=useNavigate()
-  const handleClick=()=>{
-     axios.post(`https://alok-verma-rct.onrender.com/crankdealCart`,
-    {
-      id,
-    image,
-    title,
-    price,
-    reviews: {
-      rate,
-      count
-    },
-    
-    description
-    }
-    )
-  }
+function MensClothingCard({id, title, image,description,price}) {
+  const navigate = useNavigate()
     return (
-      <Flex p={4} margin="auto" w="fit-content" alignItems="center" justifyContent="center" className="hvr-grow-shadow">
+      <Flex p={2} margin="auto" w="fit-content" alignItems="center" justifyContent="center">
         <Box
           bg={useColorModeValue('white', 'gray.800')}
           // maxW="sm"
@@ -65,7 +49,6 @@ function Foodcard({id, title, image,description,price,rate,count}) {
             src={image}
             alt={`Picture of ${title}`}
             roundedTop="lg"
-            padding="5px"
             // height="50%"
           />        <Box p="6">
             {/* <Box d="flex" alignItems="baseline"> */}
@@ -82,8 +65,10 @@ function Foodcard({id, title, image,description,price,rate,count}) {
                 as="h4"
                 lineHeight="tight"
                 isTruncated
+                cursor={"pointer"}
+                className="product-title"
                 onClick={() => {
-                  navigate(`/fooditem/SinglePage/${id}`);
+                  navigate(`/Mens/MensClothing/${id}`);
                 }}
                 >
                 {title}
@@ -93,11 +78,9 @@ function Foodcard({id, title, image,description,price,rate,count}) {
                 bg="white"
                 placement={'top'}
                 color={'gray.800'}
-                fontSize={'1.2em'}
-                
-                >
+                fontSize={'1.2em'}>
                 <chakra.a href={'#'} display={'flex'}>
-                  <Icon  onClick={handleClick} as={FiShoppingCart} h={7} w={7} alignSelf={'center'} />
+                  <Icon as={FiShoppingCart} h={7} w={7} alignSelf={'center'} />
                 </chakra.a>
               </Tooltip>
             </Flex>          <Flex justifyContent="space-between" alignContent="center" >
@@ -113,4 +96,4 @@ function Foodcard({id, title, image,description,price,rate,count}) {
         </Box>
       </Flex>
     );
-  }export default Foodcard;
+  }export default MensClothingCard;

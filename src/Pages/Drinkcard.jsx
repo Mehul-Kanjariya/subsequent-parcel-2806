@@ -8,11 +8,12 @@ import {
     Icon,
     chakra,
     Tooltip,
+   
   } from '@chakra-ui/react';
   import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs';
   import { FiShoppingCart } from 'react-icons/fi';
-  import { useNavigate } from "react-router";
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
   const data = {
     isNew: true,
@@ -24,25 +25,24 @@ import axios from 'axios';
     numReviews: 34,
   };
 
-
-function Foodcard({id, title, image,description,price,rate,count}) {
+function Drinkcard({id, title, image,description,price,rate,count}) {
   const navigate=useNavigate()
   const handleClick=()=>{
-     axios.post(`https://alok-verma-rct.onrender.com/crankdealCart`,
-    {
-      id,
-    image,
-    title,
-    price,
-    reviews: {
-      rate,
-      count
-    },
-    
-    description
-    }
-    )
-  }
+    axios.post(`https://alok-verma-rct.onrender.com/crankdealCart`,
+   {
+     id,
+   image,
+   title,
+   price,
+   reviews: {
+     rate,
+     count
+   },
+   
+   description
+   }
+   )
+ }
     return (
       <Flex p={4} margin="auto" w="fit-content" alignItems="center" justifyContent="center" className="hvr-grow-shadow">
         <Box
@@ -83,7 +83,7 @@ function Foodcard({id, title, image,description,price,rate,count}) {
                 lineHeight="tight"
                 isTruncated
                 onClick={() => {
-                  navigate(`/fooditem/SinglePage/${id}`);
+                  navigate(`/healthdrinks/DrinkSinglePage/${id}`);
                 }}
                 >
                 {title}
@@ -93,18 +93,16 @@ function Foodcard({id, title, image,description,price,rate,count}) {
                 bg="white"
                 placement={'top'}
                 color={'gray.800'}
-                fontSize={'1.2em'}
-                
-                >
+                fontSize={'1.2em'}>
                 <chakra.a href={'#'} display={'flex'}>
-                  <Icon  onClick={handleClick} as={FiShoppingCart} h={7} w={7} alignSelf={'center'} />
+                  <Icon onClick={handleClick} as={FiShoppingCart} h={7} w={7} alignSelf={'center'} />
                 </chakra.a>
               </Tooltip>
             </Flex>          <Flex justifyContent="space-between" alignContent="center" >
-              {/* <Rating rating={data.rating} numReviews={data.numReviews} display={"flex"} /> */}
+              {/* <Rating rating={rate} numReviews={data.numReviews} display={"flex"} /> */}
               <Box fontSize="2xl" color={useColorModeValue('gray.800', 'white')}>
                 <Box as="span" color={'gray.600'} fontSize="lg">
-                 ₹  
+                  ₹ 
                 </Box>
                 {price}
               </Box>
@@ -113,4 +111,4 @@ function Foodcard({id, title, image,description,price,rate,count}) {
         </Box>
       </Flex>
     );
-  }export default Foodcard;
+  }export default Drinkcard;

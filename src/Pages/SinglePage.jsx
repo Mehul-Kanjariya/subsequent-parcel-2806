@@ -20,23 +20,21 @@ import {
 import axios from "axios";
 import { MdLocalShipping } from "react-icons/md";
 
-const WomenFootwearSinglePage = () => {
+const SinglePage = () => {
   const { id } = useParams();
   const [product, setProducts] = useState([]);
   const toast = useToast();
 
   const FetchIdData = async () => {
     let res = await axios.get(
-      `https://alok-verma-rct.onrender.com/WomensFootwear/${id}`
+      `https://alok-verma-rct.onrender.com/fooditem/${id}`
     );
     setProducts(res.data);
   };
 
   const AddToCartItem = () => {
-    const NewProduct = { ...product, quantity: 1 };
-
     axios
-      .post("https://alok-verma-rct.onrender.com/crankdealCart", NewProduct)
+      .post("https://alok-verma-rct.onrender.com/crankdealCart", product)
       .then(() =>
         toast({
           title: "Item Added",
@@ -66,9 +64,10 @@ const WomenFootwearSinglePage = () => {
             rounded={"md"}
             alt={product.title}
             src={product.image}
+            fit={"cover"}
             align={"center"}
             w={"100%"}
-            h={{ base: "100%", sm: "600px", lg: "700px" }}
+            h={{ base: "100%", sm: "400px", lg: "500px" }}
           />
         </Flex>
         <Stack spacing={{ base: 6, md: 10 }}>
@@ -130,8 +129,7 @@ const WomenFootwearSinglePage = () => {
                   <Text as={"span"} fontWeight={"bold"}>
                     Rating:
                   </Text>{" "}
-                  {product?.reveiws?.rate}{" "}
-                  <sub>({product?.reveiws?.count} Rewiers)</sub>
+                  {product.rating}
                 </ListItem>
               </List>
             </Box>
@@ -165,4 +163,4 @@ const WomenFootwearSinglePage = () => {
   );
 };
 
-export default WomenFootwearSinglePage;
+export default SinglePage;

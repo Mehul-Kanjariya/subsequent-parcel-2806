@@ -5,12 +5,14 @@ import { getFaceData } from '../Redux/Health&Beauty/actions';
 import { Grid, GridItem,Heading } from '@chakra-ui/react'
 import { Image } from '@chakra-ui/react'
 import { getFoodData } from "../Redux/Health&Beauty/actions";
+import { useNavigate } from "react-router-dom";
 import Foodcard from "./Foodcard";
 //import { getPosts } from "../Redux/action";
 const Foodprod = () => {
   const [sortProduct,setSortProduct]=useState("asc")
   const products=useSelector((store)=>store.health.products)
   const dispatch=useDispatch()
+  const navigate=useNavigate()
   console.log(products)
 
   useEffect(()=>{
@@ -21,7 +23,7 @@ const Foodprod = () => {
     }
   return (
     <Flex style={{ margin:"auto",justifyContent:"center",alignItems:"center"}}>
-    <Box width="15%" style={{border:"1px solid red",marginTop:"-2190px",padding:"10px",borderRadius:"5px"}} >
+    <Box width="15%" style={{border:"1px solid red",marginTop:"-2100px",padding:"10px",borderRadius:"5px",backgroundColor:"pink"}} >
       <p>Select Functionalities</p>
       <h3><b>Sort By Price</b></h3>
       <select style={{marginTop:"10px",border:"1px solid black",borderRadius:"5px"}} onChange={(e)=>handleChange(e)} >
@@ -29,6 +31,21 @@ const Foodprod = () => {
         <option value="asc" >Low To High</option>
         <option value="desc">High To Low</option>
       </select>
+      <h3 style={{marginTop:"10px"}} ><b>Change Categories</b></h3>
+      <button
+      onClick={() => {
+        navigate(`/productCategoryface`);
+      }}
+      >
+      Beauty Products Page
+      </button>
+      <button
+      onClick={() => {
+        navigate(`/drinkprod`);
+      }}
+      >
+     Nutrition  Page
+      </button>
     </Box>
     <Box>
     <Box style={{marginBottom:"10px",fontFamily:"sans-serif",marginTop:"10px"}}>

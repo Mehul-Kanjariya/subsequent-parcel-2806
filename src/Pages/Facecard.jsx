@@ -10,10 +10,12 @@ import {
     Icon,
     chakra,
     Tooltip,
+   
   } from '@chakra-ui/react';
   import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs';
   import { FiShoppingCart } from 'react-icons/fi';
-
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
   const data = {
     isNew: true,
@@ -25,7 +27,24 @@ import {
     numReviews: 34,
   };
 
-function Facecard({id, title, image1,description,price}) {
+function Facecard({id, title, image,description,price,rate,count}) {
+  const navigate=useNavigate()
+  const handleClick=()=>{
+    axios.post(`https://alok-verma-rct.onrender.com/crankdealCart`,
+   {
+     id,
+   image,
+   title,
+   price,
+   reviews: {
+     rate,
+     count
+   },
+   
+   description
+   }
+   )
+ }
     return (
       <Flex p={4} margin="auto" w="fit-content" alignItems="center" justifyContent="center" className="hvr-grow-shadow">
         <Box
@@ -45,7 +64,7 @@ function Facecard({id, title, image1,description,price}) {
               bg="red.200"
             />
           )}        <Image
-            src={image1}
+            src={image}
             alt={`Picture of ${title}`}
             roundedTop="lg"
             padding="5px"
@@ -64,7 +83,11 @@ function Facecard({id, title, image1,description,price}) {
                 fontWeight="semibold"
                 as="h4"
                 lineHeight="tight"
-                isTruncated>
+                isTruncated
+                onClick={() => {
+                  navigate(`/beautyface/FaceSinglePage/${id}`);
+                }}
+                >
                 {title}
               </Box>
               <Tooltip
@@ -74,11 +97,11 @@ function Facecard({id, title, image1,description,price}) {
                 color={'gray.800'}
                 fontSize={'1.2em'}>
                 <chakra.a href={'#'} display={'flex'}>
-                  <Icon as={FiShoppingCart} h={7} w={7} alignSelf={'center'} />
+                  <Icon onClick={handleClick} as={FiShoppingCart} h={7} w={7} alignSelf={'center'} />
                 </chakra.a>
               </Tooltip>
             </Flex>          <Flex justifyContent="space-between" alignContent="center" >
-              {/* <Rating rating={data.rating} numReviews={data.numReviews} display={"flex"} /> */}
+              {/* <Rating rating={rate} numReviews={data.numReviews} display={"flex"} /> */}
               <Box fontSize="2xl" color={useColorModeValue('gray.800', 'white')}>
                 <Box as="span" color={'gray.600'} fontSize="lg">
                   ₹ 

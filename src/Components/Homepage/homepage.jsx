@@ -44,7 +44,7 @@ const Homepage = () => {
             </div>
           </div>
           <div>
-            <div style={{width:"15%"}}>
+            <div style={{width:"33px"}}>
               <img
                 src="https://n2.sdlcdn.com/imgs/c/0/x/Homekitchenfurnishing-3eda1.jpg"
                 alt=""
