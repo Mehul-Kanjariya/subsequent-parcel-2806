@@ -11,7 +11,7 @@ import {
   } from '@chakra-ui/react';
   import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs';
   import { FiShoppingCart } from 'react-icons/fi';
-
+import axios from 'axios';
 
   const data = {
     isNew: true,
@@ -23,7 +23,24 @@ import {
     numReviews: 34,
   };
 
-function Foodcard({id, title, image1,description,price}) {
+
+function Foodcard({id, title, image,description,price,rate,count}) {
+  const handleClick=()=>{
+     axios.post(`https://alok-verma-rct.onrender.com/crankdealCart`,
+    {
+      id,
+    image,
+    title,
+    price,
+    reviews: {
+      rate,
+      count
+    },
+    
+    description
+    }
+    )
+  }
     return (
       <Flex p={4} margin="auto" w="fit-content" alignItems="center" justifyContent="center" className="hvr-grow-shadow">
         <Box
@@ -43,7 +60,7 @@ function Foodcard({id, title, image1,description,price}) {
               bg="red.200"
             />
           )}        <Image
-            src={image1}
+            src={image}
             alt={`Picture of ${title}`}
             roundedTop="lg"
             padding="5px"
@@ -70,9 +87,11 @@ function Foodcard({id, title, image1,description,price}) {
                 bg="white"
                 placement={'top'}
                 color={'gray.800'}
-                fontSize={'1.2em'}>
+                fontSize={'1.2em'}
+                
+                >
                 <chakra.a href={'#'} display={'flex'}>
-                  <Icon as={FiShoppingCart} h={7} w={7} alignSelf={'center'} />
+                  <Icon  onClick={handleClick} as={FiShoppingCart} h={7} w={7} alignSelf={'center'} />
                 </chakra.a>
               </Tooltip>
             </Flex>          <Flex justifyContent="space-between" alignContent="center" >
