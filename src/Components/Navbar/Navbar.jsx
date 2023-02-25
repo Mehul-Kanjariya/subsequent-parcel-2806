@@ -71,6 +71,7 @@ const Navbar = () => {
   };
 
   const HandleQuantityChange = (id, quan, num) => {
+    console.log(quan);
     setCount((prev) => prev + num);
     axios({
       method: "patch",
@@ -216,7 +217,7 @@ const Navbar = () => {
                       return (
                         <>
                           <Tr key={item.id}>
-                            <Td>{item.title}</Td>
+                            <Td w="40px">{item.title.substring(1, 50)}....</Td>
                             <Td>{item.price}</Td>
                             <Td fontSize={"20px"}>
                               <button

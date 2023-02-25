@@ -101,7 +101,7 @@ const WomensDresses = () => {
   }, []);
 
   return (
-    <Flex>
+    <Flex direction={["column", "row"]} justifyContent="space-between">
       <Card m="10px 0px" w="20%" p="20px">
         <Heading size={"md"} m="10px">
           Sorting
@@ -140,7 +140,7 @@ const WomensDresses = () => {
                 className="hvr-grow-shadow"
               >
                 <Box
-                  width="300px"
+                  width="250px"
                   borderWidth="1px"
                   rounded="lg"
                   shadow="lg"

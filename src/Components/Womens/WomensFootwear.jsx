@@ -100,8 +100,8 @@ const WomensFootwear = () => {
   }, []);
 
   return (
-    <Flex>
-      <Card>
+    <Flex direction={["column", "row"]} justifyContent="space-between">
+      <Card m="10px 0px" w="20%" p="20px">
         <Heading size={"md"} m="10px">
           Sorting
         </Heading>
@@ -115,7 +115,7 @@ const WomensFootwear = () => {
           </MenuList>
         </Menu>
       </Card>
-      <SimpleGrid columns={[1, 2, 4]} m="20px" p="10px" textAlign="center">
+      <SimpleGrid columns={[1, 1, 4]} m="20px" p="10px" textAlign="center">
         {loading ? (
           <div style={{ textAlign: "center" }}>
             <Spinner
@@ -138,9 +138,10 @@ const WomensFootwear = () => {
                 justifyContent="center"
                 className="hvr-grow-shadow"
                 key={item.id}
+                direction={["column", "row"]}
               >
                 <Box
-                  width="300px"
+                  width="250px"
                   borderWidth="1px"
                   rounded="lg"
                   shadow="lg"
