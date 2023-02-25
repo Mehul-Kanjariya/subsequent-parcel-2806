@@ -8,15 +8,22 @@ import {
   chakra,
   Tooltip,
   useToast,
+  Card,
+  Menu,
+  MenuButton,
+  Button,
+  MenuList,
+  MenuItem,
 } from "@chakra-ui/react";
 import { FiShoppingCart } from "react-icons/fi";
 import { useEffect } from "react";
 import axios from "axios";
 import { errProduct, reqProduct, sucProduct } from "../../Redux/Women/actions";
-import { SimpleGrid } from "@chakra-ui/layout";
+import { Heading, SimpleGrid } from "@chakra-ui/layout";
 import "../Css/hover-glow-shadow.css";
 import "../Css/womens.css";
 import { useNavigate } from "react-router";
+import { ChevronDownIcon } from "@chakra-ui/icons";
 
 const WomensFootwear = () => {
   const { products, loading, error } = useSelector((state) => state.women);
@@ -41,8 +48,9 @@ const WomensFootwear = () => {
     let data = await axios.get(
       `https://alok-verma-rct.onrender.com/WomensFootwear/${id}`
     );
+    let NewProduct = { ...data.data, quantity: 1 };
     axios
-      .post("https://alok-verma-rct.onrender.com/crankdealCart", data.data)
+      .post("https://alok-verma-rct.onrender.com/crankdealCart", NewProduct)
       .then(() =>
         toast({
           title: "Item Added",
@@ -56,13 +64,57 @@ const WomensFootwear = () => {
       .catch((err) => console.log(err));
   };
 
+  const LowToHigh = async () => {
+    dispatch(reqProduct());
+    try {
+      let res = await axios.get(
+        "https://alok-verma-rct.onrender.com/WomensEthnicWear"
+      );
+      let data = res.data;
+      data.sort((a, b) => a.price - b.price);
+      console.log(data);
+      dispatch(sucProduct(data));
+    } catch (error) {
+      dispatch(errProduct());
+    }
+  };
+
+  const HighToLow = async () => {
+    dispatch(reqProduct());
+    try {
+      let res = await axios.get(
+        "https://alok-verma-rct.onrender.com/WomensEthnicWear"
+      );
+      let data = res.data;
+      data.sort((a, b) => b.price - a.price);
+      console.log(data);
+      dispatch(sucProduct(data));
+    } catch (error) {
+      dispatch(errProduct());
+    }
+  };
+
   useEffect(() => {
     FetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <>
+    <Flex>
+      <Card>
+        <Heading size={"md"} m="10px">
+          Sorting
+        </Heading>
+        <Menu p="30px">
+          <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
+            Price
+          </MenuButton>
+          <MenuList>
+            <MenuItem onClick={HighToLow}> High to Low</MenuItem>
+            <MenuItem onClick={LowToHigh}>Low to High</MenuItem>
+          </MenuList>
+        </Menu>
+      </Card>
       <SimpleGrid columns={[1, 2, 4]} m="20px" p="10px" textAlign="center">
         {loading ? (
           <div style={{ textAlign: "center" }}>
@@ -164,7 +216,7 @@ const WomensFootwear = () => {
           })
         )}
       </SimpleGrid>
-    </>
+    </Flex>
   );
 };
 

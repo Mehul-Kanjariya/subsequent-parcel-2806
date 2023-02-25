@@ -14,7 +14,7 @@ import Foodprod from '../Pages/Foodprod';
 import UpdateProduct from "../Components/Admin/Update_Product/UpdateProduct";
 import SingleUpdateProduct from "../Components/Admin/SingleUpdateProduct/UpdateProduct";
 
-import Login from "../Components/Login/Login";
+import Login from "../Components/Login/login";
 
 import WomensEthnicDressesSinglePage from "../Components/SinglePage/WomensSinglePage/WomensEthnicDressesSinglePage";
 import WomenFootwearSinglePage from "../Components/SinglePage/WomensSinglePage/WomensFootwearSinglePage";
