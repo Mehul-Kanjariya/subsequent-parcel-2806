@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from "react";
 
 import {
@@ -31,7 +30,7 @@ import {
   Box,
   DrawerFooter,
   SimpleGrid,
-  Tbody
+  Tbody,
 } from "@chakra-ui/react";
 import {
   HamburgerIcon,
@@ -47,23 +46,20 @@ import { BsCart2, BsFillPersonFill, BsShieldFillCheck } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 
 import axios from "axios";
-// import { TableBody } from "@mui/material";
 import "../Css/Navbar.css";
 import { MdOutlinePayments } from "react-icons/md";
 
 import { useDispatch, useSelector } from "react-redux";
 import { fetchData } from "../../Redux/Auth/actions";
 
-
 const Navbar = () => {
-  const {isAuth} = useSelector((store)=>store.auth)
+  const { isAuth } = useSelector((store) => store.auth);
   const mynav = useNavigate();
 
   const [CartData, setCartData] = useState([]);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef();
   const [show, setShow] = useState(false);
-  const [count, setCount] = useState(1);
   const [TotalSum, setTotalSum] = useState(0);
 
   const GetCartData = () => {
@@ -82,8 +78,6 @@ const Navbar = () => {
   };
 
   const HandleQuantityChange = (id, quan, num) => {
-    console.log(quan);
-    setCount((prev) => prev + num);
     axios({
       method: "patch",
       url: `https://alok-verma-rct.onrender.com/crankdealCart/${id}`,
@@ -106,11 +100,6 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    TotalPrice();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [count]);
-
-  useEffect(() => {
     GetCartData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -118,29 +107,28 @@ const Navbar = () => {
   const dispatch = useDispatch();
 
   const logout = () => {
-    let id = JSON.parse(localStorage.getItem("id"))
-    let data = JSON.parse(localStorage.getItem("Auth"))
-    data.Auth=!data.Auth;
-    if(id && data){
-      dispatch(fetchData(id,data));
-    }else{
+    let id = JSON.parse(localStorage.getItem("id"));
+    let data = JSON.parse(localStorage.getItem("Auth"));
+    data.Auth = !data.Auth;
+    if (id && data) {
+      dispatch(fetchData(id, data));
+    } else {
       return;
     }
     localStorage.removeItem("id");
     localStorage.removeItem("Auth");
     window.location.reload();
-  }
+  };
 
-  useEffect(()=>{
-    let id = JSON.parse(localStorage.getItem("id"))
-    let data = JSON.parse(localStorage.getItem("Auth"))
-    if(id && data){
-      dispatch(fetchData(id,data));
-    }else{
+  useEffect(() => {
+    let id = JSON.parse(localStorage.getItem("id"));
+    let data = JSON.parse(localStorage.getItem("Auth"));
+    if (id && data) {
+      dispatch(fetchData(id, data));
+    } else {
       return;
     }
-  },[])
-
+  }, []);
 
   return (
     <Flex backgroundColor="#e40046" alignItems={"center"} w={"100%"}>
@@ -160,14 +148,16 @@ const Navbar = () => {
             variant="outline"
           />
           <MenuList>
-          <Link to="/Mens/MensClothing">
-           <MenuItem icon={<AddIcon />} command="⌘M">
-              Men's Fashion
-            </MenuItem>
-            </Link> 
-            <Link to="/Womens/WomensEthnicDresses"><MenuItem icon={<ExternalLinkIcon />} command="⌘W">
-              Women's Fashion
-            </MenuItem></Link>
+            <Link to="/Mens/MensClothing">
+              <MenuItem icon={<AddIcon />} command="⌘M">
+                Men's Fashion
+              </MenuItem>
+            </Link>
+            <Link to="/Womens/WomensEthnicDresses">
+              <MenuItem icon={<ExternalLinkIcon />} command="⌘W">
+                Women's Fashion
+              </MenuItem>
+            </Link>
             <MenuItem icon={<RepeatIcon />} command="⌘⇧H">
               Home & Kitchen
             </MenuItem>
@@ -203,18 +193,31 @@ const Navbar = () => {
         </Flex>
       </Show>
 
-      <Flex
-        flex={1}
-        justifyContent="space-evenly"
-        alignItems={"center"}
-        cursor="pointer"
-        ref={btnRef}
-        onClick={onOpen}
-      >
+      <Flex flex={1} justifyContent="space-evenly" alignItems={"center"}>
         <Flex gap={1}>
-          <BsCart2 style={{ fontSize: "30px", color: "white" }}> </BsCart2>
+          <BsCart2
+            style={{ fontSize: "30px", color: "white" }}
+            cursor="pointer"
+            ref={btnRef}
+            onClick={() => {
+              onOpen();
+              GetCartData();
+            }}
+          >
+            {" "}
+          </BsCart2>
 
-          <Text style={{ fontSize: "25px", color: "white" }}>Cart</Text>
+          <Text
+            style={{ fontSize: "25px", color: "white" }}
+            cursor="pointer"
+            ref={btnRef}
+            onClick={() => {
+              onOpen();
+              GetCartData();
+            }}
+          >
+            Cart
+          </Text>
         </Flex>
         <Drawer
           isOpen={isOpen}
@@ -227,7 +230,6 @@ const Navbar = () => {
           <DrawerContent>
             <DrawerCloseButton />
             <DrawerHeader>Shopping Cart ({CartData.length} Items)</DrawerHeader>
-
 
             <DrawerBody>
               <TableContainer p="20px">
@@ -363,8 +365,8 @@ const Navbar = () => {
         </Drawer>
 
         {isAuth && <Button onClick={logout}>Log Out</Button>}
-        {!isAuth && <Flex gap={5}>
-
+        {!isAuth && (
+          <Flex gap={5}>
             <Menu>
               <MenuButton as={Button}>Sign Up</MenuButton>
               <MenuList>
@@ -384,7 +386,7 @@ const Navbar = () => {
               {" "}
             </BsFillPersonFill>
           </Flex>
-      }
+        )}
       </Flex>
     </Flex>
   );
