@@ -30,7 +30,7 @@ import {
   Box,
   DrawerFooter,
   SimpleGrid,
-  Tbody,
+  Tbody
 } from "@chakra-ui/react";
 import {
   HamburgerIcon,
