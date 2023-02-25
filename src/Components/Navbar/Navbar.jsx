@@ -193,25 +193,28 @@ const Navbar = () => {
         </Flex>
       </Show>
 
-      <Flex
-        flex={1}
-        justifyContent="space-evenly"
-        alignItems={"center"}
-        cursor="pointer"
-        ref={btnRef}
-        onClick={onOpen}
-      >
+      <Flex flex={1} justifyContent="space-evenly" alignItems={"center"}>
         <Flex gap={1}>
           <BsCart2
             style={{ fontSize: "30px", color: "white" }}
-            onClick={() => GetCartData()}
+            cursor="pointer"
+            ref={btnRef}
+            onClick={() => {
+              onOpen();
+              GetCartData();
+            }}
           >
             {" "}
           </BsCart2>
 
           <Text
             style={{ fontSize: "25px", color: "white" }}
-            onClick={() => GetCartData()}
+            cursor="pointer"
+            ref={btnRef}
+            onClick={() => {
+              onOpen();
+              GetCartData();
+            }}
           >
             Cart
           </Text>
