@@ -1,21 +1,23 @@
 import { Box, Button, Flex } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getFaceData } from "../Redux/Health&Beauty/actions";
+import { getFaceData } from "../../Redux/Health&Beauty/actions";
 import { Grid, GridItem } from "@chakra-ui/react";
 import { Image } from "@chakra-ui/react";
 
-import Foodcard from "./Foodcard";
-import { fetchFootwareProducts } from "../Redux/Mens/actions";
-import MensFootwareCard from "./MensFootwareCard";
+import Foodcard from "../../Pages/Foodcard";
 
-const MensFootware = () => {
+import MensFootwareCard from "./MensFootwareCard";
+import MensClothingCard from "./MensFootwareCard";
+import { fetchClothingeProducts } from "../../Redux/Mens/actions";
+
+const MensClothing = () => {
   const products = useSelector((store) => store.men.products);
   const dispatch = useDispatch();
   console.log(products);
 
   useEffect(() => {
-    dispatch(fetchFootwareProducts());
+    dispatch(fetchClothingeProducts());
   }, []);
   return (
     <Flex
@@ -36,7 +38,7 @@ const MensFootware = () => {
           gap="2"
         >
           {products.map((item) => (
-            <MensFootwareCard key={item.id} {...item} />
+            <MensClothingCard key={item.id} {...item} />
           ))}
         </Grid>
       </Box>
@@ -44,4 +46,4 @@ const MensFootware = () => {
   );
 };
 
-export default MensFootware;
+export default MensClothing;

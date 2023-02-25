@@ -73,9 +73,11 @@ const Navbar = () => {
             variant="outline"
           />
           <MenuList>
-            <MenuItem icon={<AddIcon />} command="⌘M">
+          <Link to="/Mens/MensClothing">
+           <MenuItem icon={<AddIcon />} command="⌘M">
               Men's Fashion
             </MenuItem>
+            </Link> 
             <Link to="/Womens/WomensEthnicDresses"><MenuItem icon={<ExternalLinkIcon />} command="⌘W">
               Women's Fashion
             </MenuItem></Link>
