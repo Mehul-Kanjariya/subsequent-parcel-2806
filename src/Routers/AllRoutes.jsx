@@ -83,7 +83,6 @@ const AllRoutes = () => {
         <Route path="/Mens/MensFootwear" element={<MensFootware />} />
 
         <Route  path="/userlogin" element={<Login></Login>} />
-
     </Routes>
   );
 };

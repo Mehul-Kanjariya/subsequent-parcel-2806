@@ -1,7 +1,4 @@
 import React, { useEffect, useState } from 'react'
-
-
-
 import {
     Flex,
     Box,
@@ -18,59 +15,55 @@ import {
   } from '@chakra-ui/react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchData } from '../../Redux/Auth/actions';
-import { async } from 'q';
+import axios from 'axios';
+import { Navigate } from 'react-router-dom';
   
   export default function Login() {
     const dispatch = useDispatch();
-    const {data} = useSelector((store)=>store.auth)
+    const {isAuth} = useSelector((store)=>store.auth)
 
     const [email,setemail] = useState('')
     const [password,setpassword] = useState("")
 
-  useEffect(()=>{
-    dispatch(fetchData());
-  },[])
-
-  
-  const login = async () => { 
+  const login = async () => {
+    let data = await axios
+                      .get(`https://alok-verma-rct.onrender.com/userlogin`)
+                      .then((res)=>(res.data))
+                      .catch((err)=>console.log(err));
+    
     let a =  data?.filter((e)=>{
       if(e.email===email && e.password==password){
         return e;
       }
     })
-    console.log(email, password)
+
     if(a.length){
       let id=a[0].id
       let details = {
         Auth:!a[0].Auth,
       };
-    
-      try{
-        let res = await fetch(`https://alok-verma-rct.onrender.com/userlogin/${id}`, {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(details),
-        });
-        let h = await res.json();
-        console.log(h)
-      }catch(err){
-        console.log(err);
-        alert("Facing some issues please try again");
-        return;
-      }
+      localStorage.setItem("id", id);
+      localStorage.setItem("Auth", JSON.stringify(details));
+
+      dispatch(fetchData(id,details));
     }else{
       alert("Wrong Credentials");
     }
+    return;
   };
-
+ 
+    if(isAuth===true){
+      alert("Logged in");
+      return <Navigate to="/"/>
+    }
+    
     return (
       <Flex
         minH={'100vh'}
         align={'center'}
         justify={'center'}
-        bg={useColorModeValue('gray.50', 'gray.800')}>
+        // bg={useColorModeValue('gray.50', 'gray.800')}
+        >
         <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
           <Stack align={'center'}>
             <Heading  color={'gray.600'}fontSize={'3xl'}>Sign in to your account ✌️</Heading>
@@ -80,7 +73,7 @@ import { async } from 'q';
           </Stack>
           <Box
             rounded={'lg'}
-            bg={useColorModeValue('white', 'gray.700')}
+            // bg={useColorModeValue('white', 'gray.700')}
             boxShadow={'lg'}
             p={8}>
             <Stack spacing={4}>
