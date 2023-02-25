@@ -33,8 +33,9 @@ const WomensEthnicDressesSinglePage = () => {
   };
 
   const AddToCartItem = () => {
+    const NewProduct = { ...product, quantity: 1 };
     axios
-      .post("https://alok-verma-rct.onrender.com/crankdealCart", product)
+      .post("https://alok-verma-rct.onrender.com/crankdealCart", NewProduct)
       .then(() =>
         toast({
           title: "Item Added",
@@ -64,10 +65,9 @@ const WomensEthnicDressesSinglePage = () => {
             rounded={"md"}
             alt={product.title}
             src={product.image}
-            fit={"cover"}
             align={"center"}
             w={"100%"}
-            h={{ base: "100%", sm: "400px", lg: "500px" }}
+            h={{ base: "100%", sm: "600px", lg: "700px" }}
           />
         </Flex>
         <Stack spacing={{ base: 6, md: 10 }}>
@@ -77,7 +77,7 @@ const WomensEthnicDressesSinglePage = () => {
               fontWeight={600}
               fontSize={{ base: "2xl", sm: "4xl", lg: "5xl" }}
             >
-              {product.title}
+              {product?.title}
             </Heading>
             <Text
               color={useColorModeValue("gray.900", "gray.400")}
@@ -85,7 +85,7 @@ const WomensEthnicDressesSinglePage = () => {
               fontSize={"2xl"}
               m="10px"
             >
-              ₹{product.price}
+              ₹{product?.price}
             </Text>
           </Box>
 
@@ -117,19 +117,20 @@ const WomensEthnicDressesSinglePage = () => {
                   <Text as={"span"} fontWeight={"bold"}>
                     Category:
                   </Text>{" "}
-                  {product.category}
+                  {product?.category}
                 </ListItem>
                 <ListItem>
                   <Text as={"span"} fontWeight={"bold"}>
                     Discount:
                   </Text>{" "}
-                  {product.discount} Off
+                  {product?.discount} Off
                 </ListItem>
                 <ListItem>
                   <Text as={"span"} fontWeight={"bold"}>
                     Rating:
                   </Text>{" "}
-                  {product.rating}
+                  {product?.reveiws?.rate}{" "}
+                  <sub>({product?.reveiws?.count} Rewiers)</sub>
                 </ListItem>
               </List>
             </Box>
