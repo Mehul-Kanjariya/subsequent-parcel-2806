@@ -19,6 +19,10 @@ import Login from "../Components/Login/Login";
 import WomensEthnicDressesSinglePage from "../Components/SinglePage/WomensSinglePage/WomensEthnicDressesSinglePage";
 import WomenFootwearSinglePage from "../Components/SinglePage/WomensSinglePage/WomensFootwearSinglePage";
 import WomenDressesSinglePage from "../Components/SinglePage/WomensSinglePage/WomenDressesSinglePage";
+import SinglePage from "../Pages/SinglePage";
+import FaceSinglePage from "../Pages/FaceSinglePage";
+import DrinkSinglePage from "../Pages/DrinkSinglePage";
+//import FaceSinglePage from "../Pages/SinglePage";
 
 const AllRoutes = () => {
   return (
@@ -49,6 +53,21 @@ const AllRoutes = () => {
         <Route
           path="/Womens/WomensDresses/:id"
           element={<WomenDressesSinglePage />}
+        />
+
+        <Route
+          path="fooditem/SinglePage/:id"
+          element={<SinglePage />}
+        />
+
+        <Route
+          path="beautyface/FaceSinglePage/:id"
+          element={<FaceSinglePage />}
+        />
+
+      <Route
+          path="healthdrinks/DrinkSinglePage/:id"
+          element={<DrinkSinglePage />}
         />
 
         <Route  path="/userlogin" element={<Login></Login>} />

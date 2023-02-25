@@ -15,6 +15,7 @@ import {
   import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs';
   import { FiShoppingCart } from 'react-icons/fi';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
   const data = {
     isNew: true,
@@ -27,6 +28,7 @@ import axios from 'axios';
   };
 
 function Facecard({id, title, image,description,price,rate,count}) {
+  const navigate=useNavigate()
   const handleClick=()=>{
     axios.post(`https://alok-verma-rct.onrender.com/crankdealCart`,
    {
@@ -81,7 +83,11 @@ function Facecard({id, title, image,description,price,rate,count}) {
                 fontWeight="semibold"
                 as="h4"
                 lineHeight="tight"
-                isTruncated>
+                isTruncated
+                onClick={() => {
+                  navigate(`/beautyface/FaceSinglePage/${id}`);
+                }}
+                >
                 {title}
               </Box>
               <Tooltip
