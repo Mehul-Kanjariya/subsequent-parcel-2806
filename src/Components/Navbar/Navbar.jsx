@@ -1,6 +1,4 @@
-
 import React, { useEffect, useRef, useState } from "react";
-
 import {
   Menu,
   MenuButton,
@@ -31,6 +29,7 @@ import {
   Box,
   DrawerFooter,
   SimpleGrid,
+  Tbody,
 } from "@chakra-ui/react";
 import {
   HamburgerIcon,
@@ -44,25 +43,16 @@ import { SearchIcon } from "@chakra-ui/icons";
 import logo from "./logoo.png";
 import { BsCart2, BsFillPersonFill, BsShieldFillCheck } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
-
 import axios from "axios";
 import { TableBody } from "@mui/material";
 import "../Css/Navbar.css";
 import { MdOutlinePayments } from "react-icons/md";
-
-import { useDispatch, useSelector } from "react-redux";
-import { fetchData } from "../../Redux/Auth/actions";
-
-
 const Navbar = () => {
-  const {isAuth} = useSelector((store)=>store.auth)
   const mynav = useNavigate();
-
   const [CartData, setCartData] = useState([]);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef();
   const [show, setShow] = useState(false);
-  const [count, setCount] = useState(1);
   const [TotalSum, setTotalSum] = useState(0);
 
   const GetCartData = () => {
@@ -82,7 +72,6 @@ const Navbar = () => {
 
   const HandleQuantityChange = (id, quan, num) => {
     console.log(quan);
-    setCount((prev) => prev + num);
     axios({
       method: "patch",
       url: `https://alok-verma-rct.onrender.com/crankdealCart/${id}`,
@@ -105,41 +94,9 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    TotalPrice();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [count]);
-
-  useEffect(() => {
     GetCartData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  const dispatch = useDispatch();
-
-  const logout = () => {
-    let id = JSON.parse(localStorage.getItem("id"))
-    let data = JSON.parse(localStorage.getItem("Auth"))
-    data.Auth=!data.Auth;
-    if(id && data){
-      dispatch(fetchData(id,data));
-    }else{
-      return;
-    }
-    localStorage.removeItem("id");
-    localStorage.removeItem("Auth");
-    window.location.reload();
-  }
-
-  useEffect(()=>{
-    let id = JSON.parse(localStorage.getItem("id"))
-    let data = JSON.parse(localStorage.getItem("Auth"))
-    if(id && data){
-      dispatch(fetchData(id,data));
-    }else{
-      return;
-    }
-  },[])
-
 
   return (
     <Flex backgroundColor="#e40046" alignItems={"center"} w={"100%"} >
@@ -166,21 +123,14 @@ const Navbar = () => {
             variant="outline"
           />
           <MenuList>
-          <Link to="/Mens/MensClothing">
-           <MenuItem icon={<AddIcon />} command="⌘M">
+            <MenuItem icon={<AddIcon />} command="⌘M">
               Men's Fashion
             </MenuItem>
-
             <Link to='/Womens/WomensEthnicDresses'>
             <MenuItem icon={<ExternalLinkIcon />} command="⌘W">
               Women's Fashion
             </MenuItem>
-            </Link>
-
             </Link> 
-            <Link to="/Womens/WomensEthnicDresses"><MenuItem icon={<ExternalLinkIcon />} command="⌘W">
-              Women's Fashion
-            </MenuItem></Link>
             <MenuItem icon={<RepeatIcon />} command="⌘⇧H">
               Home & Kitchen
             </MenuItem>
@@ -225,9 +175,23 @@ const Navbar = () => {
         onClick={onOpen}
       >
         <Flex gap={1}>
-          <BsCart2 style={{ fontSize: "30px", color: "white" }}> </BsCart2>
+          <BsCart2
+            style={{ fontSize: "30px", color: "white" }}
+            onClick={() => {
+              GetCartData();
+            }}
+          >
+            {" "}
+          </BsCart2>
 
-          <Text style={{ fontSize: "25px", color: "white" }}>Cart</Text>
+          <Text
+            style={{ fontSize: "25px", color: "white" }}
+            onClick={() => {
+              GetCartData();
+            }}
+          >
+            Cart
+          </Text>
         </Flex>
         <Drawer
           isOpen={isOpen}
@@ -240,7 +204,6 @@ const Navbar = () => {
           <DrawerContent>
             <DrawerCloseButton />
             <DrawerHeader>Shopping Cart ({CartData.length} Items)</DrawerHeader>
-
 
             <DrawerBody>
               <TableContainer p="20px">
@@ -266,7 +229,7 @@ const Navbar = () => {
                       <Th>Subtotal</Th>
                     </Tr>
                   </Thead>
-                  <TableBody>
+                  <Tbody>
                     {CartData?.map((item) => {
                       return (
                         <>
@@ -324,7 +287,7 @@ const Navbar = () => {
                         </>
                       );
                     })}
-                  </TableBody>
+                  </Tbody>
                 </Table>
               </TableContainer>
             </DrawerBody>
@@ -357,7 +320,7 @@ const Navbar = () => {
                   </Flex>
                 </Box>
                 <Box textAlign={"left"} m="10px">
-                  <p>SubTotal : Rs. {TotalSum}</p>
+                  <p>SubTotal : Rs. {CartData.length === 0 ? 0 : TotalSum}</p>
                   <p>
                     Delivery Charges :{" "}
                     <span style={{ color: "red", fontWeight: "500" }}>
@@ -376,30 +339,24 @@ const Navbar = () => {
         </Drawer>
         <Link to="/signup">
           <Flex gap={5}>
-
-        {isAuth && <Button onClick={logout}>Log Out</Button>}
-        {!isAuth && <Flex gap={5}>
-
             <Menu>
               <MenuButton as={Button}>Sign Up</MenuButton>
               <MenuList>
                 <MenuGroup title="Profile">
-                  <MenuDivider />
                   <Link to="/userlogin">
-                    <MenuItem>Log In</MenuItem>
+                    <MenuItem>Login</MenuItem>
                   </Link>
-                  <Link to="/signup">
-                    <MenuItem>Sign Up</MenuItem>
-                  </Link>
+                  <MenuItem>Your Account</MenuItem>
                 </MenuGroup>
                 <MenuDivider />
               </MenuList>
             </Menu>
+
             <BsFillPersonFill style={{ fontSize: "35px", color: "white" }}>
               {" "}
             </BsFillPersonFill>
           </Flex>
-      }
+        </Link>
       </Flex>
     </Flex>
   );
