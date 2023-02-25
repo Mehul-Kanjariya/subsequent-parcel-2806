@@ -48,7 +48,7 @@ const WomensDresses = () => {
     dispatch(reqProduct());
     try {
       let res = await axios.get(
-        "https://alok-verma-rct.onrender.com/WomensEthnicWear"
+        "https://alok-verma-rct.onrender.com/WomensDresses"
       );
       let data = res.data;
       data.sort((a, b) => a.price - b.price);
@@ -63,7 +63,7 @@ const WomensDresses = () => {
     dispatch(reqProduct());
     try {
       let res = await axios.get(
-        "https://alok-verma-rct.onrender.com/WomensEthnicWear"
+        "https://alok-verma-rct.onrender.com/WomensDresses"
       );
       let data = res.data;
       data.sort((a, b) => b.price - a.price);
