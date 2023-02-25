@@ -172,9 +172,23 @@ const Navbar = () => {
         onClick={onOpen}
       >
         <Flex gap={1}>
-          <BsCart2 style={{ fontSize: "30px", color: "white" }}> </BsCart2>
+          <BsCart2
+            style={{ fontSize: "30px", color: "white" }}
+            onClick={() => {
+              GetCartData();
+            }}
+          >
+            {" "}
+          </BsCart2>
 
-          <Text style={{ fontSize: "25px", color: "white" }}>Cart</Text>
+          <Text
+            style={{ fontSize: "25px", color: "white" }}
+            onClick={() => {
+              GetCartData();
+            }}
+          >
+            Cart
+          </Text>
         </Flex>
         <Drawer
           isOpen={isOpen}
