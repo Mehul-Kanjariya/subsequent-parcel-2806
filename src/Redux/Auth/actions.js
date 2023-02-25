@@ -16,7 +16,7 @@ export const sucLogin = (payload) => {
 
 export const errLogin = () => {
   return {
-    type: types.AUTH_SUCCESS_ERROR,
+    type: types.AUTH_LOGIN_ERROR,
   };
 };
 
@@ -27,10 +27,12 @@ export const logoutReq = () => {
   };
 }
 
-export const fetchData = (data) => async (dispatch) => {
-  dispatch(reqlogin())
+export const fetchData = (id,data) => async (dispatch) => {
+
   await axios
-      .get(`https://alok-verma-rct.onrender.com/userlogin`)
-      .then((res)=>dispatch(sucLogin(res.data)))
+      .patch(`https://alok-verma-rct.onrender.com/userlogin/${id}`,data)
+      .then((res)=>{
+        return dispatch(sucLogin(res.data))
+      })
       .catch((err)=>dispatch(errLogin()));
 }

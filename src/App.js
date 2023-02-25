@@ -7,18 +7,12 @@ import Footer from './Components/Footer/footer';
 
 
 
-
 function App() {
   return (
     <div className="App">
-
       <Navbar/>
       <AllRoutes/>
-      
       <Footer/>
-      {/* <MensFootware/> */}
-       {/* <MensClothing/> */}
-      {/* <MensEyewear/> */}
     </div>
   );
 }
