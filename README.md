@@ -5,7 +5,7 @@
 
 > CrackDeal (E-commerce platform) is an React.js application designed to provide customers with a personalized easy-to-utilize user experience for purchasing products online. It stores customers' personal data and orders.
 
-> It has 4 modules Admin, User, Add to Cart, Checkout.
+> It has 5 modules Authentication, Admin, User, Add to Cart, Checkout.
 
 > CrackDeal application was built during the construct week at [Masai School](https://masaischool.com/). Completed the project in five days with a team of five aspiring developers.
 
@@ -33,7 +33,6 @@
 - Admin Module
 - Add, update and delete module
 - User Module
-- Cart Module
 - Place order Module
 - Checkout Module
 
