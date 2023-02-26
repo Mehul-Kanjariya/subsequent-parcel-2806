@@ -16,11 +16,14 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchData } from '../../Redux/Auth/actions';
 import axios from 'axios';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useLocation, useNavigate } from 'react-router-dom';
   
   export default function Login() {
+    const navigate= useNavigate();
     const dispatch = useDispatch();
     const {isAuth} = useSelector((store)=>store.auth)
+    const location = useLocation();
+    const comingFrom = location.state?.data || "/";
 
     const [email,setemail] = useState('')
     const [password,setpassword] = useState("")
@@ -54,7 +57,7 @@ import { Navigate } from 'react-router-dom';
  
     if(isAuth===true){
       alert("Logged in");
-      return <Navigate to="/"/>
+      navigate(comingFrom, {replace:true});
     }
     
     return (

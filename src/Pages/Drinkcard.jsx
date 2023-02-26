@@ -8,6 +8,7 @@ import {
     Icon,
     chakra,
     Tooltip,
+    useToast,
    
   } from '@chakra-ui/react';
   import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs';
@@ -26,23 +27,29 @@ import { useNavigate } from 'react-router-dom';
   };
 
 function Drinkcard({id, title, image,description,price,rate,count}) {
-  const navigate=useNavigate()
-  const handleClick=()=>{
-    axios.post(`https://alok-verma-rct.onrender.com/crankdealCart`,
-   {
-     id,
-   image,
-   title,
-   price,
-   reviews: {
-     rate,
-     count
-   },
-   
-   description
-   }
-   )
- }
+  const navigate=useNavigate();
+  const toast = useToast();
+
+  const AddToCartItem = async (id) => {
+    let data = await axios.get(
+      `https://alok-verma-rct.onrender.com/healthdrinks/${id}`
+    );
+    const NewProduct = { ...data.data, quantity: 1 };
+
+    axios
+      .post("https://alok-verma-rct.onrender.com/crankdealCart", NewProduct)
+      .then(() =>
+        toast({
+          title: "Item Added",
+          description: "Item added to cart successfully",
+          status: "success",
+          duration: 9000,
+          isClosable: true,
+          position: "top",
+        })
+      )
+      .catch((err) => console.log(err));
+  };
     return (
       <Flex p={4} margin="auto" w="fit-content" alignItems="center" justifyContent="center" className="hvr-grow-shadow">
         <Box
@@ -95,7 +102,7 @@ function Drinkcard({id, title, image,description,price,rate,count}) {
                 color={'gray.800'}
                 fontSize={'1.2em'}>
                 <chakra.a href={'#'} display={'flex'}>
-                  <Icon onClick={handleClick} as={FiShoppingCart} h={7} w={7} alignSelf={'center'} />
+                  <Icon onClick={()=>AddToCartItem(id)} as={FiShoppingCart} h={7} w={7} alignSelf={'center'} />
                 </chakra.a>
               </Tooltip>
             </Flex>          <Flex justifyContent="space-between" alignContent="center" >

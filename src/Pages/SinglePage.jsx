@@ -33,8 +33,10 @@ const SinglePage = () => {
   };
 
   const AddToCartItem = () => {
+    const NewProduct = { ...product, quantity: 1 };
+
     axios
-      .post("https://alok-verma-rct.onrender.com/crankdealCart", product)
+      .post("https://alok-verma-rct.onrender.com/crankdealCart", NewProduct)
       .then(() =>
         toast({
           title: "Item Added",

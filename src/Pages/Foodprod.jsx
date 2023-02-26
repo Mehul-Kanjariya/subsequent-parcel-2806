@@ -13,7 +13,7 @@ const Foodprod = () => {
   const products=useSelector((store)=>store.health.products)
   const dispatch=useDispatch()
   const navigate=useNavigate()
-  console.log(products)
+  
 
   useEffect(()=>{
     dispatch(getFoodData(sortProduct))

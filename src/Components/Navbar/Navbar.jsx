@@ -53,7 +53,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchData } from "../../Redux/Auth/actions";
 
 const Navbar = () => {
-  const { isAuth } = useSelector((store) => store.auth);
+  const { isAuth,admin,name } = useSelector((store) => store.auth);
   const mynav = useNavigate();
 
   const [CartData, setCartData] = useState([]);
@@ -101,8 +101,14 @@ const Navbar = () => {
 
   useEffect(() => {
     GetCartData();
+    TotalPrice();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    TotalPrice();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [CartData]);
 
   const dispatch = useDispatch();
 
@@ -147,26 +153,28 @@ const Navbar = () => {
             icon={<HamburgerIcon />}
             variant="outline"
           />
-          <MenuList>
+          <MenuList zIndex={100}>
             <Link to="/Mens/MensClothing">
-              <MenuItem icon={<AddIcon />} command="⌘M">
+              <MenuItem icon={<AddIcon />} >
                 Men's Fashion
               </MenuItem>
             </Link>
             <Link to="/Womens/WomensEthnicDresses">
-              <MenuItem icon={<ExternalLinkIcon />} command="⌘W">
+              <MenuItem icon={<ExternalLinkIcon />} >
                 Women's Fashion
               </MenuItem>
             </Link>
-            <MenuItem icon={<RepeatIcon />} command="⌘⇧H">
+            <MenuItem icon={<RepeatIcon />} >
               Home & Kitchen
             </MenuItem>
-            <MenuItem icon={<EditIcon />} command="⌘T">
+            <MenuItem icon={<EditIcon />} >
               Toys, Kid's Fashion
             </MenuItem>
-            <MenuItem icon={<StarIcon />} command="⌘B">
+            <Link to="/foodprod">
+            <MenuItem icon={<StarIcon />} >
               Beauty & Health
             </MenuItem>
+            </Link>
           </MenuList>
         </Menu>
       </Flex>
@@ -355,17 +363,36 @@ const Navbar = () => {
                   </p>
                 </Box>
                 <Box textAlign={"left"} m="20px">
-                  <Button fontSize={"20px"} p="30px 50px" colorScheme={"red"}>
-                    PROCEED TO PAY Rs. {TotalSum}
-                  </Button>
+                  <Link to={"/checkout"}>
+                    <Button onClick={onClose} fontSize={"20px"} p="30px 50px" colorScheme={"red"}>
+                      PROCEED TO PAY Rs. {TotalSum}
+                    </Button>
+                  </Link>
                 </Box>
               </SimpleGrid>
             </DrawerFooter>
           </DrawerContent>
         </Drawer>
 
-        {isAuth && <Button onClick={logout}>Log Out</Button>}
-        {!isAuth && 
+        {/* {isAuth && <Button onClick={logout}>Log Out</Button>} */}
+        {isAuth ? <Flex gap={5}>
+            <Menu>
+              <MenuButton as={Button}>{name}</MenuButton>
+              <MenuList>
+                <MenuGroup title="Profile">
+                  <MenuDivider />
+                    <MenuItem onClick={logout}>Log Out</MenuItem>
+                  {admin && <Link to="/admin">
+                    <MenuItem>Admin</MenuItem>
+                  </Link> }
+                </MenuGroup>
+                <MenuDivider />
+              </MenuList>
+            </Menu>
+            <BsFillPersonFill style={{ fontSize: "35px", color: "white" }}>
+              {" "}
+            </BsFillPersonFill>
+          </Flex> : 
           <Flex gap={5}>
             <Menu>
               <MenuButton as={Button}>Sign Up</MenuButton>

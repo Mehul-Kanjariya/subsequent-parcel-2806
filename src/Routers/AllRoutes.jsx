@@ -29,8 +29,8 @@ import MensClothingSinglePage from "../Components/SinglePage/MensSinglePage/Mens
 import SinglePage from "../Pages/SinglePage";
 import FaceSinglePage from "../Pages/FaceSinglePage";
 import DrinkSinglePage from "../Pages/DrinkSinglePage";
+import PrivateRoute from "../Components/ReqAuth/ReqAuth";
 //import FaceSinglePage from "../Pages/SinglePage";
-
 
 const AllRoutes = () => {
   return (
@@ -38,14 +38,14 @@ const AllRoutes = () => {
       <Route path="/" element={<Homepage />} />
       <Route path="/productCategoryface" element={<Faceprod />} />
       <Route path="/signup" element={<Signup />} />
-      <Route path="/addProduct" element={<AddProductPage />} />
+      <Route path="/addProduct" element={<PrivateRoute><AddProductPage /></PrivateRoute>} />
       <Route path="/foodprod" element={<Foodprod />} />
       <Route path="/drinkprod" element={<Drinkprod />} />
       <Route
         path="/adminProducts/:id/:category"
-        element={<SingleUpdateProduct />}
+        element={<PrivateRoute><SingleUpdateProduct/></PrivateRoute>}
       />
-      <Route path="/admin" element={<UpdateProduct />} />
+      <Route path="/admin" element={<PrivateRoute><UpdateProduct /></PrivateRoute>} />
       <Route
         path="/Womens/WomensEthnicDresses"
         element={<WomensEthnicDresses />}
@@ -80,19 +80,12 @@ const AllRoutes = () => {
           path="/Mens/MensClothing/:id"
           element={<MensClothingSinglePage/>}
         />
-        <Route  path="/checkout" element={<Checkout/>} />
+        <Route  path="/checkout" element={<PrivateRoute><Checkout/></PrivateRoute>} />
 
       <Route path="/Mens/MensClothing" element={<MensClothing />} />
       <Route path="/Mens/MensEyewear" element={<MensEyewear />} />
       <Route path="/Mens/MensFootwear" element={<MensFootware />} />
 
-
-       
-
-      <Route
-        path="/Mens/MensClothing/:id"
-        element={<MensClothingSinglePage />}
-      />
       <Route path="/userlogin" element={<Login></Login>} />
 
     </Routes>
