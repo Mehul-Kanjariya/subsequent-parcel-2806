@@ -1,70 +1,67 @@
-# Getting Started with Create React App
+# subsequent-parcel-2806
+<img src="https://user-images.githubusercontent.com/112845916/221432286-98300753-7265-403a-b437-e57567d429ff.png"/>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# CRACKDEAL
 
-## Available Scripts
+> CrackDeal (E-commerce platform) is an React.js application designed to provide customers with a personalized easy-to-utilize user experience for purchasing products online. It stores customers' personal data and orders.
 
-In the project directory, you can run:
+> It has 4 modules Admin, User, Add to Cart, Checkout.
 
-### `npm start`
+> CrackDeal application was built during the construct week at [Masai School](https://masaischool.com/). Completed the project in five days with a team of five aspiring developers.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- User authentication
+- Admin can register by giving all the details
+- Admin can provide details like product name, price, image
+- Admin can add, update and remove the products shown to user
+- User can register by giving all the details
+- User can order products of its choice
 
-### `npm test`
+# Technology used 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- React.js
+- JavaScript
+- Chakra Ui
+- JSX
+- CSS
+- Git & GitHub
 
-### `npm run build`
+# Modules
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Login Logout Module
+- Admin Module
+- Add, update and delete module
+- User Module
+- Cart Module
+- Place order Module
+- Checkout Module
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Lessons Learned
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Gain excessive knowledge on application of Reacts.js
+- Gain knowledge on using API.
+- Got to know how to collabrate with team members while building a React application.
+- Enjoyed the process of learning and creating the application.
 
-### `npm run eject`
+# Contributor
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+#### Kanjariya Mehul Kumar
+> Github: [Mehul-Kanjariya](https://github.com/Mehul-Kanjariya) 
+(Teamlead)
+Worked on Authentication functionality and Admin Module
+#### Alok Kumar Verma
+> Github: [ALOK6103](https://github.com/ALOK6103)
+Worked on Products Page
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### Gourav Bundiwal
+>Github: [Gourav7777](https://github.com/Gourav7777)
+Worked on Navbar, Checkout and Login Logout Module
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+#### Varun Jatav
+>Github: [Varun-98-masai](https://github.com/Varun-98-masai)
+Worked on Homepage
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#### Harsh Shukla
+>Github: [harshshukla2002](https://github.com/harshshukla2002)
+Worked on Cart and Products page
