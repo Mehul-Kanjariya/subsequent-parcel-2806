@@ -16,7 +16,7 @@ import {
   import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs';
   import { FiShoppingCart } from 'react-icons/fi';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
   const data = {
     isNew: true,
@@ -54,6 +54,7 @@ function Facecard({id, title, image,description,price,rate,count}) {
   };
 
     return (
+      <Link to={`/beautyface/FaceSinglePage/${id}`}>
       <Flex p={4} margin="auto" w="fit-content" alignItems="center" justifyContent="center" className="hvr-grow-shadow">
         <Box
           bg={useColorModeValue('white', 'gray.800')}
@@ -120,5 +121,6 @@ function Facecard({id, title, image,description,price,rate,count}) {
           </Box>
         </Box>
       </Flex>
+      </Link>
     );
   }export default Facecard;

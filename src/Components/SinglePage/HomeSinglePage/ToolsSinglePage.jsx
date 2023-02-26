@@ -20,20 +20,21 @@ import {
 import axios from "axios";
 import { MdLocalShipping } from "react-icons/md";
 
-const MensClothingSinglePage = () => {
+const ToolsSinglePage = () => {
   const { id } = useParams();
   const [product, setProducts] = useState([]);
   const toast = useToast();
 
   const FetchIdData = async () => {
     let res = await axios.get(
-      `https://alok-verma-rct.onrender.com/MensClothing/${id}`
+      `https://alok-verma-rct.onrender.com/tools/${id}`
     );
     setProducts(res.data);
   };
 
   const AddToCartItem = () => {
     const NewProduct = { ...product, quantity: 1 };
+
     axios
       .post("https://alok-verma-rct.onrender.com/crankdealCart", NewProduct)
       .then(() =>
@@ -77,7 +78,7 @@ const MensClothingSinglePage = () => {
               fontWeight={600}
               fontSize={{ base: "2xl", sm: "4xl", lg: "5xl" }}
             >
-              {product?.title}
+              {product.title}
             </Heading>
             <Text
               color={useColorModeValue("gray.900", "gray.400")}
@@ -85,7 +86,7 @@ const MensClothingSinglePage = () => {
               fontSize={"2xl"}
               m="10px"
             >
-              ₹{product?.price}
+              ₹{product.price}
             </Text>
           </Box>
 
@@ -117,13 +118,13 @@ const MensClothingSinglePage = () => {
                   <Text as={"span"} fontWeight={"bold"}>
                     Category:
                   </Text>{" "}
-                  {product?.category}
+                  {product.category}
                 </ListItem>
                 <ListItem>
                   <Text as={"span"} fontWeight={"bold"}>
                     Discount:
                   </Text>{" "}
-                  {product?.discount} Off
+                  {product.discount} Off
                 </ListItem>
                 <ListItem>
                   <Text as={"span"} fontWeight={"bold"}>
@@ -164,4 +165,4 @@ const MensClothingSinglePage = () => {
   );
 };
 
-export default MensClothingSinglePage;
+export default ToolsSinglePage;

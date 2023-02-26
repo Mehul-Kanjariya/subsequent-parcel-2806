@@ -20,14 +20,14 @@ import {
 import axios from "axios";
 import { MdLocalShipping } from "react-icons/md";
 
-const MensClothingSinglePage = () => {
+const MensFootwearSinglePage = () => {
   const { id } = useParams();
   const [product, setProducts] = useState([]);
   const toast = useToast();
 
   const FetchIdData = async () => {
     let res = await axios.get(
-      `https://alok-verma-rct.onrender.com/MensClothing/${id}`
+      `https://alok-verma-rct.onrender.com/MensFootwear/${id}`
     );
     setProducts(res.data);
   };
@@ -164,4 +164,4 @@ const MensClothingSinglePage = () => {
   );
 };
 
-export default MensClothingSinglePage;
+export default MensFootwearSinglePage;

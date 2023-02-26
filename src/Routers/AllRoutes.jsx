@@ -25,12 +25,18 @@ import MensClothing from "../Components/Mens/MensClothing";
 import MensEyewear from "../Components/Mens/MensEyewear";
 import MensFootware from "../Components/Mens/MensFootware";
 import MensClothingSinglePage from "../Components/SinglePage/MensSinglePage/MensClothingSinglePage";
-
+import MensEyewearSinglePage from "../Components/SinglePage/MensSinglePage/MensEyewearSinglePage";
 import SinglePage from "../Pages/SinglePage";
 import FaceSinglePage from "../Pages/FaceSinglePage";
 import DrinkSinglePage from "../Pages/DrinkSinglePage";
 import PrivateRoute from "../Components/ReqAuth/ReqAuth";
-//import FaceSinglePage from "../Pages/SinglePage";
+import MensFootwearSinglePage from "../Components/SinglePage/MensSinglePage/MensFootwearSinglePage";
+import HomeFurnishing from "../Components/Home&Appliances/HomeFurnishing"
+import KitchenAppliances from "../Components/Home&Appliances/KitchenAppliances"
+import Tools from "../Components/Home&Appliances/Tools";
+import HomeFurnishingSinglePage from "../Components/SinglePage/HomeSinglePage/HomeFurnishingSinglePage";
+import KitchenAppliancesSinglePage from "../Components/SinglePage/HomeSinglePage/KitchenAppliancesSinglePage";
+import ToolsSinglePage from "../Components/SinglePage/HomeSinglePage/ToolsSinglePage";
 
 const AllRoutes = () => {
   return (
@@ -80,14 +86,31 @@ const AllRoutes = () => {
           path="/Mens/MensClothing/:id"
           element={<MensClothingSinglePage/>}
         />
+        <Route
+          path="/Mens/MensEyewear/:id"
+          element={<MensEyewearSinglePage/>}
+        />
+        <Route
+          path="/Mens/MensFootwear/:id"
+          element={<MensFootwearSinglePage/>}
+        />
+        
         <Route  path="/checkout" element={<PrivateRoute><Checkout/></PrivateRoute>} />
 
       <Route path="/Mens/MensClothing" element={<MensClothing />} />
       <Route path="/Mens/MensEyewear" element={<MensEyewear />} />
       <Route path="/Mens/MensFootwear" element={<MensFootware />} />
 
-      <Route path="/userlogin" element={<Login></Login>} />
+      <Route path="/homeFurnishing" element={<HomeFurnishing />} />
+      <Route path="/kitchen" element={<KitchenAppliances />} />
+      <Route path="/tools" element={<Tools />} />
 
+      <Route path="/homeFurnishing/:id" element={<HomeFurnishingSinglePage />} />
+      <Route path="/kitchen/:id" element={<KitchenAppliancesSinglePage />} />
+      <Route path="/tools/:id" element={<ToolsSinglePage />} />
+
+      <Route path="/userlogin" element={<Login></Login>} />
+      
     </Routes>
   );
 };

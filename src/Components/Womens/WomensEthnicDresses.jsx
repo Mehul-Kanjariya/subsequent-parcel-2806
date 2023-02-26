@@ -19,11 +19,12 @@ import { FiShoppingCart } from "react-icons/fi";
 import { useEffect } from "react";
 import axios from "axios";
 import { errProduct, reqProduct, sucProduct } from "../../Redux/Women/actions";
-import { Heading, SimpleGrid } from "@chakra-ui/layout";
+import { Divider, Heading, SimpleGrid } from "@chakra-ui/layout";
 import "../Css/hover-glow-shadow.css";
 import { useNavigate } from "react-router";
 import "../Css/womens.css";
 import { ChevronDownIcon } from "@chakra-ui/icons";
+import { Link } from "react-router-dom";
 
 const WomensEthnicDresses = () => {
   const { products, loading, error } = useSelector((state) => state.women);
@@ -115,6 +116,19 @@ const WomensEthnicDresses = () => {
             <MenuItem onClick={LowToHigh}>Low to High</MenuItem>
           </MenuList>
         </Menu>
+        <br/>
+        <Heading size={"md"} m="10px">
+          Categories
+        </Heading>
+        <Menu p="30px">
+          <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
+            Select
+          </MenuButton>
+          <MenuList>
+            <Link to="/Womens/WomensFootwear"><MenuItem>Footwear</MenuItem></Link>
+            <Link to="/Womens/WomensDresses"><MenuItem>Dresses</MenuItem></Link>
+          </MenuList>
+        </Menu>
       </Card>
       <SimpleGrid columns={[1, 2, 4]} m="20px" p="10px" w="80%">
         {loading ? (
@@ -132,6 +146,7 @@ const WomensEthnicDresses = () => {
         ) : (
           products?.map((item) => {
             return (
+              <Link to={`/Womens/WomensEthnicDresses/${item.id}`}>
               <Flex
                 p={5}
                 w="fit-content"
@@ -214,6 +229,7 @@ const WomensEthnicDresses = () => {
                   </Flex>
                 </Box>
               </Flex>
+              </Link>
             );
           })
         )}

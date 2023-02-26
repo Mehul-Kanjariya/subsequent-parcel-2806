@@ -8,25 +8,25 @@ import {
   chakra,
   Tooltip,
   useToast,
+  Card,
   Menu,
   MenuButton,
   MenuList,
   MenuItem,
   Button,
-  Card,
 } from "@chakra-ui/react";
 import { FiShoppingCart } from "react-icons/fi";
 import { useEffect } from "react";
 import axios from "axios";
 import { errProduct, reqProduct, sucProduct } from "../../Redux/Women/actions";
-import { Divider, Heading, SimpleGrid } from "@chakra-ui/layout";
+import { Heading, SimpleGrid } from "@chakra-ui/layout";
 import "../Css/hover-glow-shadow.css";
-import { useNavigate } from "react-router";
 import "../Css/womens.css";
+import { useNavigate } from "react-router";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
 
-const MensClothing = () => {
+const KitchenAppliances = () => {
   const { products, loading, error } = useSelector((state) => state.women);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -36,7 +36,7 @@ const MensClothing = () => {
     dispatch(reqProduct());
     try {
       let res = await axios.get(
-        "https://alok-verma-rct.onrender.com/MensClothing"
+        "https://alok-verma-rct.onrender.com/kitchenAppliances"
       );
       let data = res.data;
       dispatch(sucProduct(data));
@@ -45,9 +45,39 @@ const MensClothing = () => {
     }
   };
 
+  const LowToHigh = async () => {
+    dispatch(reqProduct());
+    try {
+      let res = await axios.get(
+        "https://alok-verma-rct.onrender.com/kitchenAppliances"
+      );
+      let data = res.data;
+      data.sort((a, b) => a.price - b.price);
+      console.log(data);
+      dispatch(sucProduct(data));
+    } catch (error) {
+      dispatch(errProduct());
+    }
+  };
+
+  const HighToLow = async () => {
+    dispatch(reqProduct());
+    try {
+      let res = await axios.get(
+        "https://alok-verma-rct.onrender.com/kitchenAppliances"
+      );
+      let data = res.data;
+      data.sort((a, b) => b.price - a.price);
+      console.log(data);
+      dispatch(sucProduct(data));
+    } catch (error) {
+      dispatch(errProduct());
+    }
+  };
+
   const AddToCartItem = async (id) => {
     let data = await axios.get(
-      `https://alok-verma-rct.onrender.com/MensClothing/${id}`
+      `https://alok-verma-rct.onrender.com/kitchenAppliances/${id}`
     );
     const NewProduct = { ...data.data, quantity: 1 };
 
@@ -64,36 +94,6 @@ const MensClothing = () => {
         })
       )
       .catch((err) => console.log(err));
-  };
-
-  const LowToHigh = async () => {
-    dispatch(reqProduct());
-    try {
-      let res = await axios.get(
-        "https://alok-verma-rct.onrender.com/MensClothing"
-      );
-      let data = res.data;
-      data.sort((a, b) => a.price - b.price);
-      console.log(data);
-      dispatch(sucProduct(data));
-    } catch (error) {
-      dispatch(errProduct());
-    }
-  };
-
-  const HighToLow = async () => {
-    dispatch(reqProduct());
-    try {
-      let res = await axios.get(
-        "https://alok-verma-rct.onrender.com/MensClothing"
-      );
-      let data = res.data;
-      data.sort((a, b) => b.price - a.price);
-      console.log(data);
-      dispatch(sucProduct(data));
-    } catch (error) {
-      dispatch(errProduct());
-    }
   };
 
   useEffect(() => {
@@ -125,12 +125,12 @@ const MensClothing = () => {
             Select
           </MenuButton>
           <MenuList>
-            <Link to="/Mens/MensFootwear"><MenuItem>Footwear</MenuItem></Link>
-            <Link to="/Mens/MensEyewear"><MenuItem>Eyewear</MenuItem></Link>
+            <Link to="/tools"><MenuItem>Tools</MenuItem></Link>
+            <Link to="/homeFurnishing"><MenuItem>Home & Furnishing</MenuItem></Link>
           </MenuList>
         </Menu>
       </Card>
-      <SimpleGrid columns={[1, 2, 4]} m="20px" p="10px" w="80%">
+      <SimpleGrid columns={[1, 2, 4]} m="20px" p="10px" textAlign="center">
         {loading ? (
           <div style={{ textAlign: "center" }}>
             <Spinner
@@ -146,14 +146,13 @@ const MensClothing = () => {
         ) : (
           products?.map((item) => {
             return (
-              <Link to={`/Mens/MensClothing/${item.id}`}>
+              <Link to={`/kitchen/${item.id}`}>
               <Flex
                 p={5}
                 w="fit-content"
                 alignItems="center"
                 justifyContent="center"
                 className="hvr-grow-shadow"
-                key={item.id}
               >
                 <Box
                   width="250px"
@@ -166,7 +165,6 @@ const MensClothing = () => {
                     src={item.image}
                     alt={`Picture of ${item.title}`}
                     roundedTop="lg"
-                    w="content-fit"
                   />
                   <Flex
                     mt="1"
@@ -183,7 +181,7 @@ const MensClothing = () => {
                       cursor={"pointer"}
                       className="product-title"
                       onClick={() => {
-                        navigate(`/Mens/MensClothing/${item.id}`);
+                        navigate(`/kitchen/${item.id}`);
                       }}
                     >
                       {item.title}
@@ -238,4 +236,4 @@ const MensClothing = () => {
   );
 };
 
-export default MensClothing;
+export default KitchenAppliances;

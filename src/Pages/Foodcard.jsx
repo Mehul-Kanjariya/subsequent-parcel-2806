@@ -14,6 +14,7 @@ import {
   import { FiShoppingCart } from 'react-icons/fi';
   import { useNavigate } from "react-router";
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
   const data = {
     isNew: true,
@@ -52,6 +53,7 @@ function Foodcard({id, title, image,description,price,rate,count}) {
   };
 
     return (
+      <Link to={`/fooditem/SinglePage/${id}`}>
       <Flex p={4} margin="auto" w="fit-content" alignItems="center" justifyContent="center" className="hvr-grow-shadow">
         <Box
           bg={useColorModeValue('white', 'gray.800')}
@@ -120,5 +122,6 @@ function Foodcard({id, title, image,description,price,rate,count}) {
           </Box>
         </Box>
       </Flex>
+      </Link>
     );
   }export default Foodcard;

@@ -26,7 +26,7 @@ import "../Css/womens.css";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
 
-const MensClothing = () => {
+const HomeFurnishing = () => {
   const { products, loading, error } = useSelector((state) => state.women);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -36,7 +36,7 @@ const MensClothing = () => {
     dispatch(reqProduct());
     try {
       let res = await axios.get(
-        "https://alok-verma-rct.onrender.com/MensClothing"
+        "https://alok-verma-rct.onrender.com/homeFurnishing"
       );
       let data = res.data;
       dispatch(sucProduct(data));
@@ -47,7 +47,7 @@ const MensClothing = () => {
 
   const AddToCartItem = async (id) => {
     let data = await axios.get(
-      `https://alok-verma-rct.onrender.com/MensClothing/${id}`
+      `https://alok-verma-rct.onrender.com/homeFurnishing/${id}`
     );
     const NewProduct = { ...data.data, quantity: 1 };
 
@@ -70,7 +70,7 @@ const MensClothing = () => {
     dispatch(reqProduct());
     try {
       let res = await axios.get(
-        "https://alok-verma-rct.onrender.com/MensClothing"
+        "https://alok-verma-rct.onrender.com/homeFurnishing"
       );
       let data = res.data;
       data.sort((a, b) => a.price - b.price);
@@ -85,7 +85,7 @@ const MensClothing = () => {
     dispatch(reqProduct());
     try {
       let res = await axios.get(
-        "https://alok-verma-rct.onrender.com/MensClothing"
+        "https://alok-verma-rct.onrender.com/homeFurnishing"
       );
       let data = res.data;
       data.sort((a, b) => b.price - a.price);
@@ -125,8 +125,8 @@ const MensClothing = () => {
             Select
           </MenuButton>
           <MenuList>
-            <Link to="/Mens/MensFootwear"><MenuItem>Footwear</MenuItem></Link>
-            <Link to="/Mens/MensEyewear"><MenuItem>Eyewear</MenuItem></Link>
+            <Link to="/tools"><MenuItem>Tools</MenuItem></Link>
+            <Link to="/kitchen"><MenuItem>Kitchen Appliances</MenuItem></Link>
           </MenuList>
         </Menu>
       </Card>
@@ -146,7 +146,7 @@ const MensClothing = () => {
         ) : (
           products?.map((item) => {
             return (
-              <Link to={`/Mens/MensClothing/${item.id}`}>
+              <Link to={`/homeFurnishing/${item.id}`}>
               <Flex
                 p={5}
                 w="fit-content"
@@ -183,7 +183,7 @@ const MensClothing = () => {
                       cursor={"pointer"}
                       className="product-title"
                       onClick={() => {
-                        navigate(`/Mens/MensClothing/${item.id}`);
+                        navigate(`/homeFurnishing/${item.id}`);
                       }}
                     >
                       {item.title}
@@ -238,4 +238,4 @@ const MensClothing = () => {
   );
 };
 
-export default MensClothing;
+export default HomeFurnishing;
