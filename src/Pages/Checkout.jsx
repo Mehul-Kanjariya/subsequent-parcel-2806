@@ -358,8 +358,6 @@ export default function Checkout() {
         </ButtonGroup>
       </Box>
 
-     <Button bgColor="#edf2f7" >Procced to Checkout </Button>
-
     </>
   );
 }
