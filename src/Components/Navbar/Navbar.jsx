@@ -169,9 +169,11 @@ const Navbar = () => {
               Home & Kitchen
             </MenuItem>
             </Link>
+            <Link to="/toys">
             <MenuItem icon={<EditIcon />} >
               Toys, Kid's Fashion
             </MenuItem>
+            </Link>
             <Link to="/foodprod">
             <MenuItem icon={<StarIcon />} >
               Beauty & Health

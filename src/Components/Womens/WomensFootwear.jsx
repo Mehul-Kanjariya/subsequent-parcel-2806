@@ -121,7 +121,7 @@ const WomensFootwear = () => {
         </Heading>
         <Menu p="30px">
           <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
-            Select
+          Footwear
           </MenuButton>
           <MenuList>
             <Link to="/Womens/WomensEthnicDresses"><MenuItem>Ethnic Dresses</MenuItem></Link>
@@ -131,7 +131,7 @@ const WomensFootwear = () => {
       </Card>
       <SimpleGrid columns={[1, 1, 4]} m="20px" p="10px" textAlign="center">
         {loading ? (
-          <div style={{ textAlign: "center" }}>
+          <div style={{ textAlign: "center", height:"47vh" }}>
             <Spinner
               thickness="4px"
               speed="0.65s"

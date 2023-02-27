@@ -122,7 +122,7 @@ const KitchenAppliances = () => {
         </Heading>
         <Menu p="30px">
           <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
-            Select
+          Kitchen Appliances
           </MenuButton>
           <MenuList>
             <Link to="/tools"><MenuItem>Tools</MenuItem></Link>
@@ -132,7 +132,7 @@ const KitchenAppliances = () => {
       </Card>
       <SimpleGrid columns={[1, 2, 4]} m="20px" p="10px" textAlign="center">
         {loading ? (
-          <div style={{ textAlign: "center" }}>
+          <div style={{ textAlign: "center", height:"47vh" }}>
             <Spinner
               thickness="4px"
               speed="0.65s"

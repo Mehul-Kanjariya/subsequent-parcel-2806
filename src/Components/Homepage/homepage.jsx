@@ -11,6 +11,7 @@ import BackToTopButton from "./BackToTopButton";
 import searchlogo from "./HomepageImage/searchlogo.png";
 import AppleButton from "./HomepageImage/AppleButton.png";
 import google from "./HomepageImage/GooglePlayButton.png";
+import { Link } from "react-router-dom";
 
 
 const Homepage = () => {
@@ -27,7 +28,7 @@ const Homepage = () => {
               />
             </div>
             <div>
-              <p>Men's Fashion</p>
+              <Link to="/Mens/MensClothing"><p>Men's Fashion</p></Link>
             </div>
           </div>
           
@@ -40,7 +41,7 @@ const Homepage = () => {
               />
             </div>
             <div>
-              <p>Women's Fashion</p>
+            <Link to="/Womens/WomensEthnicDresses"><p>Women's Fashion</p></Link>
             </div>
           </div>
           <div>
@@ -52,7 +53,7 @@ const Homepage = () => {
               />
             </div>
             <div>
-              <p>Home & Kitchen Ap..</p>
+            <Link to="/homeFurnishing"><p>Home & Kitchen Ap..</p></Link>
             </div>
           </div>
           <div>
@@ -63,7 +64,7 @@ const Homepage = () => {
               />
             </div>
             <div>
-              <p>Toy Kid's fashion & more</p>
+              <Link to="toys"><p>Toy Kid's fashion & more</p></Link>
             </div>
           </div>
           <div>
@@ -74,7 +75,7 @@ const Homepage = () => {
               />
             </div>
             <div>
-              <p>Beauty, Health & Daily..</p>
+              <Link to="/foodprod"><p>Beauty, Health & Daily..</p></Link>
             </div>
           </div>
           <h2>MORE CATEGORIES</h2>

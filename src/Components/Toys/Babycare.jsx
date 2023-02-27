@@ -19,14 +19,14 @@ import { FiShoppingCart } from "react-icons/fi";
 import { useEffect } from "react";
 import axios from "axios";
 import { errProduct, reqProduct, sucProduct } from "../../Redux/Women/actions";
-import { Divider, Heading, SimpleGrid } from "@chakra-ui/layout";
+import { Center, Divider, Heading, SimpleGrid } from "@chakra-ui/layout";
 import "../Css/hover-glow-shadow.css";
 import { useNavigate } from "react-router";
 import "../Css/womens.css";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
 
-const MensClothing = () => {
+const Babycare = () => {
   const { products, loading, error } = useSelector((state) => state.women);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -36,7 +36,7 @@ const MensClothing = () => {
     dispatch(reqProduct());
     try {
       let res = await axios.get(
-        "https://alok-verma-rct.onrender.com/MensFootwear"
+        "https://alok-verma-rct.onrender.com/babycare"
       );
       let data = res.data;
       dispatch(sucProduct(data));
@@ -47,12 +47,12 @@ const MensClothing = () => {
 
   const AddToCartItem = async (id) => {
     let data = await axios.get(
-      `https://alok-verma-rct.onrender.com/MensFootwear/${id}`
+      `https://alok-verma-rct.onrender.com/crankdealCart/${id}`
     );
     const NewProduct = { ...data.data, quantity: 1 };
 
     axios
-      .post("https://alok-verma-rct.onrender.com/crankdealCart", NewProduct)
+      .post("https://alok-verma-rct.onrender.com/babycare", NewProduct)
       .then(() =>
         toast({
           title: "Item Added",
@@ -70,7 +70,7 @@ const MensClothing = () => {
     dispatch(reqProduct());
     try {
       let res = await axios.get(
-        "https://alok-verma-rct.onrender.com/MensFootwear"
+        "https://alok-verma-rct.onrender.com/babycare"
       );
       let data = res.data;
       data.sort((a, b) => a.price - b.price);
@@ -85,7 +85,7 @@ const MensClothing = () => {
     dispatch(reqProduct());
     try {
       let res = await axios.get(
-        "https://alok-verma-rct.onrender.com/MensFootwear"
+        "https://alok-verma-rct.onrender.com/babycare"
       );
       let data = res.data;
       data.sort((a, b) => b.price - a.price);
@@ -122,11 +122,11 @@ const MensClothing = () => {
         </Heading>
         <Menu p="30px">
           <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
-          Footwear
+            Babycare
           </MenuButton>
           <MenuList>
-            <Link to="/Mens/MensEyewear"><MenuItem>Eyewear</MenuItem></Link>
-            <Link to="/Mens/MensClothing"><MenuItem>Clothing</MenuItem></Link>
+            <Link to="/toys"><MenuItem>Toys</MenuItem></Link>
+            <Link to="/stationary"><MenuItem>Stationary</MenuItem></Link>
           </MenuList>
         </Menu>
       </Card>
@@ -146,7 +146,7 @@ const MensClothing = () => {
         ) : (
           products?.map((item) => {
             return (
-              <Link to={`/Mens/MensFootwear/${item.id}`}>
+              <Link to={`/babycare/${item.id}`}>
               <Flex
                 p={5}
                 w="fit-content"
@@ -183,7 +183,7 @@ const MensClothing = () => {
                       cursor={"pointer"}
                       className="product-title"
                       onClick={() => {
-                        navigate(`/Mens/MensFootwear/${item.id}`);
+                        navigate(`/babycare/${item.id}`);
                       }}
                     >
                       {item.title}
@@ -238,4 +238,4 @@ const MensClothing = () => {
   );
 };
 
-export default MensClothing;
+export default Babycare;
