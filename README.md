@@ -8,6 +8,25 @@
 > It has 5 modules Authentication, Admin, User, Add to Cart, Checkout.
 
 > CrackDeal application was built during the construct week at [Masai School](https://masaischool.com/). Completed the project in five days with a team of five aspiring developers.
+# Screenshots
+# Homepage
+![Screenshot (145)](https://user-images.githubusercontent.com/112845916/221496830-378aef53-138f-41ae-bf32-152d0ab1badf.png)
+
+# Products Page
+![Screenshot (150)](https://user-images.githubusercontent.com/112845916/221497075-50069191-54ad-4648-b2db-faa00da16673.png)
+
+# Cart Page
+![Screenshot (146)](https://user-images.githubusercontent.com/112845916/221497175-daecbf60-65df-4903-80ae-a08b927ef908.png)
+
+# Payments Page
+![Screenshot (149)](https://user-images.githubusercontent.com/112845916/221497372-201c8b18-a30a-451b-85e5-ee7b2f2a4a1b.png)
+
+# Admins page
+![Screenshot (147)](https://user-images.githubusercontent.com/112845916/221497277-066a7a99-482a-47b9-b206-c3ba0687dd11.png)
+
+# Update Page
+![Screenshot (148)](https://user-images.githubusercontent.com/112845916/221497450-98c17e55-9c17-41ef-bb16-f386df2a6527.png)
+
 
 # Features
 
