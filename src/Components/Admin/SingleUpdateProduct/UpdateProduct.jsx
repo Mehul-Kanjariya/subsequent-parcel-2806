@@ -99,7 +99,7 @@ React.useEffect(()=>{
             }}
             style={{ marginTop: "25px", marginBottom: "20px" }}
           >
-            ADD NEW PRODUCT
+            UPDATE PRODUCT
           </Heading>
         </Center>
         <div className={styles.updateButton}>
