@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-
+import styles from "./Navbar.module.css"
 import {
   Menu,
   MenuButton,
@@ -137,14 +137,19 @@ const Navbar = () => {
   }, []);
 
   return (
-    <Flex backgroundColor="#e40046" alignItems={"center"} w={"100%"}>
-      <Flex flex={1} alignItems={"center"} gap={5}>
+    <Flex 
+      backgroundColor="#e40046" 
+      alignItems={"center"} 
+      w={"100%"} 
+      padding={{base:"10px 0", sm:"0"}}
+      >
+      <Flex flex={1} alignItems={"center"} gap={{base:"2", sm:"5"}}>
         <Image
           src={logo}
           onClick={() => mynav("/")}
           alt="err"
           cursor={"pointer"}
-          width={{ base: "150px", md: "250px" }}
+          width={{ base: "60%", md: "70%", lg:"52%" }}
         />
         <Menu>
           <MenuButton
@@ -152,6 +157,8 @@ const Navbar = () => {
             aria-label="Options"
             icon={<HamburgerIcon />}
             variant="outline"
+            width={{base:"25px", md:"14%", lg:"10%"}}
+            height={{base:"25px", sm:"35px", md:"35px", lg:"37px", "2xl":"43px"}}
           />
           <MenuList zIndex={100}>
             <Link to="/Mens/MensClothing">
@@ -183,7 +190,7 @@ const Navbar = () => {
         </Menu>
       </Flex>
 
-      <Show above={"lg"}>
+      <Show above={"md"}>
         <Flex flex={1}>
           <Input
             placeholder="search products & brands"
@@ -208,7 +215,8 @@ const Navbar = () => {
       <Flex flex={1} justifyContent="space-evenly" alignItems={"center"}>
         <Flex gap={1}>
           <BsCart2
-            style={{ fontSize: "30px", color: "white" }}
+            className={styles.cart}
+            style={{ color: "white" }}
             cursor="pointer"
             ref={btnRef}
             onClick={() => {
@@ -220,6 +228,7 @@ const Navbar = () => {
           </BsCart2>
 
           <Text
+            display={{base:"none", sm:"block"}}
             style={{ fontSize: "25px", color: "white" }}
             cursor="pointer"
             ref={btnRef}
@@ -399,7 +408,11 @@ const Navbar = () => {
           </Flex> : 
           <Flex gap={5}>
             <Menu>
-              <MenuButton as={Button}>Sign Up</MenuButton>
+              <MenuButton as={Button}
+              w={{base:"fit-content"}}
+              h={{base:"25px", sm:"35px", md:"40px", lg:"43px"}}
+              fontSize={{base:"13px", sm:"100%", md:"110%"}}
+              >Sign Up</MenuButton>
               <MenuList>
                 <MenuGroup title="Profile">
                   <MenuDivider />
@@ -413,9 +426,9 @@ const Navbar = () => {
                 <MenuDivider />
               </MenuList>
             </Menu>
-            <BsFillPersonFill style={{ fontSize: "35px", color: "white" }}>
+            {/* <BsFillPersonFill style={{ fontSize: "35px", color: "white" }}>
               {" "}
-            </BsFillPersonFill>
+            </BsFillPersonFill> */}
           </Flex>
 }
       </Flex>

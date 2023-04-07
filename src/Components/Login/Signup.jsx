@@ -87,7 +87,7 @@ const Signup = () => {
           boxShadow={'lg'}
           p={8}>
           <Stack spacing={4}>
-            <HStack>
+            <Flex flexDirection={{base:"column", sm:"row"}} gap={{sm:"10px"}}>
               <Box>
                 <FormControl id="firstName" isRequired>
                   <FormLabel>First Name</FormLabel>
@@ -100,7 +100,7 @@ const Signup = () => {
                   <Input type="text" onChange={(e)=>setlastname(e.target.value)} value={lastname} />
                 </FormControl>
               </Box>
-            </HStack>
+            </Flex>
             <FormControl id="email" isRequired>
               <FormLabel>Email address</FormLabel>
               <Input type="email" onChange={(e)=>setemail(e.target.value)} value={email} />
