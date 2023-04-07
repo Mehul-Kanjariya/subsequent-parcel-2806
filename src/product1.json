@@ -1,0 +1,81 @@
+[
+    {
+        "id": 1,
+        "image": "https://n1.sdlcdn.com/imgs/k/j/1/large/Groviva-Growth-Development-chocolate-Energy-SDL330135374-1-8470a.webp",
+        "title" : "Nutrition & Supplements",
+        "price" : "Rs. 147",
+        "reviews" : {
+          "rating" : "4.1",
+          "count" : "156"
+        },
+        "discount" : "5%  OFF",
+        "category" : "Nutrition & Supplements",
+        "link":"drinkprod"
+      },
+      {
+        "id": 2,
+        "image": "https://n2.sdlcdn.com/imgs/k/m/6/large/MuscleBlaze-Oats-1-kg-SDL898505579-1-d05b9.webp",
+        "title" : "Food & Gourmet",
+        "price" : "Rs. 309",
+        "reviews" : {
+          "rating" : "3.0",
+          "count" : "206"
+        },
+        "discount" : "7%  OFF",
+        "category" : "Food & Gourmet",
+        "link":"foodprod"
+      },
+      {
+        "id": 3,
+        "image": "https://n1.sdlcdn.com/imgs/i/z/e/large/Creature-Yellow-Wayfarer-Sunglasses-DOIT-SDL956148515-1-1ea44.webp",
+        "title" : "Eyewear",
+        "price" : "Rs. 950 ",
+        "reviews" : {
+          "rating" : "4.6",
+          "count" : "199"
+        },
+        "discount" : "5%  OFF",
+        "category" : "Eyewear",
+        "link":"Mens/MensEyewear"
+      },
+      {
+        "id": 4,
+        "image": "https://n4.sdlcdn.com/imgs/k/l/w/large/Estela-Maroon-Satin-Chaniya-Choli-SDL626931428-1-975d3.webp",
+        "title" : "WomensDresses",
+        "price" : "Rs. 369",
+        "reviews" : {
+          "rating" : "4.3",
+          "count" : "206"
+        },
+        "discount" : "8%  OFF",
+        "category" : "Toys & Games",
+        "link":"Womens/WomensDresses"
+    },
+      {
+        "id": 5,
+        "image": "https://n2.sdlcdn.com/imgs/j/p/1/large/Exclusive-Dikawen-8037-Gold-Plated-SDL930527473-1-4bbf8.JPG",
+        "title" : "Stationary",
+        "price" : "Rs. 369",
+        "reviews" : {
+          "rating" : "4.3",
+          "count" : "206"
+        },
+        "discount" : "8%  OFF",
+        "category" : "Stationary",
+        "link":"stationary"
+      },
+      {
+        "id": 6,
+        "image": "https://n4.sdlcdn.com/imgs/k/c/h/large/Maharaja-Whiteline-Ultramax-Elite-MX222-SDL630720545-1-85bed.webp",
+        "title" : "Kitchen Appliance",
+        "price" : "Rs. 369",
+        "reviews" : {
+          "rating" : "4.3",
+          "count" : "206"
+        },
+        "discount" : "8%  OFF",
+        "category" : "Kitchen Appliance",
+        "link":"kitchen"
+      }
+      
+]
