@@ -1,3 +1,4 @@
+import React from "react";
 import { Spinner } from "@chakra-ui/spinner";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -14,6 +15,11 @@ import {
   MenuList,
   MenuItem,
   Button,
+  Stack,
+  Radio,
+  RadioGroup,
+  Text,
+  Center
 } from "@chakra-ui/react";
 import { FiShoppingCart } from "react-icons/fi";
 import { useEffect } from "react";
@@ -28,6 +34,7 @@ import { Link } from "react-router-dom";
 
 const WomensDresses = () => {
   const { products, loading, error } = useSelector((state) => state.women);
+  const [sort, setSort] = React.useState("")
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const toast = useToast();
@@ -105,22 +112,30 @@ const WomensDresses = () => {
     <Flex direction={["column", "row"]} justifyContent="space-between">
       <Card m="10px 0px" w="20%" p="20px">
         <Heading size={"md"} m="10px">
-          Sorting
+        Sort price
         </Heading>
-        <Menu p="30px">
-          <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
-            Price
-          </MenuButton>
-          <MenuList>
-            <MenuItem onClick={HighToLow}> High to Low</MenuItem>
-            <MenuItem onClick={LowToHigh}>Low to High</MenuItem>
-          </MenuList>
-        </Menu>
+        <Center>
+        <RadioGroup value={sort} onChange={(value)=>setSort(value)}>
+            <Stack direction='column'>
+                <Radio value='asc' onClick={LowToHigh}><Text onClick={LowToHigh}>Low to High</Text></Radio>
+                <Radio value='desc' onClick={HighToLow}><Text onClick={HighToLow}>High to Low</Text></Radio>
+            </Stack>
+        </RadioGroup>
+        </Center>
         <br/>
         <Heading size={"md"} m="10px">
           Categories
         </Heading>
-        <Menu p="30px">
+        <Center>
+        <RadioGroup defaultValue="dresses">
+            <Stack direction='column' textAlign={"left"}>
+                <Radio value={"dresses"}>Dresses</Radio>
+                <Link to="/Womens/WomensFootwear"><Radio value={"footwear"}>Footwear</Radio></Link>
+                <Link to="/Womens/WomensEthnicDresses"><Radio value={"ethnic Dresses"}>Ethnic Dresses</Radio></Link>
+            </Stack>
+        </RadioGroup>
+        </Center>
+        {/* <Menu p="30px">
           <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
             Dresses
           </MenuButton>
@@ -128,7 +143,7 @@ const WomensDresses = () => {
             <Link to="/Womens/WomensFootwear"><MenuItem>Footwear</MenuItem></Link>
             <Link to="/Womens/WomensEthnicDresses"><MenuItem>Ethnic Dresses</MenuItem></Link>
           </MenuList>
-        </Menu>
+        </Menu> */}
       </Card>
       <SimpleGrid columns={[1, 2, 4]} m="20px" p="10px" textAlign="center">
         {loading ? (

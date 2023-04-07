@@ -1,0 +1,8 @@
+.cart{
+    font-size: 30px;
+}
+@media (max-width:350px){
+    .cart{
+        font-size: 25px;
+    }
+}
