@@ -1,62 +1,67 @@
 [
     {
         "id": 1,
-        "image": "https://n3.sdlcdn.com/imgs/i/u/v/large/HeelSocks1-aeb5a.jpg",
-        "title" : "Stay Healthy - Foot Protector (Free Size)",
+        "image": "https://n4.sdlcdn.com/imgs/k/e/u/large/Veirdo-100-Cotton-Regular-Fit-SDL302182620-1-f0fac.jpg",
+        "title" : "Men's Wear",
         "price" : "Rs. 147",
         "reviews" : {
           "rating" : "4.1",
           "count" : "156"
         },
-        "discount" : "75%  OFF",
-        "category" : " Men's footwear"
+        "discount" : "5%  OFF",
+        "category" : "Men's Wear",
+        "link":"Mens/MensClothing"
       },
       {
         "id": 2,
         "image": "https://n1.sdlcdn.com/imgs/k/k/i/Aarika-Green-Cotton-Shirt-Single-SDL419320104-1-91ff0.jpg",
-        "title" : "Aarika Green Cotton Shirt - Single",
+        "title" : "Women's Wear",
         "price" : "Rs. 309",
         "reviews" : {
           "rating" : "3.0",
           "count" : "206"
         },
-        "discount" : "75%  OFF",
-        "category" : " Men's footwear"
+        "discount" : "7%  OFF",
+        "category" : "Women's Wear",
+        "link":"Womens/WomensFootwear"
       },
       {
         "id": 3,
-        "image": "https://n1.sdlcdn.com/imgs/k/l/7/Swiggy-E-Gift-Card-SDL492233984-1-6ef1d.jpg",
-        "title" : "Swiggy E-Gift Card",
+        "image": "https://n1.sdlcdn.com/imgs/i/z/e/large/Bentag-Vegetable-Fruit-Clever-Cutter-SDL841893040-1-ea5e3.jpg",
+        "title" : "Home & Kitchen",
         "price" : "Rs. 950 ",
         "reviews" : {
           "rating" : "4.6",
           "count" : "199"
         },
         "discount" : "5%  OFF",
-        "category" : " Men's footwear"
+        "category" : "Home & Kitchen",
+        "link":"tools"
       },
       {
         "id": 4,
-        "image": "https://n4.sdlcdn.com/imgs/k/m/p/Rapidex-English-Speaking-Course-Bangla-SDL867228474-1-04ec6.jpg",
-        "title" : "Rapidex English Speaking Course (Bangla) (With Youtube AV)",
+        "image": "https://n4.sdlcdn.com/imgs/g/u/l/large/Webby-Remote-Controlled-Super-Car-SDL527156456-1-7e890.webp",
+        "title" : "Toys & Games",
         "price" : "Rs. 369",
         "reviews" : {
           "rating" : "4.3",
           "count" : "206"
         },
         "discount" : "8%  OFF",
-        "category" : " Men's footwear"
+        "category" : "Toys & Games",
+        "link":"toys"
       },
       {
         "id": 5,
-        "image": "https://n4.sdlcdn.com/imgs/k/m/p/Rapidex-English-Speaking-Course-Bangla-SDL867228474-1-04ec6.jpg",
-        "title" : "Rapidex English Speaking Course (Bangla) (With Youtube AV)",
+        "image": "https://n1.sdlcdn.com/imgs/j/h/z/large/Swiss-Beauty-Real-Makeup-Base-SDL072209983-1-cfb24.jpeg",
+        "title" : "Beauty & SkinCare",
         "price" : "Rs. 369",
         "reviews" : {
           "rating" : "4.3",
           "count" : "206"
         },
         "discount" : "8%  OFF",
-        "category" : " Men's footwear"
+        "category" : "Beauty & SkinCare",
+        "link":"productCategoryface"
       }
 ]

@@ -12,6 +12,7 @@ import {
 import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs';
 import { FiShoppingCart } from 'react-icons/fi';
 import "./homepage.css";
+import { Link } from 'react-router-dom';
 const data = {
   isNew: true,
   imageURL:
@@ -52,9 +53,11 @@ const data = {
 //   );
 // }
 
-function Product_card({id, title, image,description,price}) {
+function Product_card({id, title, image,description,price,discount,link}) {
   return (
+
     <Flex className="hvr-icon-buzz-out hvr-icon product_flex" padding={2} w="fit-content" alignItems="center" justifyContent="center">
+      <Link  to={`/${link}`}>
       <Box
         bg={useColorModeValue('white', 'gray.800')}
         // maxW="sm"
@@ -70,7 +73,7 @@ function Product_card({id, title, image,description,price}) {
             position="absolute"
             top={2}
             right={2}
-            bg="red.200"
+           // bg="red.200"
           />
         )}
 
@@ -98,7 +101,7 @@ function Product_card({id, title, image,description,price}) {
               isTruncated>
               {title}
             </Box>
-            <Tooltip
+            {/* <Tooltip
               label="Add to cart"
               bg="white"
               placement={'top'}
@@ -107,20 +110,21 @@ function Product_card({id, title, image,description,price}) {
               <chakra.a href={'#'} display={'flex'}>
                 <Icon as={FiShoppingCart} h={7} w={7} alignSelf={'center'} />
               </chakra.a>
-            </Tooltip>
+            </Tooltip> */}
           </Flex>
 
           <Flex justifyContent="space-between" alignContent="center" >
-            {/* <Rating rating={data.rating} numReviews={data.numReviews} display={"flex"} /> */}
-            <Box fontSize="2xl" color={useColorModeValue('gray.800', 'white')}>
+            {/* <Rating rating={data.rating} numReviews={data.numReviews} display={"flex"} />  */}
+            <Box fontSize="xl" mt={2} color={useColorModeValue('gray.800', 'white')}>
               <Box as="span" color={'gray.600'} fontSize="sm">
                 
               </Box>
-              {price}
+              {discount}
             </Box>
           </Flex>
         </Box>
       </Box>
+      </Link>
     </Flex>
   );
 }

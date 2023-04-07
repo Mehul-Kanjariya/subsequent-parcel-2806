@@ -1,9 +1,11 @@
 import React from "react";
 import SliderImages from "../../slides.json";
 import Products from "../../products.json";
+import Product1 from "../../product1.json"
 import "./homepage.css";
 
 import Product_card from "./product";
+
 import Carousel from "./slider";
 
 import { SimpleSlider } from "./slider2";
@@ -111,7 +113,7 @@ const Homepage = () => {
           </div>
           <div className="product_card">
             <div>
-              <h2>RECENTLY VIEWED PRODUCTS</h2>
+              <h2>RECENTLY VIEWED CATEGORIES</h2>
             </div>
 
             <div className="products">
@@ -123,9 +125,16 @@ const Homepage = () => {
           </div>
         </div>
       </div>
+      
+      <div >
+      <h2 style={{textAlign:"left", fontSize:"21px",marginTop:"10px",color:"#333333",fontWeight:"600"
+   }}>TRENDING CATEGORIES</h2>
       <div className="product_slider">
-        <h2>TRENDING PRODUCTS</h2>
-        <SimpleSlider SliderImages={SliderImages} />
+        {Product1.length > 0 &&
+                Product1.map((item) => {
+                  return <Product_card key={item.id} {...item} />;
+                })}
+      </div>
       </div>
       <div className="banner">
         <div className="mobile-banner">
@@ -147,8 +156,7 @@ const Homepage = () => {
             <button>
               <img src={google} alt="" />
             </button>
-            </a>
-            
+            </a>         
           </div>
         </div>
       </div>
