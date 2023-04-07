@@ -117,9 +117,9 @@ function Product_card({id, title, image,description,price,discount,link}) {
             {/* <Rating rating={data.rating} numReviews={data.numReviews} display={"flex"} />  */}
             <Box fontSize="xl" mt={2} color={useColorModeValue('gray.800', 'white')}>
               <Box as="span" color={'gray.600'} fontSize="sm">
-                
-              </Box>
               {discount}
+              </Box>
+              
             </Box>
           </Flex>
         </Box>

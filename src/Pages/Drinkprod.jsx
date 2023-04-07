@@ -1,8 +1,8 @@
-import { Box, Button, Flex } from "@chakra-ui/react";
+import { Box, Button, Flex, SimpleGrid } from "@chakra-ui/react";
 import React, { useEffect ,useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 //import { getFaceData } from '../Redux/Health&Beauty/actions';
-import { Grid, GridItem,Heading,RadioGroup,Radio,Stack} from '@chakra-ui/react'
+import { Grid, GridItem,Heading} from '@chakra-ui/react'
 import { Image } from '@chakra-ui/react'
 import { getDrinkData } from "../Redux/Health&Beauty/actions";
 import Foodcard from "./Foodcard";
@@ -24,6 +24,7 @@ const Drinkprod = () => {
   setSortProduct(e.target.value)
   }
   return (
+    <>
     <Flex style={{ margin:"auto",justifyContent:"center",alignItems:"center"}}>
     <Box width="15%" style={{border:"1px solid red",marginTop:"-2100px",padding:"10px",borderRadius:"5px",backgroundColor:"pink"}} >
       <p>Select Functionalities</p>
@@ -49,18 +50,26 @@ const Drinkprod = () => {
       Beauty Products Page
       </button>
     </Box>
-    <Box>
+    
+
+<Box width="70%"  m="auto"  justifyContent="center">
+<Box>
     <Box style={{marginBottom:"10px",fontFamily:"sans-serif",marginTop:"10px"}}>
         <Heading style={{fontFamily:"monospace"}} >Nutrition & Supplements</Heading>
 </Box>
-<Grid width="70%" templateColumns='repeat(4, 1fr)' m="auto"  justifyContent="center" gap='2' >
-{products.map((item)=>(
-<Drinkcard key={item.id} {...item}  />
+{/* <Grid width="70%" templateColumns='repeat(4, 1fr)' m="auto"  justifyContent="center" gap='2' > */}
+
+</Box>
+<SimpleGrid minChildWidth={250}   >
+{products.map((item)=>{
+ return <Drinkcard key={item.id} {...item}  />
   
-))}
-</Grid>
+})}
+{/* </Grid> */}
+</SimpleGrid>
 </Box>
 </Flex>
+</>
   )
 }
 
