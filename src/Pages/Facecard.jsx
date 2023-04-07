@@ -70,7 +70,7 @@ function Facecard({id, title, image,description,price,rate,count}) {
               position="absolute"
               top={2}
               right={2}
-              bg="red.200"
+              // bg="red.200"
             />
           )}        <Image
             src={image}

@@ -1,4 +1,4 @@
-import { Box, Button, Flex } from "@chakra-ui/react";
+import { Box, Button, Flex, SimpleGrid } from "@chakra-ui/react";
 import React, { useEffect,useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getFaceData } from '../Redux/Health&Beauty/actions';
@@ -47,16 +47,18 @@ const Foodprod = () => {
      Nutrition  Page
       </button>
     </Box>
-    <Box>
+    <Box width="70%"  m="auto"  justifyContent="center"v>
     <Box style={{marginBottom:"10px",fontFamily:"sans-serif",marginTop:"10px"}}>
         <Heading style={{fontFamily:"monospace"}} >Food & Gourmet</Heading>
 </Box>
-<Grid width="70%" templateColumns='repeat(4, 1fr)' m="auto"  justifyContent="center" gap='2' >
+{/* <Grid width="70%" templateColumns='repeat(4, 1fr)' m="auto"  justifyContent="center" gap='2' > */}
+<SimpleGrid minChildWidth={250}   >
 {products.map((item)=>(
 <Foodcard key={item.id} {...item}  />
   
 ))}
-</Grid>
+</SimpleGrid>
+{/* </Grid> */}
 </Box>
 </Flex>
   )
