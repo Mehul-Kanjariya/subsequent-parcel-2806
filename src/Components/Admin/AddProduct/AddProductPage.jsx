@@ -182,11 +182,12 @@ const AddProductPage = () => {
                     <option value="toys">Toys</option>
                     <option value="babycare">Babycare</option>
                     <option value="stationary">Stationary</option>
-                    <option value="WomensEthnicWear">Womens Ethnic</option>
-                    <option value="WomensFootwear ">Womens Footwear</option>
-                    <option value="WomensDresses ">Womens Dresses</option>
-                    <option value="MensFootwear ">Mens Footwear</option>
-                    <option value="MenseyeWear ">Mens EyeWear</option>
+                    <option value="WomensEthnicWear">Women's Ethnic</option>
+                    <option value="WomensFootwear">Women's Footwear</option>
+                    <option value="WomensDresses">Women's Dresses</option>
+                    <option value="MensFootwear">Men's Footwear</option>
+                    <option value="MensClothing">Men's Clothing</option>
+                    <option value="MenseyeWear">Men's EyeWear</option>
                   </Select>
                   <div className={styles.button}>
                     <Button

@@ -51,16 +51,19 @@ import { MdOutlinePayments } from "react-icons/md";
 
 import { useDispatch, useSelector } from "react-redux";
 import { fetchData } from "../../Redux/Auth/actions";
+import { searchProducts } from "../../Redux/Search/actions"
 
 const Navbar = () => {
   const { isAuth,admin,name } = useSelector((store) => store.auth);
   const mynav = useNavigate();
+  const search = useNavigate();
 
   const [CartData, setCartData] = useState([]);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef();
   const [show, setShow] = useState(false);
   const [TotalSum, setTotalSum] = useState(0);
+  const [query, setQuery] = useState("");
 
   const GetCartData = () => {
     axios
@@ -125,6 +128,11 @@ const Navbar = () => {
     localStorage.removeItem("Auth");
     window.location.reload();
   };
+
+  const SearchClick = () => {
+    dispatch(searchProducts(query))
+    search("/search")
+  }
 
   useEffect(() => {
     let id = JSON.parse(localStorage.getItem("id"));
@@ -193,17 +201,21 @@ const Navbar = () => {
       <Show above={"md"}>
         <Flex flex={1}>
           <Input
+            value={query}
             placeholder="search products & brands"
             type="text"
             w="100%"
             borderRadius="0"
             bgColor="white"
+            onChange = {(e)=>setQuery(e.target.value)}
           />
 
           <Button
             bgColor={"#333333"}
             color="white"
             borderRadius="0"
+            isDisabled={query.length==0 ? true : false}
+            onClick={SearchClick}
             _hover={{}}
           >
             <SearchIcon />
@@ -281,7 +293,7 @@ const Navbar = () => {
                       return (
                         <>
                           <Tr key={item.id}>
-                            <Td w="40px">{item.title.substring(1, 50)}....</Td>
+                            <Td w="40px">{item.title.substring(0, 50)}....</Td>
                             <Td>{item.price}</Td>
                             <Td fontSize={"20px"}>
                               <button
