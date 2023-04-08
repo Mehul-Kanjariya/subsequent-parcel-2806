@@ -43,6 +43,8 @@ import Stationary from "../Components/Toys/Stationary";
 import ToysSinglePage from "../Components/SinglePage/Toys&CareSinglePage/ToysSinglePage";
 import StationarySinglePage from "../Components/SinglePage/Toys&CareSinglePage/StationarySinglePage";
 import BabycareSinglePage from "../Components/SinglePage/Toys&CareSinglePage/BabycareSinglePage";
+import Search from "../Components/Search"
+import SearchSinglePage from "../Components/SearchSinglePage";
 
 const AllRoutes = () => {
   return (
@@ -84,6 +86,8 @@ const AllRoutes = () => {
       <Route path="/toys/:id" element={<ToysSinglePage/>} />
       <Route path="/stationary/:id" element={<StationarySinglePage/>} />
       <Route path="/babycare/:id" element={<BabycareSinglePage/>} />
+      <Route path="/search" element={<Search/>} />
+      <Route path="/search/:id" element={<SearchSinglePage/>} />
     </Routes>
   );
 };

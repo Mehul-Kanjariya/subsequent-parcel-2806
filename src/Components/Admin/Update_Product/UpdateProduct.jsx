@@ -74,6 +74,7 @@ const UpdateProduct = () => {
               <option value="WomensFootwear ">Womens Footwear</option>
               <option value="WomensDresses ">Womens Dresses</option>
               <option value="MensFootwear ">Mens Footwear</option>
+              <option value="MensClothing">Men's Clothing</option>
               <option value="MenseyeWear ">Mens EyeWear</option>
             </Select>
           </Box>
