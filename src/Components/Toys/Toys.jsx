@@ -31,7 +31,7 @@ import "../Css/womens.css";
 import { useNavigate } from "react-router";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
-
+import styles from "../Css/mens.module.css";
 const Toys = () => {
   const { products, loading, error } = useSelector((state) => state.women);
   const [sort, setSort] = React.useState("")
@@ -110,7 +110,7 @@ const Toys = () => {
 
   return (
     <Flex direction={["column", "row"]} justifyContent="space-between">
-      <Card m="10px 0px" w="20%" p="20px">
+      <Card className={styles.prodsort} m="10px 0px" w="20%" p="20px">
         <Heading size={"md"} m="10px">
         Sort price
         </Heading>
@@ -145,7 +145,7 @@ const Toys = () => {
           </MenuList>
         </Menu> */}
       </Card>
-      <SimpleGrid columns={[1, 2, 4]} m="20px" p="10px" textAlign="center">
+      <SimpleGrid minChildWidth={250} m="20px" p="10px" w="80%">
         {loading ? (
           <div style={{ textAlign: "center", height:"47vh" }}>
             <Spinner
@@ -161,13 +161,14 @@ const Toys = () => {
         ) : (
           products?.map((item) => {
             return (
-              <Link to={`/toys/${item.id}`}>
+              <Link to={`/babycare/${item.id}`}>
               <Flex
                 p={5}
                 w="fit-content"
                 alignItems="center"
                 justifyContent="center"
                 className="hvr-grow-shadow"
+                key={item.id}
               >
                 <Box
                   width="250px"
@@ -180,6 +181,7 @@ const Toys = () => {
                     src={item.image}
                     alt={`Picture of ${item.title}`}
                     roundedTop="lg"
+                    w="content-fit"
                   />
                   <Flex
                     mt="1"
@@ -196,7 +198,7 @@ const Toys = () => {
                       cursor={"pointer"}
                       className="product-title"
                       onClick={() => {
-                        navigate(`/toys/${item.id}`);
+                        navigate(`/babycare/${item.id}`);
                       }}
                     >
                       {item.title}
