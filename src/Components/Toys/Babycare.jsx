@@ -31,7 +31,7 @@ import { useNavigate } from "react-router";
 import "../Css/womens.css";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
-
+import styles from "../Css/mens.module.css";
 const Babycare = () => {
   const { products, loading, error } = useSelector((state) => state.women);
   const [sort, setSort] = React.useState("")
@@ -110,7 +110,7 @@ const Babycare = () => {
 
   return (
     <Flex direction={["column", "row"]} justifyContent="space-between">
-      <Card m="10px 0px" w="20%" p="20px">
+      <Card className={styles.prodsort} m="10px 0px" w="20%" p="20px">
         <Heading size={"md"} m="10px">
         Sort price
         </Heading>
@@ -145,7 +145,7 @@ const Babycare = () => {
           </MenuList>
         </Menu> */}
       </Card>
-      <SimpleGrid columns={[1, 2, 4]} m="20px" p="10px" w="80%">
+      <SimpleGrid minChildWidth={250} m="20px" p="10px" w="80%">
         {loading ? (
           <div style={{ textAlign: "center", height:"47vh" }}>
             <Spinner
