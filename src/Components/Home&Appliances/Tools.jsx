@@ -173,7 +173,7 @@ const Tools = () => {
               >
                 <Box
                   width="250px"
-                  borderWidth="1px"
+                borderWidth="1px"
                   rounded="lg"
                   shadow="lg"
                   position="relative"

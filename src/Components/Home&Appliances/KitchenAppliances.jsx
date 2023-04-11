@@ -164,7 +164,7 @@ const KitchenAppliances = () => {
               <Link to={`/kitchen/${item.id}`}>
               <Flex
                 p={5}
-                w="fit-content"
+              w="fit-content"
                 alignItems="center"
                 justifyContent="center"
                 className="hvr-grow-shadow"
