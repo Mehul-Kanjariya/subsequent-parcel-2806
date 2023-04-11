@@ -169,7 +169,7 @@ const Babycare = () => {
             return (
               <Link to={`/babycare/${item.id}`}>
               <Flex
-                p={5}
+               p={5}
                 w="fit-content"
                 alignItems="center"
                 justifyContent="center"

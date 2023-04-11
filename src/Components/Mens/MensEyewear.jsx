@@ -172,7 +172,7 @@ const MensClothing = () => {
                 w="fit-content"
                 alignItems="center"
                 justifyContent="center"
-                className="hvr-grow-shadow"
+               className="hvr-grow-shadow"
                 key={item.id}
               >
                 <Box

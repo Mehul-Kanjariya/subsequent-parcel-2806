@@ -191,7 +191,7 @@ const MensClothing = () => {
                   <Flex
                     mt="1"
                     justifyContent="space-between"
-                    alignContent="center"
+                 alignContent="center"
                   >
                     <Box
                       fontSize="20px"
