@@ -161,7 +161,7 @@ const KitchenAppliances = () => {
         ) : (
           products?.map((item) => {
             return (
-              <Link to={`/homeFurnishing/${item.id}`}>
+              <Link to={`/kitchen/${item.id}`}>
               <Flex
                 p={5}
                 w="fit-content"

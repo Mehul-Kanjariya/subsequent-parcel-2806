@@ -160,9 +160,9 @@ const WomensFootwear = () => {
         ) : (
           products?.map((item) => {
             return (
-              <Link to={`/Womens/WomensEthnicDresses/${item.id}`}>
+              <Link to={`/Womens/WomensFootwear/${item.id}`}>
               <Flex
-                p={5}
+             p={5}
                 w="fit-content"
                 alignItems="center"
                 justifyContent="center"

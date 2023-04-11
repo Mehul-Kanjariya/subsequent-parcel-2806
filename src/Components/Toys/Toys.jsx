@@ -152,7 +152,7 @@ const Toys = () => {
               thickness="4px"
               speed="0.65s"
               emptyColor="gray.200"
-              color="blue.500"
+            color="blue.500"
               size="xl"
             />
           </div>
@@ -161,7 +161,7 @@ const Toys = () => {
         ) : (
           products?.map((item) => {
             return (
-              <Link to={`/babycare/${item.id}`}>
+              <Link to={`/toys/${item.id}`}>
               <Flex
                 p={5}
                 w="fit-content"
