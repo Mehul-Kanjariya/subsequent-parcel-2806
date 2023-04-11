@@ -78,6 +78,16 @@ const UpdateProduct = () => {
               <option value="MenseyeWear ">Mens EyeWear</option>
             </Select>
           </Box>
+          <Box width="fit-content">
+            <Button
+              fontWeight={"bold"}
+              background={"black"}
+              color={"white"}
+              _hover={{ background: "#444444", color: "white" }}
+            >
+              <Link to={"/orders"}>User Orders</Link>
+            </Button>
+          </Box>
         </Flex>
         <Box
           style={{ width: "fit-content" }}

@@ -111,11 +111,13 @@ import { useNavigate } from "react-router";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
 import styles from "../Components/Css/mens.module.css";
+
 const Drinkprod = () => {
+  const { userId, isAuth } = useSelector((store) => store.auth);
+  const navigate = useNavigate();
   const { products, loading, error } = useSelector((state) => state.health);
   const [sort, setSort] = React.useState("")
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const toast = useToast();
 
   const FetchData = async () => {
@@ -162,10 +164,14 @@ const Drinkprod = () => {
   };
 
   const AddToCartItem = async (id) => {
+    if(!isAuth){
+      return navigate("/userlogin")
+    }
+
     let data = await axios.get(
       `https://alok-verma-rct.onrender.com/healthdrinks/${id}`
     );
-    const NewProduct = { ...data.data, quantity: 1 };
+    const NewProduct = { ...data.data, quantity: 1, userId };
 
     axios
       .post("https://alok-verma-rct.onrender.com/crankdealCart", NewProduct)

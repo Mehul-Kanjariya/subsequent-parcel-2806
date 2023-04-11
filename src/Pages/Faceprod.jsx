@@ -105,7 +105,9 @@ import { useNavigate } from "react-router";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
 import styles from "../Components/Css/mens.module.css";
+
 const Faceprod = () => {
+  const { userId, isAuth } = useSelector((store) => store.auth);
   const { products, loading, error } = useSelector((state) => state.health);
   const [sort, setSort] = React.useState("")
   const dispatch = useDispatch();
@@ -156,10 +158,14 @@ const Faceprod = () => {
   };
 
   const AddToCartItem = async (id) => {
+    if(!isAuth){
+      return navigate("/userlogin")
+    }
+
     let data = await axios.get(
       `https://alok-verma-rct.onrender.com/beautyface/${id}`
     );
-    const NewProduct = { ...data.data, quantity: 1 };
+    const NewProduct = { ...data.data, quantity: 1, userId };
 
     axios
       .post("https://alok-verma-rct.onrender.com/crankdealCart", NewProduct)
