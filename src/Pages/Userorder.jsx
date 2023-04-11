@@ -37,57 +37,59 @@ const Userorders = () => {
 
     React.useEffect(()=>{
         fetchData();
-    },[])
+    },[]);
+    
     return (
         <div>
-            {orders.length == 0 ? 
+            {
+            orders.length == 0 ? 
               <div style={{ textAlign: "center", height:"56vh",  display:"flex", alignItems:"center" }}>
               <Heading
                   margin={"auto"}
               >
-                  "No Orders Found"
+                  "No Orders"
               </Heading>
-          </div> :
-            <div style={{height:"56vh"}}>
+            </div> :
+            <div style={{marginBottom:"200px"}}>
             <Heading>{name} Your Orders</Heading>
-            <TableContainer p="20px">
-                <Table variant={"simple"}>
-                  <Thead>
-                    <Tr>
-                      <Th>Date</Th>
-                      <Th>Time</Th>
-                      <Th>Item Details</Th>
-                      <Th>Price</Th>
-                      <Th>Quantity</Th>
-                      <Th>Subtotal</Th>
-                      <Th>Payment</Th>
-                      <Th>Delivery</Th>
-                      <Th></Th>
-                    </Tr>
-                  </Thead>
-                  <Tbody>
-                    {orders?.map((item) => {
-                      return (
-                        <>
-                          <Tr key={item.id}>
-                            <Td>{item.date}</Td>
-                            <Td>{item.time}</Td>
-                            <Td w="40px">{item.title.substring(0, 50)}....</Td>
-                            <Td>{item.price}</Td>
-                            <Td fontSize={"20px"}>
-                              {item.quantity}
-                            </Td>
-                            <Td>{item.price * item.quantity}</Td>
-                            <Td>{item.payment == "Success" ? <Text style={{textAlign:"center", borderRadius:"3px", color:"white", background:"green"}}>Success</Text> : <Text style={{textAlign:"center", borderRadius:"3px", background:"Yellow"}}>Pending</Text>}</Td>
-                            <Td>{item.delivery == "Success" ? <Text style={{textAlign:"center", borderRadius:"3px", color:"white", background:"green"}}>Success</Text> : <Text style={{textAlign:"center", borderRadius:"3px", background:"Yellow"}}>Pending</Text>}</Td>
-                            <Td _hover={{cursor:"pointer"}} onClick={()=>deleteOrder(item.id)} style={{background:"red", color:"white", fontWeight:"bold"}}>Delete</Td>
-                          </Tr>
-                        </>
-                      );
-                    })}
-                  </Tbody>
-                </Table>
-              </TableContainer>
+              <TableContainer p="20px">
+                  <Table variant={"simple"}>
+                    <Thead>
+                      <Tr>
+                        <Th>Date</Th>
+                        <Th>Time</Th>
+                        <Th>Item Details</Th>
+                        <Th>Price</Th>
+                        <Th>Quantity</Th>
+                        <Th>Subtotal</Th>
+                        <Th>Payment</Th>
+                        <Th>Delivery</Th>
+                        <Th></Th>
+                      </Tr>
+                    </Thead>
+                    <Tbody>
+                      {orders?.map((item) => {
+                        return (
+                          <>
+                            <Tr key={item.id}>
+                              <Td>{item.date}</Td>
+                              <Td>{item.time}</Td>
+                              <Td w="40px">{item.title.substring(0, 50)}....</Td>
+                              <Td>{item.price}</Td>
+                              <Td fontSize={"20px"}>
+                                {item.quantity}
+                              </Td>
+                              <Td>{item.price * item.quantity}</Td>
+                              <Td>{item.payment == "Success" ? <Text style={{textAlign:"center", borderRadius:"3px", color:"white", background:"green"}}>Success</Text> : <Text style={{textAlign:"center", borderRadius:"3px", background:"Yellow"}}>Pending</Text>}</Td>
+                              <Td>{item.delivery == "Success" ? <Text style={{textAlign:"center", borderRadius:"3px", color:"white", background:"green"}}>Success</Text> : <Text style={{textAlign:"center", borderRadius:"3px", background:"Yellow"}}>Pending</Text>}</Td>
+                              <Td _hover={{cursor:"pointer"}} onClick={()=>deleteOrder(item.id)} style={{background:"red", color:"white", fontWeight:"bold"}}>Delete</Td>
+                            </Tr>
+                          </>
+                        );
+                      })}
+                    </Tbody>
+                  </Table>
+                </TableContainer>
               </div>
           }
         </div>

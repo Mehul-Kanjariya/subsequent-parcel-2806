@@ -463,9 +463,9 @@ const Foodprod = () => {
         <Center>
         <RadioGroup defaultValue="foodprod">
         <Stack direction='column' textAlign={"left"}>
+                <Link to="/drinkprod"><Radio value={"drinkprod"}>Nutrition  Page</Radio></Link>
                 <Radio value={"foodprod"}>Food & Gourmet Page</Radio>
                 <Link to="/productCategoryface"><Radio value={"productCategoryface"}>Beauty Products Page</Radio></Link>
-                <Link to="/drinkprod"><Radio value={"drinkprod"}>Nutrition  Page</Radio></Link>
             </Stack>
         </RadioGroup>
         </Center>

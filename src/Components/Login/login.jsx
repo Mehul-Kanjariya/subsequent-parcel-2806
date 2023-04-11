@@ -7,7 +7,6 @@ import {
     Input,
     Checkbox,
     Stack,
-    Link,
     Button,
     Heading,
     Text,
@@ -16,7 +15,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchData } from '../../Redux/Auth/actions';
 import axios from 'axios';
-import { Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { Navigate, useLocation, useNavigate, Link } from 'react-router-dom';
   
   export default function Login() {
     const navigate= useNavigate();
@@ -94,7 +93,7 @@ import { Navigate, useLocation, useNavigate } from 'react-router-dom';
                   align={'start'}
                   justify={'space-between'}>
                   <Checkbox>Remember me</Checkbox>
-                  <Link color={'blue.400'}>Forgot password?</Link>
+                  <span style={{color:"blue"}}><Link color={'blue.400'} to={"/signup"}>Sign Up</Link></span>
                 </Stack>
                 <Button
                   bg={'blue.400'}

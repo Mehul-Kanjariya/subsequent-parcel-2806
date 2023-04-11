@@ -208,9 +208,9 @@ const Faceprod = () => {
         <Center>
         <RadioGroup defaultValue="productCategoryface">
         <Stack direction='column' textAlign={"left"}>
-                <Radio value={"productCategoryface"}>Beauty Products Page</Radio>
-                <Link to="/foodprod"><Radio value={"foodprod"}> Food & Gourmet Page</Radio></Link>
                 <Link to="/drinkprod"><Radio value={"drinkprod"}>Nutrition  Page</Radio></Link>
+                <Link to="/foodprod"><Radio value={"foodprod"}> Food & Gourmet Page</Radio></Link>
+                <Radio value={"productCategoryface"}>Beauty Products Page</Radio>
             </Stack>
         </RadioGroup>
         </Center>

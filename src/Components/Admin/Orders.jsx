@@ -11,8 +11,10 @@ import {
     Tbody,
     Input,
     Button,
-    Text
+    Text,
+    Heading
   } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 const Orders = () => {
     const [orders, setOrders] = React.useState([]);
@@ -59,7 +61,27 @@ const Orders = () => {
         fetchData();
     },[])
     return (
-        <div style={{height:"56vh"}}>
+      <div>
+        {
+          orders.length == 0 ? 
+          <div style={{ textAlign: "center", height:"54vh",  display:"flex", alignItems:"center" }}>
+          <Heading
+              margin={"auto"}
+          >
+              "No Orders Found"
+          </Heading>
+        </div> :
+        <div style={{marginBottom:"170px"}}>
+          <Box width="fit-content" margin={"auto"} marginTop={"20px"}>
+            <Button
+              fontWeight={"bold"}
+              background={"orange"}
+              color={"white"}
+              _hover={{ background: "#444444", color: "white" }}
+            >
+              <Link to={"/admin"}>Update Product</Link>
+            </Button>
+          </Box>
             <TableContainer p="20px">
                 <Table variant={"simple"}>
                   <Thead>
@@ -101,6 +123,8 @@ const Orders = () => {
                 </Table>
               </TableContainer>
         </div>
+        }
+      </div>
     )
 }
 

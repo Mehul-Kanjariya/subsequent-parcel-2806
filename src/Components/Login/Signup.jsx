@@ -15,10 +15,10 @@ import {
     Heading,
     Text,
     useColorModeValue,
-    Link,
   } from '@chakra-ui/react';
   import { useState } from 'react';
   import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
+  import { Link } from "react-router-dom";
 const Signup = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [value, setValue] = useState('')
@@ -148,8 +148,8 @@ const Signup = () => {
 
             <Stack pt={6}>
               
-              <Text align={'center'}>
-                Already a user? <Link color={'blue.400'} href={'/userlogin'}   >Login</Link>
+              <Text align={'center'} >
+                Already a user? <span style={{color:"blue"}}><Link to={'/userlogin'}   >Login</Link></span>
               </Text>
             
             </Stack>
