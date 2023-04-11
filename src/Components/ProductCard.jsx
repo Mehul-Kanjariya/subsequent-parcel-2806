@@ -3,15 +3,23 @@ import { Box, Flex, Image, Tooltip, Icon, chakra, useToast, Show } from '@chakra
 import { FiShoppingCart } from "react-icons/fi";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({id, title, image, price}) => {
+    const { userId, isAuth } = useSelector((store) => store.auth);
+    const navigate = useNavigate();
     const toast = useToast();
 
     const AddToCartItem = async (id) => {
+        if(!isAuth){
+            return navigate("/userlogin")
+        }
+        
         let data = await axios.get(
           `https://alok-verma-rct.onrender.com/navSearch/${id}`
         );
-        const NewProduct = { ...data.data, quantity: 1 };
+        const NewProduct = { ...data.data, quantity: 1, userId };
     
         axios
           .post("https://alok-verma-rct.onrender.com/crankdealCart", NewProduct)

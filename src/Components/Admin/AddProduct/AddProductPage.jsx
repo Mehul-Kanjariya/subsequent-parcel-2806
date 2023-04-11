@@ -14,7 +14,7 @@ import React, { useState } from "react";
 import styles from "./addproduct.module.css";
 import UploadImage from "./UploadImage";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const productObject = {
   image: "",
@@ -86,7 +86,7 @@ const AddProductPage = () => {
       alert("Fill the data properly");
     }
   };
-  
+
   return (
     <div className={styles.container}>
       <div className={styles.blurr}>

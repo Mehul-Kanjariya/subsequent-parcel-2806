@@ -34,6 +34,7 @@ import { Link } from "react-router-dom";
 import styles from "../Css/mens.module.css";
 const Stationary = () => {
   const { products, loading, error } = useSelector((state) => state.women);
+  const { userId, isAuth } = useSelector((store) => store.auth);
   const [sort, setSort] = React.useState("")
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -53,10 +54,14 @@ const Stationary = () => {
   };
 
   const AddToCartItem = async (id) => {
+    if(!isAuth){
+      return navigate("/userlogin")
+    }
+
     let data = await axios.get(
       `https://alok-verma-rct.onrender.com/stationary/${id}`
     );
-    let NewProduct = { ...data.data, quantity: 1 };
+    let NewProduct = { ...data.data, quantity: 1, userId };
     axios
       .post("https://alok-verma-rct.onrender.com/crankdealCart", NewProduct)
       .then(() =>
@@ -160,7 +165,7 @@ const Stationary = () => {
         ) : (
           products?.map((item) => {
             return (
-              <Link to={`/babycare/${item.id}`}>
+              <Link to={`/stationary/${item.id}`}>
               <Flex
                 p={5}
                 w="fit-content"
@@ -197,7 +202,7 @@ const Stationary = () => {
                       cursor={"pointer"}
                       className="product-title"
                       onClick={() => {
-                        navigate(`/babycare/${item.id}`);
+                        navigate(`/stationary/${item.id}`);
                       }}
                     >
                       {item.title}

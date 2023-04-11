@@ -19,9 +19,13 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import { MdLocalShipping } from "react-icons/md";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const KitchenAppliancesSinglePage = () => {
   const { id } = useParams();
+  const { userId, isAuth } = useSelector((store) => store.auth);
+  const navigate = useNavigate();
   const [product, setProducts] = useState([]);
   const toast = useToast();
 
@@ -33,7 +37,11 @@ const KitchenAppliancesSinglePage = () => {
   };
 
   const AddToCartItem = () => {
-    const NewProduct = { ...product, quantity: 1 };
+    if(!isAuth){
+      return navigate("/userlogin")
+    }
+    const NewProduct = { ...product, quantity: 1, userId };
+    
     axios
       .post("https://alok-verma-rct.onrender.com/crankdealCart", NewProduct)
       .then(() =>

@@ -32,8 +32,10 @@ import { useNavigate } from "react-router";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
 import styles from "../Css/mens.module.css";
+
 const WomensFootwear = () => {
   const { products, loading, error } = useSelector((state) => state.women);
+  const { userId, isAuth } = useSelector((store) => store.auth);
   const [sort, setSort] = React.useState("")
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -53,10 +55,14 @@ const WomensFootwear = () => {
   };
 
   const AddToCartItem = async (id) => {
+    if(!isAuth){
+      return navigate("/userlogin")
+    }
+
     let data = await axios.get(
       `https://alok-verma-rct.onrender.com/WomensFootwear/${id}`
     );
-    let NewProduct = { ...data.data, quantity: 1 };
+    let NewProduct = { ...data.data, quantity: 1, userId };
     axios
       .post("https://alok-verma-rct.onrender.com/crankdealCart", NewProduct)
       .then(() =>
@@ -160,7 +166,7 @@ const WomensFootwear = () => {
         ) : (
           products?.map((item) => {
             return (
-              <Link to={`/Womens/WomensEthnicDresses/${item.id}`}>
+              <Link to={`/Womens/WomensFootwear/${item.id}`}>
               <Flex
                 p={5}
                 w="fit-content"
@@ -197,7 +203,7 @@ const WomensFootwear = () => {
                       cursor={"pointer"}
                       className="product-title"
                       onClick={() => {
-                        navigate(`/Womens/WomensEthnicDresses/${item.id}`);
+                        navigate(`/Womens/WomensFootwear/${item.id}`);
                       }}
                     >
                       {item.title}

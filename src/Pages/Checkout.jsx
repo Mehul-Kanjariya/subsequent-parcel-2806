@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import {
   Progress,
@@ -19,9 +18,10 @@ import {
   FormHelperText,
   InputRightElement,
 } from '@chakra-ui/react';
-
+import axios from "axios";
 import { useToast } from '@chakra-ui/react';
 import { useNavigate } from 'react-router';
+import { useDispatch, useSelector } from "react-redux";
 
 const Form1 = () => {
   const [show, setShow] = React.useState(false);
@@ -281,10 +281,36 @@ const Form3 = () => {
 };
 
 export default function Checkout() {
-    const mynav = useNavigate();
+  const { name, userId } = useSelector((store) => store.auth);
+  const mynav = useNavigate();
   const toast = useToast();
   const [step, setStep] = useState(1);
   const [progress, setProgress] = useState(33.33);
+
+  const GetCartData = async () => {
+      let data = await axios.get("https://alok-verma-rct.onrender.com/crankdealCart")
+      let userData = data.data.filter((e)=>e.userId==userId)
+      
+      for(let i=0; i<userData.length; i++){
+        let time = new Date().toLocaleTimeString();
+        let date = new Date().toLocaleDateString();
+        userData[i].time = time;
+        userData[i].date = date;
+        userData[i].payment = "Success"
+        userData[i].delivery = "Pending"
+        axios.post("https://alok-verma-rct.onrender.com/orders ", userData[i])
+        axios.delete(`https://alok-verma-rct.onrender.com/crankdealCart/${userData[i].id}`);
+      }
+  
+      toast({
+        // title: "Item Added",
+        description: `${name} Your Order is Placed Thanks for Shopping`,
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      })
+      mynav('/')
+  };
   return (
     <>
       <Box
@@ -341,15 +367,16 @@ export default function Checkout() {
                 colorScheme="red"
                 variant="solid"
                 onClick={() => {
-                  toast({
-                    title: 'Account created.',
-                    description: "Your Order is Placed Thanks for Shopping",
-                    status: 'success',
-                    duration: 3000,
-                    isClosable: true,
-                  });
+                  GetCartData()
+                  // toast({
+                  //   // title: 'Account created.',
+                  //   description: `${name} Your Order is Placed Thanks for Shopping`,
+                  //   status: 'success',
+                  //   duration: 3000,
+                  //   isClosable: true,
+                  // });
 
-                  mynav('/')
+                  // mynav('/')
                 }}>
                 Submit
               </Button>

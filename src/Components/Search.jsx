@@ -30,25 +30,25 @@ function Search () {
                 </Heading>
             </div>
             ) : (
-                <SimpleGrid margin={"auto"} width={"fit-content"} columns={[1,2,2,4,4,4]}>
-                    {
-                        products.length!==0 ? (
-                            products?.map((e)=>{
-                                return(
-                                    <ProductCard key={e.id} {...e}/>
-                                )
-                            })
-                        ) : (
-                        <div style={{ textAlign: "center", height:"56vh",  display:"flex", alignItems:"center" }}>
-                            <Heading
+                products.length!==0 ? (
+                    <SimpleGrid margin={"auto"} width={"fit-content"} columns={[1,2,2,4,4,4]}>
+                        {
+                                products?.map((e)=>{
+                                    return(
+                                        <ProductCard key={e.id} {...e}/>
+                                    )
+                                })
+                        }
+                    </SimpleGrid>
+                ) : (
+                    <div style={{ textAlign: "center", height:"56vh",  display:"flex", alignItems:"center" }}>
+                        <Heading
                             margin={"auto"}
-                            >
-                                "No Results Found"
-                            </Heading>
-                        </div>
-                        )
-                    }
-                </SimpleGrid>
+                        >
+                            "No Results Found"
+                        </Heading>
+                    </div>
+                )
             )
             }
         </div>

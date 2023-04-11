@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./Navbar.module.css"
 import {
+  Heading,
   Menu,
   MenuButton,
   MenuList,
@@ -43,6 +44,7 @@ import {
 import { SearchIcon } from "@chakra-ui/icons";
 import logo from "./logoo.png";
 import { BsCart2, BsFillPersonFill, BsShieldFillCheck } from "react-icons/bs";
+import { FaOpencart } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 
 import axios from "axios";
@@ -54,7 +56,7 @@ import { fetchData } from "../../Redux/Auth/actions";
 import { searchProducts } from "../../Redux/Search/actions"
 
 const Navbar = () => {
-  const { isAuth,admin,name } = useSelector((store) => store.auth);
+  const { isAuth, admin, name, userId } = useSelector((store) => store.auth);
   const mynav = useNavigate();
   const search = useNavigate();
 
@@ -69,7 +71,7 @@ const Navbar = () => {
     axios
       .get("https://alok-verma-rct.onrender.com/crankdealCart")
       .then((res) => {
-        setCartData(res.data);
+        setCartData(res.data.filter((e)=>e.userId==userId));
         TotalPrice();
       });
   };
@@ -115,18 +117,19 @@ const Navbar = () => {
 
   const dispatch = useDispatch();
 
-  const logout = () => {
+  const logout = async () => {
     let id = JSON.parse(localStorage.getItem("id"));
     let data = JSON.parse(localStorage.getItem("Auth"));
     data.Auth = !data.Auth;
+    
     if (id && data) {
-      dispatch(fetchData(id, data));
+      await dispatch(fetchData(id, data));
     } else {
       return;
     }
     localStorage.removeItem("id");
     localStorage.removeItem("Auth");
-    window.location.reload();
+    // window.location.reload();
   };
 
   const SearchClick = () => {
@@ -169,6 +172,11 @@ const Navbar = () => {
             height={{base:"25px", sm:"35px", md:"35px", lg:"37px", "2xl":"43px"}}
           />
           <MenuList zIndex={100}>
+            <Link to="/userorders">
+              <MenuItem icon={<FaOpencart />} >
+                <Heading size={"sm"}>Your Orders</Heading>
+              </MenuItem>
+            </Link>
             <Link to="/Mens/MensClothing">
               <MenuItem icon={<AddIcon />} >
                 Men's Fashion
@@ -414,9 +422,9 @@ const Navbar = () => {
                 <MenuDivider />
               </MenuList>
             </Menu>
-            <BsFillPersonFill style={{ fontSize: "35px", color: "white" }}>
+            {/* <BsFillPersonFill style={{ fontSize: "35px", color: "white" }}>
               {" "}
-            </BsFillPersonFill>
+            </BsFillPersonFill> */}
           </Flex> : 
           <Flex gap={5}>
             <Menu>

@@ -34,6 +34,7 @@ import { Link } from "react-router-dom";
 import styles from "../Css/mens.module.css";
 const WomensDresses = () => {
   const { products, loading, error } = useSelector((state) => state.women);
+  const { userId, isAuth } = useSelector((store) => store.auth);
   const [sort, setSort] = React.useState("")
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -83,11 +84,15 @@ const WomensDresses = () => {
   };
 
   const AddToCartItem = async (id) => {
+    if(!isAuth){
+      return navigate("/userlogin")
+    }
+
     let data = await axios.get(
       `https://alok-verma-rct.onrender.com/WomensDresses/${id}`
     );
-    const NewProduct = { ...data.data, quantity: 1 };
-
+    const NewProduct = { ...data.data, quantity: 1 , userId};
+// console.log(NewProduct)
     axios
       .post("https://alok-verma-rct.onrender.com/crankdealCart", NewProduct)
       .then(() =>
@@ -161,7 +166,7 @@ const WomensDresses = () => {
         ) : (
           products?.map((item) => {
             return (
-              <Link to={`/Womens/WomensEthnicDresses/${item.id}`}>
+              <Link to={`/Womens/WomensDresses/${item.id}`}>
               <Flex
                 p={5}
                 w="fit-content"
@@ -198,7 +203,7 @@ const WomensDresses = () => {
                       cursor={"pointer"}
                       className="product-title"
                       onClick={() => {
-                        navigate(`/Womens/WomensEthnicDresses/${item.id}`);
+                        navigate(`/Womens/WomensDresses/${item.id}`);
                       }}
                     >
                       {item.title}

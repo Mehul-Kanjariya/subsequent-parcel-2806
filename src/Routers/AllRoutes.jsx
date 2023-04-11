@@ -45,6 +45,8 @@ import StationarySinglePage from "../Components/SinglePage/Toys&CareSinglePage/S
 import BabycareSinglePage from "../Components/SinglePage/Toys&CareSinglePage/BabycareSinglePage";
 import Search from "../Components/Search"
 import SearchSinglePage from "../Components/SearchSinglePage";
+import Orders from "../Components/Admin/Orders"
+import Userorders from "../Pages/Userorder"
 
 const AllRoutes = () => {
   return (
@@ -52,7 +54,7 @@ const AllRoutes = () => {
       <Route path="/" element={<Homepage />} />
       <Route path="/productCategoryface" element={<Faceprod />} />
       <Route path="/signup" element={<Signup />} />
-      <Route path="/addProduct" element={<AddProductPage />} />
+      <Route path="/addProduct" element={<PrivateRoute><AddProductPage /></PrivateRoute>} />
       <Route path="/foodprod" element={<Foodprod />} />
       <Route path="/drinkprod" element={<Drinkprod />} />
       <Route path="/adminProducts/:id/:category" element={<PrivateRoute><SingleUpdateProduct/></PrivateRoute>}/>
@@ -88,6 +90,8 @@ const AllRoutes = () => {
       <Route path="/babycare/:id" element={<BabycareSinglePage/>} />
       <Route path="/search" element={<Search/>} />
       <Route path="/search/:id" element={<SearchSinglePage/>} />
+      <Route path="/orders" element={<PrivateRoute><Orders/></PrivateRoute>} />
+      <Route path="/userorders" element={<PrivateRoute><Userorders/></PrivateRoute>} />
     </Routes>
   );
 };

@@ -34,6 +34,7 @@ import { Link } from "react-router-dom";
 import styles from "../Css/mens.module.css";
 const KitchenAppliances = () => {
   const { products, loading, error } = useSelector((state) => state.women);
+  const { userId, isAuth } = useSelector((store) => store.auth);
   const [sort, setSort] = React.useState("")
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -83,10 +84,14 @@ const KitchenAppliances = () => {
   };
 
   const AddToCartItem = async (id) => {
+    if(!isAuth){
+      return navigate("/userlogin")
+    }
+
     let data = await axios.get(
       `https://alok-verma-rct.onrender.com/kitchenAppliances/${id}`
     );
-    const NewProduct = { ...data.data, quantity: 1 };
+    const NewProduct = { ...data.data, quantity: 1, userId };
 
     axios
       .post("https://alok-verma-rct.onrender.com/crankdealCart", NewProduct)
@@ -161,7 +166,7 @@ const KitchenAppliances = () => {
         ) : (
           products?.map((item) => {
             return (
-              <Link to={`/homeFurnishing/${item.id}`}>
+              <Link to={`/kitchen/${item.id}`}>
               <Flex
                 p={5}
                 w="fit-content"
@@ -198,7 +203,7 @@ const KitchenAppliances = () => {
                       cursor={"pointer"}
                       className="product-title"
                       onClick={() => {
-                        navigate(`/homeFurnishing/${item.id}`);
+                        navigate(`/kitchen/${item.id}`);
                       }}
                     >
                       {item.title}

@@ -34,6 +34,7 @@ import { Link } from "react-router-dom";
 import styles from "../Css/mens.module.css";
 const HomeFurnishing = () => {
   const { products, loading, error } = useSelector((state) => state.women);
+  const { userId, isAuth } = useSelector((store) => store.auth);
   const [sort, setSort] = React.useState("")
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -53,10 +54,14 @@ const HomeFurnishing = () => {
   };
 
   const AddToCartItem = async (id) => {
+    if(!isAuth){
+      return navigate("/userlogin")
+    }
+
     let data = await axios.get(
       `https://alok-verma-rct.onrender.com/homeFurnishing/${id}`
     );
-    const NewProduct = { ...data.data, quantity: 1 };
+    const NewProduct = { ...data.data, quantity: 1, userId };
 
     axios
       .post("https://alok-verma-rct.onrender.com/crankdealCart", NewProduct)
