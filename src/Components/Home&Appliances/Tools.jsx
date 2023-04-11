@@ -174,7 +174,7 @@ const Tools = () => {
                 <Box
                   width="250px"
                 borderWidth="1px"
-                  rounded="lg"
+                 rounded="lg"
                   shadow="lg"
                   position="relative"
                 >

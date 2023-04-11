@@ -166,7 +166,7 @@ const KitchenAppliances = () => {
                 p={5}
               w="fit-content"
                 alignItems="center"
-                justifyContent="center"
+              justifyContent="center"
                 className="hvr-grow-shadow"
                 key={item.id}
               >
