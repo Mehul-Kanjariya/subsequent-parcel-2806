@@ -162,7 +162,7 @@ const Tools = () => {
         ) : (
           products?.map((item) => {
             return (
-              <Link to={`/homeFurnishing/${item.id}`}>
+              <Link to={`/tools/${item.id}`}>
               <Flex
                 p={5}
                 w="fit-content"

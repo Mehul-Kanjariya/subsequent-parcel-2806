@@ -161,7 +161,7 @@ const Toys = () => {
         ) : (
           products?.map((item) => {
             return (
-              <Link to={`/babycare/${item.id}`}>
+              <Link to={`/toys/${item.id}`}>
               <Flex
                 p={5}
                 w="fit-content"

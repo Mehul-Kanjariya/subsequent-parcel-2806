@@ -110,7 +110,7 @@ const Homepage = () => {
             <div className="search_div">
               <img src={searchlogo} alt="" />
               <input placeholder="Enter Pin" style={{border:"1px solid brown",textAlign:"center"}} />
-              <button style={{backgroundColor:"#3F3F3F",color:"white",width:"100px",marginTop:"10px",height:"30px"}}>SUBMIT</button>
+              <button style={{backgroundColor:"#3F3F3F",color:"white",width:"100px",marginTop:"7px",height:"30px"}}>SUBMIT</button>
             </div>
           </div>
           <div className="product_card">
