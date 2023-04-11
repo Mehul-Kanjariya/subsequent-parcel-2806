@@ -294,6 +294,7 @@ export default function Checkout() {
       for(let i=0; i<userData.length; i++){
         let time = new Date().toLocaleTimeString();
         let date = new Date().toLocaleDateString();
+        userData[i].id = Date.now()+time;
         userData[i].time = time;
         userData[i].date = date;
         userData[i].payment = "Success"
