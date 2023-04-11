@@ -160,7 +160,7 @@ const Stationary = () => {
         ) : (
           products?.map((item) => {
             return (
-              <Link to={`/stationary/${item.id}`}>
+            <Link to={`/stationary/${item.id}`}>
               <Flex
                 p={5}
                 w="fit-content"

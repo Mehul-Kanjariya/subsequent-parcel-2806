@@ -171,7 +171,7 @@ const WomensEthnicDresses = () => {
                 key={item.id}
               >
                 <Box
-                  width="250px"
+               width="250px"
                   borderWidth="1px"
                   rounded="lg"
                   shadow="lg"
