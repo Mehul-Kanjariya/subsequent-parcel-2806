@@ -103,7 +103,7 @@ const Homepage = () => {
         <div className="slider-div">
           <div>
             <div className="slider">
-              <Carousel SliderImages={SliderImages} />
+             <Carousel SliderImages={SliderImages} />
               
             </div>
 
@@ -113,9 +113,9 @@ const Homepage = () => {
               <button style={{backgroundColor:"#3F3F3F",color:"white",width:"100px",marginTop:"7px",height:"30px"}}>SUBMIT</button>
             </div>
           </div>
-          <div className="product_card">
+        <div className="product_card">
             <div>
-              <h2>RECENTLY VIEWED CATEGORIES</h2>
+             <h2>RECENTLY VIEWED CATEGORIES</h2>
             </div>
 
             <div className="products">
